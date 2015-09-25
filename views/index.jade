@@ -3,4 +3,13 @@ extends layout
 block content
 	.bg
 		h1= title
-		p Welcome to #{title}
+		h2 Coming soon !
+
+		.row
+			.col-sm-3
+			.col-sm-6
+				.input-group
+					input.form-control(type="text", placeholder="Register my@mail.com for public beta")
+					span.input-group-btn
+						button.btn.btn-default(type="button") Go!
+			.col-sm-3
