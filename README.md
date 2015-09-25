@@ -1,3 +1,17 @@
+
+# Pollock
+
+### Install
+
+ - `npm install`
+
+### Run
+
+ - Run server `node bin/www`
+ - Go to http://localhost:3000/
+
+---
+
 # TWEB Project Repository
 
 Welcome to the home of the TWEB Project. This is where you will find information about the project (specifications, evaluation, etc.).
@@ -10,7 +24,7 @@ One (and only one) person in every group should fork this repository. All group 
 
 ### How do we keep our fork in sync with this repo?
 
-From time to time, we will add content in the repo (update the README.md file, add directories and files, etc.). You will want to fetch these updates, following the standard "fetch upstream" technique. If you do not remember how it works (from the RES course), refer to this [documentation](https://help.github.com/articles/syncing-a-fork/). 
+From time to time, we will add content in the repo (update the README.md file, add directories and files, etc.). You will want to fetch these updates, following the standard "fetch upstream" technique. If you do not remember how it works (from the RES course), refer to this [documentation](https://help.github.com/articles/syncing-a-fork/).
 
 
 ## About the project
@@ -51,6 +65,6 @@ You will actually be in charge to write the specifications during part1, but we 
 
 ### Part 3
 
-The third part of the project will be a new development iteration. Before starting part 3, you will be asked to specify which features you intend to develop and plan the related activities. During part 3, you will implement these features and make sure that you have a solid implementation at every release. You will also improve the marketing elements of your project (refine content in the product web site, add screenshots, why not create a video). 
+The third part of the project will be a new development iteration. Before starting part 3, you will be asked to specify which features you intend to develop and plan the related activities. During part 3, you will implement these features and make sure that you have a solid implementation at every release. You will also improve the marketing elements of your project (refine content in the product web site, add screenshots, why not create a video).
 
 Again, some guidelines will later be published [here](specifications/part3).
