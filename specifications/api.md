@@ -6,6 +6,8 @@ This document explains how the RESTful API works.
 
 ## Polls
 
+### GET
+
 Request:
 
 ```http
@@ -20,6 +22,9 @@ Status: 200 (OK)
 
 _An array of [Questions](#questions)_
 
+### POST, PUT, DELETE
+
+_TODO_
 
 ## Questions
 
@@ -145,4 +150,4 @@ _TODO_
 
 ## References
 
-_[Using HTTP Methods for RESTful Services](http://www.restapitutorial.com/lessons/httpmethods.html)_
+- _[Using HTTP Methods for RESTful Services](http://www.restapitutorial.com/lessons/httpmethods.html)_
