@@ -6,17 +6,19 @@ This document explains how the RESTful API works.
 
 ## Polls
 
-_TODO_
+Request:
+
+```http
+GET /api/polls/3
+```
+
+Response:
+
+_An array of [Questions](#questions)_
 
 ## Questions
 
 ### GET
-
-Request:
-
-```http
-GET /api/questions
-```
 
 Request:
 
