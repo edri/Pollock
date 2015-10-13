@@ -14,7 +14,12 @@ GET /api/polls/3
 
 Response:
 
+```http
+Status: 200 (OK)
+```
+
 _An array of [Questions](#questions)_
+
 
 ## Questions
 
