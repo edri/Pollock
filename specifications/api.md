@@ -20,15 +20,15 @@ GET /api/question/2
 
 ```json
 {
-	"id": 2
+	"id": 2,
 	"text": "When should we do the barbecue?",
 	"choices": [
 		{
-			"key": 1
+			"key": 1,
 			"text": "Saturday"
 		},
 		{
-			"key": 2
+			"key": 2,
 			"text": "Sunday"
 		}
 	]
