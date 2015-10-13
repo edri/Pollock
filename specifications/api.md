@@ -14,8 +14,22 @@ _TODO_
 
 ### Questions
 
+Request:
+
+```http
+GET /api/questions
 ```
-GET /api/question/2
+
+Request:
+
+```http
+GET /api/questions/2
+```
+
+Response:
+
+```http
+Status: 200 (OK)
 ```
 
 ```json
