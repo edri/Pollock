@@ -57,5 +57,12 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// Start the server on port 3000.
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Pollock server listening at http://%s:%s.', host, port);
+});
 
 module.exports = app;
