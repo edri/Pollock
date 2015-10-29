@@ -1,4 +1,8 @@
-# API
+---
+layout: page
+title: API
+permalink: /api/
+---
 
 This document explains how the RESTful API works.
 
