@@ -7,15 +7,17 @@
 
 # Site settings
 title: Pollock Documentation
-email: your-email@domain.com
 description: >
   Pollock - Make Pools !
-baseurl: "/Pollock" # the subpath of your site, e.g. /pollock @TODO http://jekyllrb.com/docs/github-pages/
+baseurl: "/Pollock" # the subpath of your site
+# baseurl: "" # For DEV
 url: "http://pollock.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
 
 # Build settings
 markdown: kramdown
 
 permalink: pretty
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
