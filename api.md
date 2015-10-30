@@ -1,6 +1,6 @@
 ---
 layout: page
-title: API
+title: API Specification
 ---
 
 This document explains how the RESTful API works.
