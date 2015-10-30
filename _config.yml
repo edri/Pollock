@@ -10,7 +10,7 @@ title: Pollock Documentation
 email: your-email@domain.com
 description: >
   Pollock - Make Pools !
-baseurl: "" # the subpath of your site, e.g. /pollock @TODO http://jekyllrb.com/docs/github-pages/
+baseurl: "/Pollock" # the subpath of your site, e.g. /pollock @TODO http://jekyllrb.com/docs/github-pages/
 url: "http://pollock.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
