@@ -17,6 +17,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.7.1"
+    "nodemon": "^1.7.1",
+    "api-copilot": "~0.6.1"
   }
 }
