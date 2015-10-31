@@ -2,6 +2,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 
+var Polls = require('../models/polls');
+
 /*
 * Return the first day of the current week as a date.
 */
@@ -22,28 +24,6 @@ mongoose.connect('mongodb://localhost/pollock', function(error) {
 		console.log(error);
 	} else {
 		console.log("Connected to database.");
-
-		// Create polls' schema.
-		var pollsSchema = new mongoose.Schema({
-			title: String,
-			creationDate: Date,
-			state: String,
-			questions: [{
-				title: String,
-				type: {type: String},
-				choices: [{
-					key: String,
-					text: String,
-					participations: [{
-						participant: String,
-						submissionDate: Date
-					}]
-				}]
-			}]
-		});
-
-		// Get the polls' model.
-		Polls = mongoose.model("polls", pollsSchema);
 	}
 });
 
