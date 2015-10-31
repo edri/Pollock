@@ -6,9 +6,9 @@ var pollsSchema = new Schema({
 	title: {
 		type: String, 
 		required: true
-	}
+	},
 	creationDate: {
-		type Date, 
+		type: Date, 
 		required: true
 	},
 	state: {
@@ -28,7 +28,7 @@ var pollsSchema = new Schema({
 			key: {
 				type: String,
 				required: true
-			}
+			},
 			text: {
 				type: String,
 				required: true
@@ -65,6 +65,7 @@ var participationsSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: polls,
 		required: true
+	},
 	answers: [{
 		choice: {
 			type: String,
