@@ -27,42 +27,96 @@ scenario.step("Connect to database", function() {
     return deferred.promise;
 })
 
-// This step creates a default polls schema for the database.
+// This step creates the polls schemas for the database.
 // Receives the mongoose's schema from the first step.
-scenario.step("Create database polls schema", function(Schema) {
+scenario.step("Create database polls schemas", function(Schema) {
     var pollsSchema = new Schema({
-    	title: String,
-    	creationDate: Date,
-    	state: String,
+    	title: {
+    		type: String,
+    		required: true
+    	},
+    	creationDate: {
+    		type: Date,
+    		required: true
+    	},
+    	state: {
+    		type: String,
+    		required: true
+    	},
     	questions: [{
-    		title: String,
-    		type: {type: String},
+    		title: {
+    			type: String,
+    			required: true
+    		},
+    		type: {
+    			type: String,
+    			required: true
+    		},
     		choices: [{
-    			key: String,
-    			text: String,
-    			participations: [{
-    				participant: String,
-    				submissionDate: Date
-    			}]
+    			key: {
+    				type: String,
+    				required: true
+    			},
+    			text: {
+    				type: String,
+    				required: true
+    			}
     		}]
+    	}],
+    	participations: [{
+    		id: mongoose.Schema.Types.ObjectId,
+    		ref: "participations",
+    		required: true
     	}]
     });
 
-    return mongoose.model("polls", pollsSchema);
+    pollsSchema.path("questions").schema.path("choices").schema.path("key").validate(
+    	function(questions) {
+    		if(!features) {
+    			return false;
+    		} else if(features.length < 2) {
+    			return false;
+    		}
+    		return true;
+    }, "polls need to have at least two questions");
+
+    var participationsSchema = new Schema({
+    	participant: {
+    		type: String,
+    		required: true
+    	},
+    	submissionDate: {
+    		type: date,
+    		required: true
+    	},
+    	poll: {
+    		type: mongoose.Schema.Types.ObjectId,
+    		ref: "polls",
+    		required: true
+    	},
+    	answers: [{
+    		choice: {
+    			type: String,
+    			required: true
+    		}
+    	}]
+    });
+
+    return this.success(mongoose.model("polls", pollsSchema), mongoose.model("participations", participationsSchema));
 });
 
 // This step cleans the model and creates some test data.
-// Receives the mongoose polls' model from the previous step.
-scenario.step("Create some data", function(Polls) {
+// Receives the mongoose polls' and participations' models from the previous step.
+scenario.step("Create some data", function(Polls, Participations) {
     // This is an asynchronous step, so we need to return a promise.
     var deferred = this.defer();
 
     // Clear database.
     Polls.remove({}, function(err) {
-    	console.log("Database cleared.\nCreating some test data...");
+    	console.log("Database cleared.\nCreating some polls test data...");
 
-        // Test data.
-    	var data = [
+        // Polls test data.
+    	var pollsData = [
     		{
     			title: "Test1",
     			creationDate: Date.now(),
@@ -82,7 +136,8 @@ scenario.step("Create some data", function(Polls) {
     						}
     					]
     				}
-    			]
+    			],
+                participations: []
     		},
     		{
     			title: "Test2",
@@ -103,7 +158,8 @@ scenario.step("Create some data", function(Polls) {
     						}
     					]
     				}
-    			]
+    			],
+                participations: []
     		},
     		{
     			title: "Test3",
@@ -124,7 +180,8 @@ scenario.step("Create some data", function(Polls) {
     						}
     					]
     				}
-    			]
+    			],
+                participations: []
     		}
     	];
 

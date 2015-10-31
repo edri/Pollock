@@ -4,11 +4,11 @@ var Schema = mongoose.Schema;
 // Create polls' schema.
 var pollsSchema = new Schema({
 	title: {
-		type: String, 
+		type: String,
 		required: true
 	},
 	creationDate: {
-		type: Date, 
+		type: Date,
 		required: true
 	},
 	state: {
@@ -34,11 +34,6 @@ var pollsSchema = new Schema({
 				required: true
 			}
 		}]
-	}],
-	participations: [{
-		id: mongoose.Schema.Types.ObjectId,
-		ref: "participations",
-		required: true
 	}]
 });
 
@@ -58,7 +53,7 @@ var participationsSchema = new Schema({
 		required: true
 	},
 	submissionDate: {
-		type: date,
+		type: Date,
 		required: true
 	},
 	poll: {
