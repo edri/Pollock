@@ -5,7 +5,7 @@ var router = express.Router();
 /*
 * Return the first day of the current week as a date.
 */
-function getFirstDayOfCurrentWeek() {
+function getTheFirstDayOfTheCurrentWeek() {
 	// Get current date.
 	var currentDate = new Date;
 	// Calculate the first day of the week.
@@ -54,7 +54,7 @@ router.get('/', function(req, res, next) {
 	// Get the all created polls.
 	Polls.count({}, function(err, totalNumberOfPolls) {
 		// Get polls created this week.
-		Polls.count({creationDate: {"$gte": getFirstDayOfCurrentWeek(), "$lte": Date.now()}}, function(err, numberOfPollsCreatedThisWeek) {
+		Polls.count({creationDate: {"$gte": getTheFirstDayOfTheCurrentWeek(), "$lte": Date.now()}}, function(err, numberOfPollsCreatedThisWeek) {
 			// Get polls that are still open.
 			Polls.count({state: "Open"}, function(err, numberOfPollsStillOpen) {
 				if (err) {
