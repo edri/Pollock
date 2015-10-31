@@ -36,8 +36,8 @@ var pollsSchema = new Schema({
 		}]
 	}],
 	participations: [{
-		id: Schema.ObjectId,
-		ref: participations,
+		id: mongoose.Schema.Types.ObjectId,
+		ref: "participations",
 		required: true
 	}]
 });
@@ -62,8 +62,8 @@ var participationsSchema = new Schema({
 		required: true
 	},
 	poll: {
-		type: Schema.ObjectId,
-		ref: polls,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "polls",
 		required: true
 	},
 	answers: [{
