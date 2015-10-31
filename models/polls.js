@@ -42,7 +42,7 @@ var pollsSchema = new Schema({
 	}]
 });
 
-pollsSchema.path("questions").schema.path("choices").validate(
+pollsSchema.path("questions").schema.path("choices").path("key").validate(
 	function(questions) {
 		if(!features) {
 			return false;
