@@ -4,7 +4,13 @@ var Polls = require('../models/polls');
 
 // GET polls
 router.get('/polls/:pollId', function (req, res) {
-	res.send('Polls');
-})
+	Polls.find(function (err, polls) {
+		if (err) {
+			res.send(err);
+		}
+
+		res.json(polls);
+	});
+});
 
 module.exports = router;
