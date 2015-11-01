@@ -5,6 +5,62 @@ var Participations = require('../models/participations');
 
 // Polls
 router.route('/polls')
+	/**
+	 * @api GET /polls
+	 * @apiName GetPolls
+	 * @apiGroup polls
+	 *
+	 *  @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     [{
+     *       "_id": "51bb793aca2ab77a3200000d",
+     *       "title": "TestTest",
+     *       "creationDate": "2015-11-01T13:01:11.204Z",
+     *       "state": "Close",
+     *       "__v": 1,
+     *       "questions": [
+     *         {
+     *           "title": "Q21",
+     *           "type": "easy",
+     *           "_id": "56364f9a39ac36fd72c74e5f",
+     *           "choices": [
+     *             {
+     *               "key": "R1",
+     *               "text": "Rep1",
+     *               "_id": "56364f9a39ac36fd72c74e60"
+     *             }
+     *           ]
+     *         }
+     *       ]
+     *     },
+     *     {
+     *       "_id": "51c35e5ced18cb901d000001",
+     *       "title": "Test2",
+     *       "creationDate": "2015-04-29T12:54:59.000Z",
+     *       "state": "Close",
+     *       "__v": 0,
+     *       "questions": [
+     *         {
+     *           "title": "Q1",
+     *           "type": "Easy",
+     *           "_id": "56360d178b275b6b2519d17a",
+     *           "choices": [
+     *             {
+     *               "key": "R1",
+     *               "text": "La réponse 1.",
+     *               "_id": "56360d178b275b6b2519d17c"
+     *             },
+     *             {
+     *               "key": "R2",
+     *               "text": "La réponse 2.",
+     *               "_id": "56360d178b275b6b2519d17b"
+     *             }
+     *           ]
+     *         }
+     *       ]
+     *     }]
+	 * 
+	 */
 	.get(function (req, res) {
 		Polls.find(function (err, polls) {
 			if (err) {
@@ -38,6 +94,42 @@ router.route('/polls')
 	});
 
 router.route('/polls/:pollId')
+	/**
+	 * @api {GET} /polls/:pollId
+	 * @apiName GetPoll
+	 * @apiGroup poll
+	 * 
+	 * @apiParam {Number} pollId Polls unique ID.
+	 *
+	 *  @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     {
+	 *       "title": "MyPoll",
+	 *       "creationDate": "2015-11-01T13:01:11.204Z",
+	 *       "state": "Open",
+	 *       "questions": [
+     *         {
+     *           "title": "Q21",
+     *           "type": "easy",
+     *           "_id": "56364f9a39ac36fd72c74e5f",
+     *           "choices": [
+     *             {
+     *               "key": "R1",
+     *               "text": "Rep1",
+     *               "_id": "56364f9a39ac36fd72c74e60"
+     *             }
+     *           ]
+     *         }
+     *       ]
+	 *     }
+	 *
+	 * @apiError UserNotFound The id of the Poll was not found.
+	 *
+	 * @apiErrorExample Error-Response:
+	 *     HTTP/1.1 404 Not Found
+	 *     "Poll not found"
+	 * 
+	 */
 	.get(function (req, res) {
 		Polls.findById(req.params.pollId, function (err, polls) {
 			if (err) {
