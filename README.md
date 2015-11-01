@@ -3,7 +3,7 @@
 ## Check the documentation localy
 
 1. `jekyll serve`
-2. go on [http://localhost:4000](http://localhost:4000/)
+2. go on [http://localhost:4000/Pollock](http://localhost:4000/Pollock/)
 
 > If the CSS or images are not linked, edit the `baseurl` field in `_config.yml`.
 
