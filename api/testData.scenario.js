@@ -30,6 +30,7 @@ scenario.step("Connect to database", function() {
 // This step creates the polls schemas for the database.
 // Receives the mongoose's schema from the first step.
 scenario.step("Create database polls schemas", function(Schema) {
+    // Create polls' schema.
     var pollsSchema = new Schema({
     	title: {
     		type: String,
@@ -62,31 +63,27 @@ scenario.step("Create database polls schemas", function(Schema) {
     				required: true
     			}
     		}]
-    	}],
-    	participations: [{
-    		id: mongoose.Schema.Types.ObjectId,
-    		ref: "participations",
-    		required: true
     	}]
     });
 
     pollsSchema.path("questions").schema.path("choices").schema.path("key").validate(
     	function(questions) {
-    		if(!features) {
+    		if(!questions) {
     			return false;
-    		} else if(features.length < 2) {
+    		} else if(questions.length < 2) {
     			return false;
     		}
     		return true;
     }, "polls need to have at least two questions");
 
+    // Creating participations' schema.
     var participationsSchema = new Schema({
     	participant: {
     		type: String,
     		required: true
     	},
     	submissionDate: {
-    		type: date,
+    		type: Date,
     		required: true
     	},
     	poll: {
@@ -113,11 +110,12 @@ scenario.step("Create some data", function(Polls, Participations) {
 
     // Clear database.
     Polls.remove({}, function(err) {
-    	console.log("Database cleared.\nCreating some polls test data...");
+    	console.log("Database cleared.\nCreating some Polls test data...");
 
         // Polls test data.
     	var pollsData = [
     		{
+                _id: "51bb793aca2ab77a3200000d",
     			title: "Test1",
     			creationDate: Date.now(),
     			state: "Open",
@@ -136,10 +134,10 @@ scenario.step("Create some data", function(Polls, Participations) {
     						}
     					]
     				}
-    			],
-                participations: []
+    			]
     		},
     		{
+                _id: "51c35e5ced18cb901d000001",
     			title: "Test2",
     			creationDate: new Date(2015, 3, 29, 14, 54, 59, 0),
     			state: "Close",
@@ -158,10 +156,10 @@ scenario.step("Create some data", function(Polls, Participations) {
     						}
     					]
     				}
-    			],
-                participations: []
+    			]
     		},
     		{
+                _id: "51ab5e5ced18cb901d000001",
     			title: "Test3",
     			creationDate: Date.now(),
     			state: "Close",
@@ -180,21 +178,61 @@ scenario.step("Create some data", function(Polls, Participations) {
     						}
     					]
     				}
-    			],
-                participations: []
+    			]
     		}
     	];
 
         // Try to create the test data in the database.
-    	Polls.create(data, function (err) {
+    	Polls.create(pollsData, function (err) {
     		if (err) {
-                console.log("Error on save : " + err);
+                console.log("Error on polls' save : " + err);
                 // If we cannot create data, the tests process is aborted.
                 return this.complete();
             }
             else {
-                // Successful operation ; resolve the promise.
-                deferred.resolve(data);
+
+                console.log("Done ! Creating some Polls test data...");
+
+                // Participations test data.
+                var participationsData = [
+                    {
+                        participant: "Michel",
+                    	submissionDate: Date.now(),
+                    	poll: "51ab5e5ced18cb901d000001",
+                    	answers: [
+                            {
+                                choice: "R1"
+                    		},
+                            {
+                                choice: "R2"
+                            }
+                        ]
+                    },
+                    {
+                        participant: "Jean-Louis",
+                    	submissionDate: Date.now(),
+                    	poll: "51bb793aca2ab77a3200000d",
+                    	answers: [
+                            {
+                                choice: "R2"
+                            }
+                        ]
+                    }
+                ];
+
+                // Try to create the test data in the database.
+            	Participations.create(participationsData, function (err) {
+            		if (err) {
+                        console.log("Error on participations' save : " + err);
+                        // If we cannot create data, the tests process is aborted.
+                        return this.complete();
+                    }
+                    else {
+                        console.log("Done !");
+                        // Successful operation ; resolve the promise.
+                        deferred.resolve([pollsData, participationsData]);
+                    }
+            	});
             }
     	});
     })
@@ -206,8 +244,10 @@ scenario.step("Create some data", function(Polls, Participations) {
 // This step show the added data on the terminal.
 // Receives the data added in database, from the previous step.
 scenario.step("Log the data", function(data) {
-    console.log(data.length + " polls added : ");
-    console.log(data);
+    console.log(data[0].length + " polls added : ");
+    console.log(data[0]);
+    console.log("\n" + data[1].length + " participations added : ");
+    console.log(data[1]);
 });
 
 module.exports = scenario;

@@ -39,14 +39,15 @@ var pollsSchema = new Schema({
 
 pollsSchema.path("questions").schema.path("choices").schema.path("key").validate(
 	function(questions) {
-		if(!features) {
+		if(!questions) {
 			return false;
-		} else if(features.length < 2) {
+		} else if(questions.length < 2) {
 			return false;
 		}
 		return true;
 }, "polls need to have at least two questions");
 
+// Creating participations' schema.
 var participationsSchema = new Schema({
 	participant: {
 		type: String,
