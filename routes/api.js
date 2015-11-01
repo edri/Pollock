@@ -9,13 +9,13 @@ router.route('/polls')
 		Polls.find(function (err, polls) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.json(polls);
 		});
 	})
 	.post(function (req, res) {
-		console.log(req.body);
 		var poll = new Polls();
 
 		if (req.body._id) {
@@ -25,11 +25,12 @@ router.route('/polls')
 		poll.title = req.body.title;
 		poll.creationDate = new Date();
 		poll.state = req.body.state;
-		poll.questions = [];
+		poll.questions = JSON.parse(req.body.questions);
 
 		poll.save(function(err) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.status(201).send();
@@ -41,6 +42,7 @@ router.route('/polls/:pollId')
 		Polls.findById(req.params.pollId, function (err, polls) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			if (!polls) {
@@ -50,17 +52,21 @@ router.route('/polls/:pollId')
 			}
 		});
 	})
-	.put(function (req, res) { // TODO
+	.put(function (req, res) {
 		Polls.findById(req.params.pollId, function(err, poll) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
-			// update from req.body to poll
+			poll.title = req.body.title;
+			poll.state = req.body.state;
+			poll.questions = JSON.parse(req.body.questions);
 
 			poll.save(function (err) {
 				if (err) {
 					res.send(err);
+					return;
 				}
 
 				res.json({ message: 'Poll updated' });
@@ -71,6 +77,7 @@ router.route('/polls/:pollId')
 		Polls.remove({ _id: req.params.pollId }, function(err, poll) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.json({ message: 'Poll deleted' });
@@ -83,6 +90,7 @@ router.route('/participations')
 		Participations.find(function (err, participations) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.json(participations);
@@ -93,7 +101,7 @@ router.route('/participations')
 		participation.participant = req.body.participant;
 		participation.submissionDate = new Date();
 		participation.poll = req.body.poll;
-		participation.answers = [];
+		participation.answers = JSON.parse(req.body.answers);
 
 		if (req.body._id) {
 			participation._id = req.body._id;
@@ -102,6 +110,7 @@ router.route('/participations')
 		participation.save(function(err) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.status(201).send();
@@ -113,6 +122,7 @@ router.route('/participations/:pollId')
 		Participations.find({ poll: req.params.pollId }, function (err, participations) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.json(participations);
@@ -120,10 +130,34 @@ router.route('/participations/:pollId')
 	});
 
 router.route('/participations/:participationId')
+	.put(function (req, res) {
+		Participations.findById(req.params.participationId, function(err, participation) {
+			if (err) {
+				res.send(err);
+				return;
+			}
+
+			console.log(participation);
+			console.log(req.body);
+
+			participation.participant = req.body.participant;
+			participation.answers = JSON.parse(req.body.answers);
+
+			participation.save(function (err) {
+				if (err) {
+					res.send(err);
+					return;
+				}
+
+				res.json({ message: 'Participation updated' });
+			});
+		})
+	})
 	.delete(function (req, res) {
 		Participations.remove({ _id: req.params.participationId }, function(err, participation) {
 			if (err) {
 				res.send(err);
+				return;
 			}
 
 			res.json({ message: 'Participation deleted' });
