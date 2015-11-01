@@ -9,7 +9,7 @@ var Polls = require('../models/polls');
 */
 function getTheFirstDayOfTheCurrentWeek() {
 	// Get current date.
-	var currentDate = new Date;
+	var currentDate = new Date();
 	// Calculate the first day of the week.
 	var first = currentDate.getDate() - currentDate.getDay() + 1;
 	// Return the new calculated date.
@@ -50,8 +50,8 @@ router.get('/', function(req, res, next) {
 									numberOfPollsStillOpen: numberOfPollsStillOpen
 								});
 				}
-			})
-		})
+			});
+		});
 	});
 });
 
