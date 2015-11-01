@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "mongod",
     "start": "node ./bin/www"
   },
   "dependencies": {
