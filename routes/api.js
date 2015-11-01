@@ -6,11 +6,11 @@ var Participations = require('../models/participations');
 // Polls
 router.route('/polls')
 	/**
-	 * @api GET /polls
+	 * @api {GET} /polls
 	 * @apiName GetPolls
 	 * @apiGroup polls
 	 *
-	 *  @apiSuccessExample Success-Response:
+	 * @apiSuccessExample Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     [{
      *       "_id": "51bb793aca2ab77a3200000d",
@@ -71,6 +71,15 @@ router.route('/polls')
 			res.json(polls);
 		});
 	})
+	/**
+	 * @api {POST} /polls
+	 * @apiName PostPolls
+	 * @apiGroup polls
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 201 Created
+	 * 
+	 */
 	.post(function (req, res) {
 		var poll = new Polls();
 
@@ -97,11 +106,11 @@ router.route('/polls/:pollId')
 	/**
 	 * @api {GET} /polls/:pollId
 	 * @apiName GetPoll
-	 * @apiGroup poll
+	 * @apiGroup polls
 	 * 
 	 * @apiParam {Number} pollId Polls unique ID.
 	 *
-	 *  @apiSuccessExample Success-Response:
+	 * @apiSuccessExample Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     {
 	 *       "title": "MyPoll",
@@ -133,21 +142,29 @@ router.route('/polls/:pollId')
 	.get(function (req, res) {
 		Polls.findById(req.params.pollId, function (err, polls) {
 			if (err) {
-				res.send(err);
+				res.status(404).send(err);
 				return;
 			}
 
-			if (!polls) {
-				res.status(404).send('Poll not found');
-			} else {
-				res.json(polls);
-			}
+			res.json(polls);
 		});
 	})
+	/**
+	 * @api {PUT} /polls/:pollId
+	 * @apiName PutPolls
+	 * @apiGroup polls
+	 *
+	 * @apiParam {Number} pollId Polls unique ID.
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     "Poll updated"
+	 * 
+	 */
 	.put(function (req, res) {
 		Polls.findById(req.params.pollId, function(err, poll) {
 			if (err) {
-				res.send(err);
+				res.status(404).send(err);
 				return;
 			}
 
@@ -165,6 +182,18 @@ router.route('/polls/:pollId')
 			});
 		});
 	})
+	/**
+	 * @api {DELETE} /polls/:pollId
+	 * @apiName DeletePolls
+	 * @apiGroup polls
+	 *
+	 * @apiParam {Number} pollId Polls unique ID.
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     "Poll deleted"
+	 * 
+	 */
 	.delete(function (req, res) {
 		Polls.remove({ _id: req.params.pollId }, function(err, poll) {
 			if (err) {
@@ -178,6 +207,38 @@ router.route('/polls/:pollId')
 
 // Participations
 router.route('/participations')
+	/**
+	 * @api {GET} /participations
+	 * @apiName GetParticipations
+	 * @apiGroup participations
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     [
+     *       {
+     *         "_id": "56360d178b275b6b2519d180",
+     *         "participant": "Paul",
+     *         "submissionDate": "2015-11-01T13:01:11.266Z",
+     *         "poll": "51ab5e5ced18cb901d000001",
+     *         "__v": 1,
+     *         "answers": [
+     *           {
+     *             "choice": "R1",
+     *             "_id": "56360d178b275b6b2519d182"
+     *           }
+     *         ]
+     *       },
+     *       {
+     *         "_id": "563623da29193f7036169dde",
+     *         "poll": "51ab5e5ced18cb901a000001",
+     *         "submissionDate": "2015-11-01T14:38:18.420Z",
+     *         "participant": "Mathieu",
+     *         "__v": 0,
+     *         "answers": []
+     *       }
+     *     ]
+	 * 
+	 */
 	.get(function (req, res) {
 		Participations.find(function (err, participations) {
 			if (err) {
@@ -210,10 +271,36 @@ router.route('/participations')
 	});
 
 router.route('/participations/:pollId')
+	/**
+	 * @api {GET} /participations
+	 * @apiName GetParticipations
+	 * @apiGroup participations
+	 * 
+	 * @apiParam {Number} pollId Polls unique ID.
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+     *     [
+     *       {
+     *         "_id": "56360d178b275b6b2519d180",
+     *         "participant": "Paul",
+     *         "submissionDate": "2015-11-01T13:01:11.266Z",
+     *         "poll": "51ab5e5ced18cb901d000001",
+     *         "__v": 1,
+     *         "answers": [
+     *           {
+     *             "choice": "R1",
+     *             "_id": "56360d178b275b6b2519d182"
+     *           }
+     *         ]
+     *       }
+     *     ]
+	 * 
+	 */
 	.get(function (req, res) {
 		Participations.find({ poll: req.params.pollId }, function (err, participations) {
 			if (err) {
-				res.send(err);
+				res.status(404).send(err);
 				return;
 			}
 
@@ -225,7 +312,7 @@ router.route('/participations/:participationId')
 	.put(function (req, res) {
 		Participations.findById(req.params.participationId, function(err, participation) {
 			if (err) {
-				res.send(err);
+				res.status(404).send(err);
 				return;
 			}
 
