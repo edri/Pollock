@@ -17,6 +17,11 @@ router.route('/polls')
 	.post(function (req, res) {
 		console.log(req.body);
 		var poll = new Polls();
+
+		if (req.body._id) {
+			poll._id = req.body._id;
+		}
+
 		poll.title = req.body.title;
 		poll.creationDate = new Date();
 		poll.state = req.body.state;
@@ -89,6 +94,10 @@ router.route('/participations')
 		participation.submissionDate = new Date();
 		participation.poll = req.body.poll;
 		participation.answers = [];
+
+		if (req.body._id) {
+			participation._id = req.body._id;
+		}
 
 		participation.save(function(err) {
 			if (err) {

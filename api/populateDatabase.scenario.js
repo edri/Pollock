@@ -1,7 +1,9 @@
 var copilot = require('api-copilot');
 var mongoose = require('mongoose');
+var Polls = require('../models/polls');
+var Participations = require('../models/participations');
 
-// create an API scenario
+// create a database population scenario
 var scenario = new copilot.Scenario({
   name: "Database population's scenario",
   summary: "Populate some data into our mongo database."
@@ -27,84 +29,8 @@ scenario.step("Connect to database", function() {
     return deferred.promise;
 })
 
-// This step creates the polls schemas for the database.
-// Receives the mongoose's schema from the first step.
-scenario.step("Create database polls schemas", function(Schema) {
-    // Create polls' schema.
-    var pollsSchema = new Schema({
-    	title: {
-    		type: String,
-    		required: true
-    	},
-    	creationDate: {
-    		type: Date,
-    		required: true
-    	},
-    	state: {
-    		type: String,
-    		required: true
-    	},
-    	questions: [{
-    		title: {
-    			type: String,
-    			required: true
-    		},
-    		type: {
-    			type: String,
-    			required: true
-    		},
-    		choices: [{
-    			key: {
-    				type: String,
-    				required: true
-    			},
-    			text: {
-    				type: String,
-    				required: true
-    			}
-    		}]
-    	}]
-    });
-
-    pollsSchema.path("questions").schema.path("choices").schema.path("key").validate(
-    	function(questions) {
-    		if(!questions) {
-    			return false;
-    		} else if(questions.length < 2) {
-    			return false;
-    		}
-    		return true;
-    }, "polls need to have at least two questions");
-
-    // Creating participations' schema.
-    var participationsSchema = new Schema({
-    	participant: {
-    		type: String,
-    		required: true
-    	},
-    	submissionDate: {
-    		type: Date,
-    		required: true
-    	},
-    	poll: {
-    		type: mongoose.Schema.Types.ObjectId,
-    		ref: "polls",
-    		required: true
-    	},
-    	answers: [{
-    		choice: {
-    			type: String,
-    			required: true
-    		}
-    	}]
-    });
-
-    return this.success(mongoose.model("polls", pollsSchema), mongoose.model("participations", participationsSchema));
-});
-
-// This step cleans the model and creates some test data.
-// Receives the mongoose polls' and participations' models from the previous step.
-scenario.step("Create some data", function(Polls, Participations) {
+// This step cleans the model and creates some polls and participations test data.
+scenario.step("Create some data", function() {
     // This is an asynchronous step, so we need to return a promise.
     var deferred = this.defer();
 
