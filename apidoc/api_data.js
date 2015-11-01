@@ -46,6 +46,61 @@ define({ "api": [
         }
       ]
     },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/api.js",
+    "groupTitle": "participations"
+  },
+  {
+    "type": "PUT",
+    "url": "/participations",
+    "title": "",
+    "name": "PostParticipations",
+    "group": "participations",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "participant",
+            "description": "<p>Participant of the Prticipation</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "poll",
+            "description": "<p>ID of the poll</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "answers",
+            "description": "<p>Answers of the Prticipation</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created",
+          "type": "json"
+        }
+      ]
+    },
     "version": "0.0.0",
     "filename": "routes/api.js",
     "groupTitle": "participations"
@@ -88,6 +143,15 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n\"Participation updated\"",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found",
           "type": "json"
         }
       ]
@@ -189,20 +253,10 @@ define({ "api": [
       ]
     },
     "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "UserNotFound",
-            "description": "<p>The id of the Poll was not found.</p> "
-          }
-        ]
-      },
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n\"Poll not found\"",
+          "content": "HTTP/1.1 404 Not Found",
           "type": "json"
         }
       ]
@@ -321,6 +375,15 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n\"Poll updated\"",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found",
           "type": "json"
         }
       ]

@@ -136,11 +136,8 @@ router.route('/polls/:pollId')
      *       ]
 	 *     }
 	 *
-	 * @apiError UserNotFound The id of the Poll was not found.
-	 *
 	 * @apiErrorExample Error-Response:
 	 *     HTTP/1.1 404 Not Found
-	 *     "Poll not found"
 	 * 
 	 */
 	.get(function (req, res) {
@@ -167,6 +164,9 @@ router.route('/polls/:pollId')
 	 *     HTTP/1.1 200 OK
 	 *     "Poll updated"
 	 * 
+	 * 
+	 * @apiErrorExample Error-Response:
+ 	 *     HTTP/1.1 404 Not Found
 	 */
 	.put(function (req, res) {
 		Polls.findById(req.params.pollId, function(err, poll) {
@@ -256,6 +256,18 @@ router.route('/participations')
 			res.json(participations);
 		});
 	})
+	/**
+	 * @api {PUT} /participations
+	 * @apiName PostParticipations
+	 * @apiGroup participations
+	 *
+	 * @apiParam {String} participant Participant of the Prticipation
+	 * @apiParam {String} poll ID of the poll
+	 * @apiParam {Array} answers Answers of the Prticipation
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 201 Created
+	 */
 	.post(function (req, res) {
 		var participation = new Participations();
 		participation.participant = req.body.participant;
@@ -303,6 +315,9 @@ router.route('/participations/:pollId')
      *       }
      *     ]
 	 * 
+	 * @apiErrorExample Error-Response:
+ 	 *     HTTP/1.1 404 Not Found
+	 * 
 	 */
 	.get(function (req, res) {
 		Participations.find({ poll: req.params.pollId }, function (err, participations) {
@@ -329,6 +344,8 @@ router.route('/participations/:participationId')
 	 *     HTTP/1.1 200 OK
 	 *     "Participation updated"
 	 * 
+	 * @apiErrorExample Error-Response:
+ 	 *     HTTP/1.1 404 Not Found
 	 */
 	.put(function (req, res) {
 		Participations.findById(req.params.participationId, function(err, participation) {
