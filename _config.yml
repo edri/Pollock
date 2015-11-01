@@ -10,7 +10,6 @@ title: Pollock Documentation
 description: >
   Pollock - Make Pools !
 baseurl: "/Pollock" # the subpath of your site
-# baseurl: "" # For DEV
 url: "http://pollock.com" # the base hostname & protocol for your site
 
 # Build settings
