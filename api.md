@@ -5,6 +5,8 @@ title: API Specification
 
 This document explains how the RESTful API works.
 
+Check the (**new version**)[https://edri.github.io/Pollock/apidoc/]
+
 **Status:** Deprecated, ~~Draft~~, ~~Working~~, ~~Stable~~, ~~Frozen~~
 
 ## Polls
