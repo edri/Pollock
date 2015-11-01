@@ -32,12 +32,18 @@ scenario.step("Connect to database", function() {
 
 // This step cleans the database.
 scenario.step("Clean database", function() {
+    var deferred = this.defer();
+
     // Clear database.
     Participations.remove({}, function(err) {
         Polls.remove({}, function(err) {
-            console.log("Database cleaned.")
+            console.log("Database cleaned.");
+            deferred.resolve(mongoose.Schema);
         });
     });
+
+    // Return the promise object.
+    return deferred.promise;
 });
 
 // Make POST requests to post some new polls.
@@ -47,22 +53,76 @@ scenario.step("POST four new poll", function() {
         {
             _id: "51bb793aca2ab77a3200000d",
             title: "Test1",
-            state: "Open"
+            state: "Open",
+            questions: [
+                {
+                    title: "Q1",
+                    type: "Easy",
+                    choices: [
+                        {
+                            key: "R1",
+                            text: "La réponse 1."
+                        },
+                        {
+                            key: "R2",
+                            text: "La réponse 2."
+                        }
+                    ]
+                },
+                {
+                    title: "Q2",
+                    type: "Easy",
+                    choices: [
+                        {
+                            key: "R1",
+                            text: "La réponse 1."
+                        }
+                    ]
+                }
+            ]
         },
         {
             // Without manual ID.
             title: "Test2",
-            state: "Closed"
+            state: "Closed",
+            questions: [
+                {
+                    title: "Q1",
+                    type: "Easy",
+                    choices: [
+                        {
+                            key: "R1",
+                            text: "La réponse 1."
+                        },
+                        {
+                            key: "R2",
+                            text: "La réponse 2."
+                        }
+                    ]
+                },
+                {
+                    title: "Q2",
+                    type: "Easy",
+                    choices: [
+                        {
+                            key: "R1",
+                            text: "La réponse 1."
+                        }
+                    ]
+                }
+            ]
         },
         {
             _id: "51c35e5ced18cb901d000001",
             title: "Test3",
-            state: "Open"
+            state: "Open",
+            questions: []
         },
         {
             _id: "51c35e5abc18cb901d000001",
             title: "Test4",
-            state: "Open"
+            state: "Open",
+            questions: []
         }
     ];
 
@@ -115,7 +175,23 @@ scenario.step("Show the got poll", function(response) {
     console.log(response.body);
 });
 
-// TODO PUT
+// Make a PUT request to a poll.
+scenario.step("Put the poll '51bb793aca2ab77a3200000d'", function() {
+    return this.put({
+        url: '/polls/51bb793aca2ab77a3200000d',
+        json: true,
+        data: {
+            title: "Test1New",
+            state: "Open",
+            questions: []
+        }
+    });
+});
+
+// Show the PUT request response.
+scenario.step("Show the poll's put's answer", function(response) {
+    console.log(response.body);
+});
 
 // Make a DELETE request to delete an existing poll.
 scenario.step("DELETE the poll '51c35e5abc18cb901d000001'", function() {
@@ -152,16 +228,29 @@ scenario.step("POST some new participations", function() {
         {
             _id : "51cd793aca2ab77a3200000d",
             participant: "Michel",
-            poll: "51bb793aca2ab77a3200000d"
+            poll: "51bb793aca2ab77a3200000d",
+            answers: [
+                {
+                    choice: "R1"
+                }
+            ]
         },
         {
             participant: "Jean-Louis",
-            poll: "51bb793aca2ab77a3200000d"
+            poll: "51bb793aca2ab77a3200000d",
+            answers: [
+                {
+                    choice: "R1"
+                },
+                {
+                    choice: "R2"
+                }
+            ]
         },
         {
             participant: "Arthur",
             poll: "51c35e5ced18cb901d000001"
-        },
+        }
     ];
 
     // Array of requests.
@@ -210,6 +299,27 @@ scenario.step("Get the participations of the poll '51bb793aca2ab77a3200000d'", f
 
 // Show the GET request response.
 scenario.step("Show the got participations", function(response) {
+    console.log(response.body);
+});
+
+// Make a PUT request to a participation.
+scenario.step("Put the participation '51cd793aca2ab77a3200000d'", function() {
+    return this.put({
+        url: '/participations/51cd793aca2ab77a3200000d',
+        json: true,
+        data: {
+            participant: "Micheline",
+            answers: [
+                {
+                    choice: "R2"
+                }
+            ]
+        }
+    });
+});
+
+// Show the PUT request response.
+scenario.step("Show the participation's put's answer", function(response) {
     console.log(response.body);
 });
 

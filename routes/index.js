@@ -11,7 +11,7 @@ function getTheFirstDayOfTheCurrentWeek() {
 	// Get current date.
 	var currentDate = new Date();
 	// Calculate the first day of the week.
-	var first = currentDate.getDate() - currentDate.getDay() + 1;
+	var first = currentDate.getDate() - 7;
 	// Return the new calculated date.
 	return new Date(currentDate.setDate(first));
 }
@@ -31,6 +31,8 @@ mongoose.connect('mongodb://localhost/pollock', function(error) {
 * GET home page.
 */
 router.get('/', function(req, res, next) {
+	console.log(getTheFirstDayOfTheCurrentWeek());
+
 	// Get the all created polls.
 	Polls.count({}, function(err, totalNumberOfPolls) {
 		// Get polls created this week.

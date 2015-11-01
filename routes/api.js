@@ -25,7 +25,7 @@ router.route('/polls')
 		poll.title = req.body.title;
 		poll.creationDate = new Date();
 		poll.state = req.body.state;
-		poll.questions = JSON.parse(req.body.questions);
+		poll.questions = req.body.questions;
 
 		poll.save(function(err) {
 			if (err) {
@@ -61,7 +61,7 @@ router.route('/polls/:pollId')
 
 			poll.title = req.body.title;
 			poll.state = req.body.state;
-			poll.questions = JSON.parse(req.body.questions);
+			poll.questions = req.body.questions;
 
 			poll.save(function (err) {
 				if (err) {
@@ -101,7 +101,7 @@ router.route('/participations')
 		participation.participant = req.body.participant;
 		participation.submissionDate = new Date();
 		participation.poll = req.body.poll;
-		participation.answers = JSON.parse(req.body.answers);
+		participation.answers = req.body.answers;
 
 		if (req.body._id) {
 			participation._id = req.body._id;
@@ -141,7 +141,7 @@ router.route('/participations/:participationId')
 			console.log(req.body);
 
 			participation.participant = req.body.participant;
-			participation.answers = JSON.parse(req.body.answers);
+			participation.answers = req.body.answers;
 
 			participation.save(function (err) {
 				if (err) {
