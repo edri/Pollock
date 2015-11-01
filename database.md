@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Database Specification
+title: Database Conception
 ---
-
-# Database Conception
 
 Our database currently consists of two collections. We might modify them or add new ones as the application gets more feature-rich.
 
