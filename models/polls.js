@@ -47,29 +47,5 @@ pollsSchema.path("questions").schema.path("choices").schema.path("key").validate
 		return true;
 }, "polls need to have at least two questions");
 
-// Creating participations' schema.
-var participationsSchema = new Schema({
-	participant: {
-		type: String,
-		required: true
-	},
-	submissionDate: {
-		type: Date,
-		required: true
-	},
-	poll: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "polls",
-		required: true
-	},
-	answers: [{
-		choice: {
-			type: String,
-			required: true
-		}
-	}]
-});
-
 // Get the polls' model.
 module.exports = mongoose.model("polls", pollsSchema);
-module.exports = mongoose.model("participations", participationsSchema);
