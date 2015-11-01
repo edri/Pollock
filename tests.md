@@ -1,6 +1,6 @@
 ---
 layout: page
-title: API Specification
+title: Tests
 ---
 
 This document explains how the tests work.
