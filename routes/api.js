@@ -29,7 +29,7 @@ router.route('/polls')
 
 			res.status(201).send();
 		});
-	})
+	});
 
 router.route('/polls/:pollId')
 	.get(function (req, res) {
@@ -70,7 +70,7 @@ router.route('/polls/:pollId')
 
 			res.json({ message: 'Poll deleted' });
 		});
-	})
+	});
 
 // Participations
 router.route('/participations')
@@ -97,7 +97,7 @@ router.route('/participations')
 
 			res.status(201).send();
 		});
-	})
+	});
 
 router.route('/participations/:pollId')
 	.get(function (req, res) {
@@ -108,7 +108,7 @@ router.route('/participations/:pollId')
 
 			res.json(participations);
 		});
-	})
+	});
 
 router.route('/participations/:participationId')
 	.delete(function (req, res) {
@@ -119,6 +119,6 @@ router.route('/participations/:participationId')
 
 			res.json({ message: 'Participation deleted' });
 		});
-	})
+	});
 
 module.exports = router;
