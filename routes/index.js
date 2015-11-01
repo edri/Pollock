@@ -19,7 +19,9 @@ function getTheFirstDayOfTheCurrentWeek() {
 /*
 * Connect to Pollock's mongoose database, and get the polls' model when done.
 */
+// process.env.MONGOLAB_URI = "mongodb://localhost"; // Dev path
 mongoose.connect(process.env.MONGOLAB_URI + '/pollock', function(error) {
+// mongoose.connect(process.env.MONGOLAB_URI + '/pollock', function(error) {
 	if(error) {
 		console.log(error);
 	} else {
