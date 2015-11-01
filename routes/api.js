@@ -76,6 +76,10 @@ router.route('/polls')
 	 * @apiName PostPolls
 	 * @apiGroup polls
 	 *
+	 * @apiParam {String} title Title of the Poll
+	 * @apiParam {String} state State of the Poll
+	 * @apiParam {Array} questions Questions of the Poll
+	 *
 	 * @apiSuccessExample Success-Response:
 	 *     HTTP/1.1 201 Created
 	 * 
@@ -108,7 +112,7 @@ router.route('/polls/:pollId')
 	 * @apiName GetPoll
 	 * @apiGroup polls
 	 * 
-	 * @apiParam {Number} pollId Polls unique ID.
+	 * @apiParam {Number} pollId Polls unique ID
 	 *
 	 * @apiSuccessExample Success-Response:
 	 *     HTTP/1.1 200 OK
@@ -155,6 +159,9 @@ router.route('/polls/:pollId')
 	 * @apiGroup polls
 	 *
 	 * @apiParam {Number} pollId Polls unique ID.
+	 * @apiParam {String} title Title of the Poll
+	 * @apiParam {String} state State of the Poll
+	 * @apiParam {Array} questions Questions of the Poll
 	 *
 	 * @apiSuccessExample Success-Response:
 	 *     HTTP/1.1 200 OK
@@ -309,15 +316,26 @@ router.route('/participations/:pollId')
 	});
 
 router.route('/participations/:participationId')
+	/**
+	 * @api {PUT} /participations/:participationId
+	 * @apiName PutParticipations
+	 * @apiGroup participations
+	 *
+	 * @apiParam {Number} participationId Prticipations unique ID
+	 * @apiParam {String} participant Participant of the Prticipation
+	 * @apiParam {Array} answers Answers of the Prticipation
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     "Participation updated"
+	 * 
+	 */
 	.put(function (req, res) {
 		Participations.findById(req.params.participationId, function(err, participation) {
 			if (err) {
 				res.status(404).send(err);
 				return;
 			}
-
-			console.log(participation);
-			console.log(req.body);
 
 			participation.participant = req.body.participant;
 			participation.answers = JSON.parse(req.body.answers);
@@ -332,6 +350,18 @@ router.route('/participations/:participationId')
 			});
 		})
 	})
+	/**
+	 * @api {PUT} /participations/:participationId
+	 * @apiName PutParticipations
+	 * @apiGroup participations
+	 *
+	 * @apiParam {Number} participationId Prticipations unique ID.
+	 *
+	 * @apiSuccessExample Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     "Participation deleted"
+	 * 
+	 */
 	.delete(function (req, res) {
 		Participations.remove({ _id: req.params.participationId }, function(err, participation) {
 			if (err) {

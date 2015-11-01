@@ -51,6 +51,84 @@ define({ "api": [
     "groupTitle": "participations"
   },
   {
+    "type": "PUT",
+    "url": "/participations/:participationId",
+    "title": "",
+    "name": "PutParticipations",
+    "group": "participations",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "participationId",
+            "description": "<p>Prticipations unique ID</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "participant",
+            "description": "<p>Participant of the Prticipation</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "answers",
+            "description": "<p>Answers of the Prticipation</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\"Participation updated\"",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/api.js",
+    "groupTitle": "participations"
+  },
+  {
+    "type": "PUT",
+    "url": "/participations/:participationId",
+    "title": "",
+    "name": "PutParticipations",
+    "group": "participations",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "participationId",
+            "description": "<p>Prticipations unique ID.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\"Participation deleted\"",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/api.js",
+    "groupTitle": "participations"
+  },
+  {
     "type": "DELETE",
     "url": "/polls/:pollId",
     "title": "",
@@ -96,7 +174,7 @@ define({ "api": [
             "type": "<p>Number</p> ",
             "optional": false,
             "field": "pollId",
-            "description": "<p>Polls unique ID.</p> "
+            "description": "<p>Polls unique ID</p> "
           }
         ]
       }
@@ -158,6 +236,33 @@ define({ "api": [
     "title": "",
     "name": "PostPolls",
     "group": "polls",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Title of the Poll</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "state",
+            "description": "<p>State of the Poll</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "questions",
+            "description": "<p>Questions of the Poll</p> "
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {
@@ -186,6 +291,27 @@ define({ "api": [
             "optional": false,
             "field": "pollId",
             "description": "<p>Polls unique ID.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Title of the Poll</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "state",
+            "description": "<p>State of the Poll</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "questions",
+            "description": "<p>Questions of the Poll</p> "
           }
         ]
       }
