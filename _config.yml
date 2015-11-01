@@ -20,3 +20,7 @@ permalink: pretty
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+
+# Do not watch all folders
+exclude:
+  - node_modules
