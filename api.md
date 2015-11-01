@@ -5,7 +5,7 @@ title: API Specification
 
 This document explains how the RESTful API works.
 
-**Status:** Draft, ~~Working~~, ~~Stable~~, ~~Frozen~~
+**Status:** Deprecated, ~~Draft~~, ~~Working~~, ~~Stable~~, ~~Frozen~~
 
 ## Polls
 
