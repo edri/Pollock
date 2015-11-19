@@ -19,6 +19,9 @@
   },
   "devDependencies": {
     "api-copilot": "^0.6.1",
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.9.2",
+    "gulp-watch": "^4.3.5",
     "nodemon": "^1.7.1"
   }
 }
