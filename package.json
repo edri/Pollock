@@ -15,7 +15,8 @@
     "less-middleware": "1.0.x",
     "mongoose": "^4.1.9",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "systemjs": "^0.19.6"
   },
   "devDependencies": {
     "api-copilot": "^0.6.1",
