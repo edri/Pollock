@@ -1,0 +1,23 @@
+{
+  "name": "Pollock",
+  "description": "",
+  "main": "",
+  "authors": [
+    "BafS <fabacrans@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/edri/Pollcok",
+  "moduleType": [
+    "es6"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4.0"
+  }
+}
