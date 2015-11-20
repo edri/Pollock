@@ -7,7 +7,7 @@ gulp.task('watch', ['compile'], function () {
 	return gulp.watch('src/**/*.ts', ['compile']);
 });
 
-gulp.task('compile', function(){
+gulp.task('compile.client', function(){
 	gulp.src(['src/**/*.ts'])
 		.pipe(typescript({
 			target: 'es5',
@@ -16,4 +16,16 @@ gulp.task('compile', function(){
 			declaration: true
 		}))
 		.pipe(gulp.dest('dist/'))
+});
+
+gulp.task('compile.server', function(){
+	gulp.src(['server/**/*.ts'])
+		.pipe(typescript({
+			target: 'es5',
+			// module: null,
+			experimentalDecorators: true,
+			sourceMap: true,
+			declaration: true
+		}))
+		.pipe(gulp.dest('server-dist/'))
 });

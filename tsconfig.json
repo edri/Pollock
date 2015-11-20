@@ -15,5 +15,8 @@
         "node_modules",
         "bower_components"
     ],
-    "compileOnSave": false
+    "compileOnSave": false,
+    "atom": {
+		"rewriteTsconfig": true
+	}
 }

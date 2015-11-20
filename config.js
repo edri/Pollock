@@ -5,10 +5,10 @@ System.config({
         emitDecoratorMetadata: true
     },
     paths: {
-        "npm:*": "node_modules/*",
+        // 'aangular2/*': 'node_modules/angular2/bundles/*.js',
+        // "npm:*": "node_modules/*.js",
         dev: 'src',
         prod: 'dist'
-        // 'angular2/*': 'node_modules/angular2/*.js'
     },
     packages: {
         src: {
