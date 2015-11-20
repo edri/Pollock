@@ -9,12 +9,8 @@
         "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "sourceMap": true,
-        "out": "./public/javascripts/tsc.js"
+        "sourceMap": true
     },
-    "files": [
-        "app/app.ts"
-    ],
     "exclude": [
         "node_modules",
         "bower_components"
