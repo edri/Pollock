@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "tsc -p src --outDir dist"
+    "postinstall": "gulp setup"
   },
   "dependencies": {
     "angular2": "^2.0.0-alpha.46",
@@ -17,8 +17,7 @@
     "mongoose": "^4.1.9",
     "morgan": "~1.6.1",
     "ng2-charts": "0.0.0",
-    "serve-favicon": "~2.3.0",
-    "systemjs": "^0.19.6"
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "api-copilot": "^0.6.1",

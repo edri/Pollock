@@ -1,3 +1,5 @@
+/// <reference path="typings/tsd.d.ts" />
+
 System.config({
     // defaultJSExtensions: true,
     transpiler: 'typescript',
@@ -5,9 +7,9 @@ System.config({
         emitDecoratorMetadata: true
     },
     paths: {
-        "npm:*": "node_modules/*",
+        // "npm:*": "node_modules/*",
         dev: 'src',
-        prod: 'dist'
+        prod: 'javascripts'
         // 'angular2/*': 'node_modules/angular2/*.js'
     },
     packages: {

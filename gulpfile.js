@@ -4,16 +4,22 @@ var typescript = require('gulp-tsc');
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['compile'], function () {
-	return gulp.watch('src/**/*.ts', ['compile']);
+	return gulp.watch('client/**/*.ts', ['compile']);
 });
 
-gulp.task('compile', function(){
-	gulp.src(['src/**/*.ts'])
+
+gulp.task('setup', function () {
+	gulp.src(['node_modules/angular2/bundles/**/*.js'])
+		.pipe(gulp.dest('public/javascripts/angular2'))
+});
+
+gulp.task('compile', function () {
+	gulp.src(['client/**/*.ts'])
 		.pipe(typescript({
 			target: 'es5',
 			experimentalDecorators: true,
 			sourceMap: true,
 			declaration: true
 		}))
-		.pipe(gulp.dest('dist/'))
+		.pipe(gulp.dest('public/javascripts/'))
 });

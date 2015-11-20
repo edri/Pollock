@@ -32,4 +32,4 @@ _site
 public/components
 
 # Distribution
-dist
+public/javascripts
