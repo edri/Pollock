@@ -1,0 +1,23 @@
+{
+    "version": "1.6.0",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "out": "./public/javascripts/tsc.js"
+    },
+    "files": [
+        "app/app.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "bower_components"
+    ],
+    "compileOnSave": false
+}
