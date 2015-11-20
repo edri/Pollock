@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "postinstall": "tsc -p src --outDir dist"
   },
   "dependencies": {
     "angular2": "^2.0.0-alpha.46",
@@ -22,7 +23,7 @@
   "devDependencies": {
     "api-copilot": "^0.6.1",
     "gulp": "^3.9.0",
-    "gulp-typescript": "^2.9.2",
+    "gulp-tsc": "^1.1.4",
     "gulp-watch": "^4.3.5",
     "nodemon": "^1.7.1",
     "typescript": "^1.6.2"

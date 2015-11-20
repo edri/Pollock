@@ -1,14 +1,19 @@
 var gulp = require('gulp');
-var ts = require('gulp-typescript');
+var typescript = require('gulp-tsc');
 
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['compile'], function () {
-	return gulp.watch('public/typescripts/**/*.ts', ['compile']);
+	return gulp.watch('src/**/*.ts', ['compile']);
 });
 
 gulp.task('compile', function(){
-	return gulp.src(['public/typescripts/**/*.ts'])
-		.pipe(ts())
-		.pipe(gulp.dest('public/javascripts/angular'));
+	gulp.src(['src/**/*.ts'])
+		.pipe(typescript({
+			target: 'es5',
+			experimentalDecorators: true,
+			sourceMap: true,
+			declaration: true
+		}))
+		.pipe(gulp.dest('dist/'))
 });
