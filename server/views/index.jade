@@ -9,6 +9,8 @@ block content
 					.col-md-8.col-md-offset-2
 						h1.brand-heading= title
 						
+						home
+						
 						p.intro-text A free, responsive and modern way to make polls
 						a.btn.btn-secondary-outline.page-scroll(href="#main") learn more
 						
@@ -34,7 +36,6 @@ block content
 	
 		app
 		
-	
 		.row.featurette
 			if error
 				b Error : #{error}
@@ -50,3 +51,5 @@ block content
 	footer.footer.container-fluid.bg-light
 		p Pollock 2015 -
 			a(href="https://edri.github.io/Pollock/") Github
+			
+	//script System.import('javascripts/components/home/home.js');
