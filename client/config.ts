@@ -7,10 +7,8 @@ System.config({
         emitDecoratorMetadata: true
     },
     paths: {
-        // "npm:*": "node_modules/*",
         dev: 'src',
         prod: 'javascripts'
-        // 'angular2/*': 'node_modules/angular2/*.js'
     },
     packages: {
         src: {

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "gulp setup"
+    "postinstall": "bower install && gulp setup"
   },
   "dependencies": {
     "angular2": "^2.0.0-alpha.46",
@@ -21,7 +21,9 @@
   },
   "devDependencies": {
     "api-copilot": "^0.6.1",
+    "browser-sync": "^2.10.0",
     "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.0",
     "gulp-tsc": "^1.1.4",
     "gulp-watch": "^4.3.5",
     "nodemon": "^1.7.1",
