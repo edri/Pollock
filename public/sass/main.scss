@@ -1,0 +1,131 @@
+
+@import 'bootstrap';
+@import 'pages';
+
+html, body {
+	margin: 0;
+	padding: 0;
+
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+.page-scroll {
+	text-transform: uppercase;
+}
+
+.page-scroll a {
+	color: $light;
+}
+
+.nopadding {
+	padding: 0 !important;
+}
+
+.intro {
+	box-shadow: 0 0 8em rgba(0,0,0,0.2) inset;
+	color: $light;
+	text-align: center;
+	display: table;
+	width: 100%;
+	height: auto;
+	background: url(../images/background.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	// border-bottom: 2px solid rgba(0,0,0,.25);
+}
+
+.intro .intro-body {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.container.choice {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	max-width: 25rem;
+}
+
+.container.choice .btn {
+	margin: 0 6px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.brand-heading {
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 1px;
+	font-weight: 300;
+	margin: 20px auto;
+	text-transform: uppercase;
+	padding-bottom: 15px;
+}
+
+.intro-text {
+	letter-spacing: 1px;
+	font-weight: 100;
+}
+
+.intro input, button {
+	text-align: center;
+}
+
+.stats {
+	// background: rgba(0, 0, 0, .04);
+	border-radius: 4px;
+	border: 1px solid rgba(0,0,0,.06);
+	padding: 20px;
+}
+
+section {
+	padding-top: 90px;
+}
+
+.bg-light {
+	background: $extra-light;
+}
+
+.footer {
+	border-top: 1px solid rgba(0,0,0,.06);
+	margin-top: 60px;
+	padding: 30px 20px;
+}
+
+.footer p {
+	font-size: 16px;
+}
+
+@media(min-width:768px) {
+	.intro {
+		height: 100%;
+		padding: 0;
+	}
+
+	.intro .brand-heading {
+		font-size: 9em;
+	}
+
+	.intro .intro-text {
+		font-size: 20pt;
+	}
+
+	.container.choice {
+		margin-top: 80px;
+		max-width: 25rem;
+	}
+
+	.intro input, button {
+		font-size: 120%;
+	}
+}

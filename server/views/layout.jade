@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/main.css')
+        link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
+        
+    body
+        nav.navbar.navbar-dark.bg-inverse
+            a.navbar-brand(href='#') Pollock
+            |   
+            ul.nav.navbar-nav
+                li.nav-item.active.firstItem
+                    a.nav-link(href='#')
+                        | Polls 
+                        span.sr-only (current)
+            |   
+            form.form-inline.navbar-form.pull-right
+                | Logged in as edri.
+                button.btn.btn-info-outline.btnLogout(type='submit') Logout
+
+        .content
+            block content
+        

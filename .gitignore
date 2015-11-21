@@ -30,3 +30,6 @@ _site
 
 # Bower
 public/components
+
+# Distribution
+public/javascripts

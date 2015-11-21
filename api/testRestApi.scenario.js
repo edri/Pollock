@@ -1,13 +1,13 @@
 var copilot = require('api-copilot');
 var mongoose = require('mongoose');
-var Polls = require('../models/polls');
-var Participations = require('../models/participations');
+var Polls = require('../server/models/polls');
+var Participations = require('../server/models/participations');
 
 // Create a REST API's test scenario.
 var scenario = new copilot.Scenario({
   name: "Test REST API",
   summary: "Test the created REST API.",
-  baseUrl: 'http://localhost:3000/api'
+  baseUrl: 'http://localhost:3001/api'
 });
 
 // This step try to connect to database.
