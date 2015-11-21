@@ -17,7 +17,7 @@ gulp.task('watch.ts', ['ts'], function () {
 });
 
 gulp.task('sass', function () {
-	gulp.src('./public/sass/**/*.scss')
+	gulp.src('./public/sass/main.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('./public/stylesheets'))
 		.pipe(browserSync.stream({match: '**/*.css'}));
