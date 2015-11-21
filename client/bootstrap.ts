@@ -1,11 +1,10 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
+import {HomeComponent} from './components/home/home';
 
 @Component({
     selector: 'app',
-})
-
-@View({
-    template: '<h1>Hello Pollock</h1>'
+    template: '<h1>Hello Pollock<home></home></h1>',
+    directives: [HomeComponent]
 })
 
 class App { }
