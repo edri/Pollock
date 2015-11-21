@@ -1,3 +1,12 @@
+.pagesBody {
+    background: url($background) no-repeat center center fixed;
+    width: 100%;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 .firstItem {
     margin-left: 100px;
 }
@@ -8,6 +17,7 @@
 
 .actionPage {
     bottom: 0;
+    color: $light;
     height: 250px;
     left: 0;
     margin: auto;
@@ -15,13 +25,21 @@
     right: 0;
     text-align: center;
     top: 0;
-    width: 700px;
+    width: 720px;
+}
+
+.actionTitle {
+    font-size: 50px;
 }
 
 .btnAction {
     height: 130px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
     width: 320px;
+}
+
+.btnContent {
+    font-size: 20px;
 }
