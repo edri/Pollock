@@ -10,9 +10,25 @@ gulp.task('setup', ['ts', 'sass'], function () {
 		.pipe(gulp.dest('public/javascripts/angular2'))
 });
 
-gulp.task('watch.ts', ['ts'], function () {
+gulp.task('ts', function () {
+	gulp.src(['client/**/*.ts'])
+		.pipe(typescript({
+			target: 'es5',
+			experimentalDecorators: true,
+			sourceMap: true,
+			declaration: true
+		}))
+		.pipe(gulp.dest('public/javascripts/'))
+});
+
+gulp.task('ts.html', function () {
+	gulp.src(['client/**/*.html'])
+		.pipe(gulp.dest('public/javascripts/'))
+});
+
+gulp.task('watch.ts', ['ts', 'ts.html'], function () {
 	return gulp
-		.watch('client/**/*.ts', ['ts']);
+		.watch('client/**/*', ['ts', 'ts.html']);
 		// .pipe(browserSync.stream());
 });
 
@@ -25,17 +41,6 @@ gulp.task('sass', function () {
 
 gulp.task('watch.sass', ['sass', 'browser-sync'], function () {
 	gulp.watch('./public/sass/**/*.scss', ['sass']);
-});
-
-gulp.task('ts', function () {
-	gulp.src(['client/**/*.ts'])
-		.pipe(typescript({
-			target: 'es5',
-			experimentalDecorators: true,
-			sourceMap: true,
-			declaration: true
-		}))
-		.pipe(gulp.dest('public/javascripts/'))
 });
 
 gulp.task('browser-sync', function() {
