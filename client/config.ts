@@ -18,6 +18,10 @@ System.config({
         dist: {
             main: "bootstrap",
             defaultExtension: 'js',
+        },
+        javascripts: {
+            main: "bootstrap",
+            defaultExtension: 'js',
         }
     },
     map: {
