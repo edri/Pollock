@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var typescript = require('gulp-tsc');
 var browserSync = require('browser-sync').create();
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch.ts', 'watch.sass']);
 
 gulp.task('setup', ['ts', 'sass'], function () {
 	gulp.src(['node_modules/angular2/bundles/**/*.js'])
