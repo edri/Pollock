@@ -1,5 +1,6 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {HomeComponent} from './components/home/home';
+import {SignIn} from './components/signin/signin';
 
 @Component({
     selector: 'app',
