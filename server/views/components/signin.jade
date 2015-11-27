@@ -1,18 +1,17 @@
-html
-	body
-		div Add New Achievement
+header.intro
+	form.sign-in-form
+		h1.sign-in-title Sign In
+		fieldset.form-group
+			label(for="email") Username
+			input.form-control(id="email" name="email" placeholder="Enter email" required="required" type="email")
+			small.text-muted We'll never share your email with anyone else.
+		fieldset.form-group
+			label(for="username") Username
+			input.form-control(id="username" name="username" placeholder="Enter username" required="required" type="text")
+		fieldset.form-group
+			label(for="password1") Password
+			input.form-control(id="password1" name="password1" placeholder="Enter password" required="required" type="password")
+			input.form-control(id="password2" name="password2" placeholder="Retype password" required="required" type="password")
 		br
-		form
-			.input-group
-				span Title
-				input#title.form-control(type='text')
-			.input-group
-				span Type
-				input#type.form-control(type='text')
-			.input-group
-				span From
-				input#from.form-control(type='text')
-			div  
-			.input-group
-				input.btn.btn-primary(type='submit', value='click')
-				input.btn(type='reset', value='Reset')
+		button.btn.btn-secondary.btn-cancel([router-link]="['Home']" type="button") Cancel
+		button.btn.btn-primary.btn-submit(type="submit") Submit

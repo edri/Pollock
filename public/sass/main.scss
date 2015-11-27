@@ -128,3 +128,36 @@ section {
 		font-size: 120%;
 	}
 }
+
+.sign-in-form {
+	background-color: #fff;
+	border: 1px solid black;
+	border-radius: 3px;
+	bottom: 0;
+	color: black;
+	height: 540px;
+	left: 0;
+	margin: auto;
+	padding: 30px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 500px;
+}
+
+.sign-in-title {
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 1px;
+	font-weight: 300;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	padding-bottom: 15px;
+}
+
+.btn-cancel, .btn-submit {
+	width: 150px;
+}
+
+.btn-cancel {
+	margin-right: 15px;
+}

@@ -9,8 +9,7 @@ import { SignIn } from './components/signin/signin';
 	directives: [HomeComponent, SignIn, RouterLink, RouterOutlet]
 })
 @RouteConfig([
-	{ path: '/', redirectTo: '/home' },
-	{ path: '/home', component: HomeComponent, name: 'Home' },
+	{ path: '/', component: HomeComponent, name: 'Home' },
 	{ path: '/signin', component: SignIn, name: 'SignIn' }
 ])
 
