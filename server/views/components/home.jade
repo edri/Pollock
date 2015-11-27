@@ -1,0 +1,24 @@
+header.intro
+	.intro-body
+		.container
+			.row
+				.col-md-8.col-md-offset-2
+					h1.brand-heading Pollock
+					p.intro-text A free, responsive and modern way to make polls
+					a.btn.btn-secondary-outline.page-scroll(href='#main') learn more
+					.container.choice
+						a.btn.btn-primary.btn-lg([router-link]="['SignIn']") Sign In
+						a.btn.btn-secondary.btn-lg Sign Up
+
+section.container#main
+	.row.featurette
+		if error
+			b Error : #{error}
+		else
+			.stats
+				p #{totalNumberOfPolls} polls have been created in total.
+				p #{numberOfPollsCreatedThisWeek} polls have been created in a week.
+				p #{numberOfPollsStillOpen} polls are still open.
+		br
+
+	hr.featurette-divider

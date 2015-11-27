@@ -1,9 +1,11 @@
-import {Component, View, bootstrap} from 'angular2/angular2';
+import { Component, View, bootstrap } from 'angular2/angular2';
 
 @Component({
-    selector: 'signin',
+	selector: 'Signin',
 })
+
 @View({
-    templateUrl: 'javascripts/components/signin/signin.html'
+	templateUrl: 'components/signin'
 })
+
 export class SignIn { }

@@ -1,24 +1,11 @@
-import {Component, View, bootstrap} from 'angular2/angular2';
-
-
-@Component({
-    selector: 'btn',
-    template: `<button (click)="onClickMe()" class="btn btn-primary page-scroll btn-lg" href="#main">{{ text }}</button>`
-})
-class ButtonComponent {
-    text = 'test';
-
-    onClickMe(){
-        alert('You are my hero!');
-    }
-}
+import { Component, View } from 'angular2/angular2';
+import { ROUTER_DIRECTIVES } from 'angular2/router';
 
 @Component({
-    selector: 'home'
+	selector: 'Home'
 })
 @View({
-    directives: [ButtonComponent],
-    // template: '<h1>home comp</h1>'
-    templateUrl: 'javascripts/components/home/home.html'
+	directives: [ROUTER_DIRECTIVES],
+    templateUrl: 'components/home'
 })
 export class HomeComponent { }
