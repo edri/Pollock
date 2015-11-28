@@ -49,4 +49,8 @@ router.get('/signup', function (req, res, next) {
 	res.render('components/signup');
 });
 
+router.get('/action', function (req, res, next) {
+	res.render('components/action');
+});
+
 module.exports = router;

@@ -3,17 +3,19 @@ import { RouteConfig, RouterLink, RouterOutlet, ROUTER_PROVIDERS, LocationStrate
 import { HomeComponent } from './components/home/home';
 import { SignIn } from './components/signin/signin';
 import { SignUp } from './components/signup/signup';
+import { Action } from './components/action/action';
 
 @Component({
 	selector: 'app',
 	template: '<router-outlet></router-outlet>',
-	directives: [HomeComponent, SignIn, RouterLink, RouterOutlet]
+	directives: [HomeComponent, SignIn, SignUp, RouterLink, RouterOutlet]
 })
 @RouteConfig([
 	{ path: '/', component: HomeComponent, name: 'Home' },
 	{ path: '/signin', component: SignIn, name: 'SignIn' },
-	{ path: '/signup', component: SignUp, name: 'SignUp' }
+	{ path: '/signup', component: SignUp, name: 'SignUp' },
+	{ path: '/action', component: Action, name: 'Action' }
 ])
-
 export class App { }
+
 bootstrap(App, [ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy })]);
