@@ -53,4 +53,10 @@ router.get('/action', function (req, res, next) {
 	res.render('components/action');
 });
 
+router.get('/pollslist', function (req, res, next) {
+	var pollsStream = Polls.find({}, function(err, polls) {
+		res.render('components/pollslist', { polls: JSON.stringify(polls) });
+	});
+});
+
 module.exports = router;

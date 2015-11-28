@@ -1,5 +1,4 @@
 @import 'bootstrap';
-@import 'pages';
 
 html, body {
 	margin: 0;
@@ -167,4 +166,44 @@ section {
 
 .btn-cancel {
 	margin-right: 15px;
+}
+
+.pagesBody {
+    background: url($background) no-repeat center center fixed;
+    width: 100%;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.firstItem {
+    margin-left: 100px;
+}
+
+.btnLogout {
+    margin-left: 20px;
+}
+
+.actionPage {
+	height: 250px;
+    margin: 200px auto;
+    text-align: center;
+    width: 720px;
+}
+
+.actionTitle {
+    font-size: 50px;
+}
+
+.btnAction {
+    height: 130px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    width: 320px;
+}
+
+.btnContent {
+    font-size: 20px;
 }

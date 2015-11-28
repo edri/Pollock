@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home';
 import { SignIn } from './components/signin/signin';
 import { SignUp } from './components/signup/signup';
 import { Action } from './components/action/action';
+import { PollsList } from './components/pollslist/pollslist';
 
 @Component({
 	selector: 'app',
@@ -14,7 +15,8 @@ import { Action } from './components/action/action';
 	{ path: '/', component: HomeComponent, name: 'Home' },
 	{ path: '/signin', component: SignIn, name: 'SignIn' },
 	{ path: '/signup', component: SignUp, name: 'SignUp' },
-	{ path: '/action', component: Action, name: 'Action' }
+	{ path: '/action', component: Action, name: 'Action' },
+	{ path: '/pollslist', component: PollsList, name: 'PollsList' },
 ])
 export class App { }
 
