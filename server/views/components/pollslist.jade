@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+    h1.actionTitle Select a poll...
+    
+    if error
+        | Error : #{error}
+    else
+        #{polls}
