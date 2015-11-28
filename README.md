@@ -21,7 +21,6 @@ If you want to add a new view to the project, there are several steps. You have 
 - First of all, create your new Jade view in the */server/view/components/* directory.
 - Once done, create a new folder containing the TypeScript file related to your new view in the */client/components/* directory. In this file, you'll have to set the view's selector and template's URL (indicating where in the Jade file), write a directive for the application's router and export the view's class. You can help yourself by building the file on what already exists.
 - Finally, register your new view in the application's bootstrap file (*/client/bootstrap.ts*) under the **@RouteConfig** annotation. Don't forget to import your new view's class in the bootstrap file!
-- 
 
 ---
 
