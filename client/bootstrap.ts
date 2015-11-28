@@ -2,6 +2,7 @@ import { Component, View, bootstrap, provide } from 'angular2/angular2';
 import { RouteConfig, RouterLink, RouterOutlet, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_DIRECTIVES, Router, Location, Route } from 'angular2/router';
 import { HomeComponent } from './components/home/home';
 import { SignIn } from './components/signin/signin';
+import { SignUp } from './components/signup/signup';
 
 @Component({
 	selector: 'app',
@@ -10,7 +11,8 @@ import { SignIn } from './components/signin/signin';
 })
 @RouteConfig([
 	{ path: '/', component: HomeComponent, name: 'Home' },
-	{ path: '/signin', component: SignIn, name: 'SignIn' }
+	{ path: '/signin', component: SignIn, name: 'SignIn' },
+	{ path: '/signup', component: SignUp, name: 'SignUp' }
 ])
 
 export class App { }
