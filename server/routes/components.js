@@ -45,4 +45,8 @@ router.get('/signin', function (req, res, next) {
 	res.render('components/signin');
 });
 
+router.get('/signup', function (req, res, next) {
+	res.render('components/signup');
+});
+
 module.exports = router;
