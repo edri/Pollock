@@ -54,8 +54,15 @@ router.get('/action', function (req, res, next) {
 });
 
 router.get('/pollslist', function (req, res, next) {
-	var pollsStream = Polls.find({}, function(err, polls) {
-		res.render('components/pollslist', { polls: JSON.stringify(polls) });
+	var pollsStream = Polls.find({}).lean().exec(function(err, polls) {
+		if (err) {
+			console.log("ERROR: " + err);
+			res.render('components/pollslist', { error: "Can't get polls list." });
+		}
+		else {
+			console.log("POLLS: " + polls[0].title);
+			res.render('components/pollslist', { polls: polls });
+		}
 	});
 });
 

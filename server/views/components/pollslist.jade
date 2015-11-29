@@ -1,9 +1,13 @@
 extends ../layout
 
 block content
-    h1.actionTitle Select a poll...
-    
-    if error
-        | Error : #{error}
-    else
-        #{polls}
+    .pollslist-page
+        h1.form-title.page-title Select a poll
+        
+        if error
+            | Error : #{error}
+        else
+            for p in polls
+                .btn.btn-primary.poll
+                    | #{p.title}
+                br

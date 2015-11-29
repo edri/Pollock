@@ -1,10 +1,10 @@
 extends ../layout
 
 block content
-    .actionPage
-        h1.actionTitle What do you want to do?
+    .action-page
+        h1.form-title.action-title What do you want to do?
         
-        button.btn.btn-primary.btnAction
-            b.btnContent Create a new poll
-        button.btn.btn-secondary.btnAction([router-link]="['PollsList']")
-            b.btnContent Access a poll
+        button.btn.btn-primary.btn-action
+            b.btn-content Create a new poll
+        button.btn.btn-secondary.btn-action([router-link]="['PollsList']")
+            b.btn-content Access a poll

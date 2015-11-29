@@ -7,8 +7,8 @@
 
 ### Run
 
- - Run server with `npm start`
- - Go to http://localhost:3000/
+ - Run server with `npm start`.
+ - Go to http://localhost:3000/.
 
 ### Watch Sass and TypeScript
 
