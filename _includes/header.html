@@ -1,7 +1,6 @@
 <header class="asite-header">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -12,18 +11,8 @@
         <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          {% for my_page in site.pages %}
-            {% if my_page.title %}
-            <li><a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-            <li><a href="https://edri.github.io/Pollock/apidoc/">API</a>
-        </ul>
-      </div><!-- /.navbar-collapse -->
+      {% include navbar.html %}
+
     </div><!-- /.container-fluid -->
   </nav>
 </header>
-

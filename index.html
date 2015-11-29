@@ -1,17 +1,126 @@
 ---
-layout: default
+layout: home
+title: Pollock
 ---
 
-<div class="home">
+<section class="jumbotron jumbotron-fluid">
+    <div class="intro">
+        <p class="greeting">Introducing</p>
+        <h1 class="display-2">Pollock</h1>
+        <p class="lead">A modern, simple and classy way to make polls</p>
+    </div>
 
-  <div class="page-header">
-    <h1>Welcome to Pollock documentation</h1>
-  </div>
+    <div class="product-image" data-sr="opacity 0.2, enter bottom, hustle 90%, scale 0, over 1.5s">
+    <!-- <div class="product-image" data-sr="opacity 0, scale 0, over 1.5s"> -->
+        <img src="/assets/images/screenshots/pollock-home-cut.png" />
+    </div>
+</section>
 
-  <div class="alert alert-info" role="alert">Pollock is still in heavy construction !</div>
+<div class="content content-home container">
+    <section class="row" data-sr="scale 0">
+        <div class="col-md-2"></div>
 
-  <p>Fell free to check this documentation or <a href="https://pollockweb.herokuapp.com/">our website</a>.</p>
+        <div class="col-md-8">
+            <h2 class="section-heading">What is Pollock ?</h2>
 
-  <p class="rss-subscribe pull-right">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </section>
 
+    <hr class="section-divider m-y-md">
+
+    <section class="row" data-sr="scale 0">
+        <div class="col-md-7">
+            <h2 class="section-heading">Advance features</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <div class="col-md-5">
+            <img src="/assets/images/screenshots/pollock_stats.jpg" />
+        </div>
+    </section>
+
+    <hr class="section-divider m-y-md">
+
+    <section class="row" data-sr="scale 0">
+        <div class="col-md-5">
+            <img src="/assets/images/screenshots/iPhone6s512.png" />
+        </div>
+
+        <div class="col-md-7">
+            <h2 class="section-heading">Responsive design</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+    </section>
+
+    <hr class="section-divider m-y-md">
+
+    <section class="row" data-sr="scale 0">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="section-heading">Responsive design</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+    </section>
 </div>
+
+<footer class="footer text-muted container-fluid">
+    <div class="row">
+        <div class="pull-left">
+            <p>Pollock is a web project made in Switzerland with ♥</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="pull-left">
+            <p>Project licensed under MIT</p>
+        </div>
+        <div class="pull-right">
+            <p>You can find the source code on <a href="https://github.com/edri/Pollock">github</a></p>
+        </div>
+    </div>
+</footer>
+
+<script src="/bower_components/scrollreveal/dist/scrollReveal.min.js" charset="utf-8"></script>
+<script>
+
+// enter:    'bottom',
+// move:     '8px',
+var config = {
+    // easing: 'hustle',
+    // delay:  'onload',
+    // scale: { direction: 'up', power: '0' },
+    // vFactor: 0.90
+    // delay:    'once',
+    delay:    'once',
+    vFactor:  0.5
+}
+
+window.sr = new scrollReveal(config);
+
+// productImage.style.opacity = 0
+//
+// var anim = function() { document.body.className += ' animate'; };
+//
+// document.body.onload = anim;
+//
+// var productImage = document.querySelector('.product-image')
+//
+// window.onscroll = function (e) {
+//     // console.log(e);
+//     // console.log(window.scrollY);
+//     productImage.style.opacity = 1 / Math.max(1, (window.scrollY / 350))
+//     productImage.style.marginBottom = Math.max(0, (window.scrollY / 350))
+// };
+
+//
+// document.onload = function() {
+//     var productImage = document.querySelector('.product-image')
+//
+//     // productImage.onload = function () {
+//         // productImage.style.opacity = 1
+    // };
+// };
+</script>

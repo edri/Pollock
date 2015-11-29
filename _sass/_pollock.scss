@@ -1,9 +1,120 @@
 // Pollock custom style
 
+$color-dark: #2A3C4C;
+$color-light: #D3E5F4;
+$color-main: #6fa1cc;
+$color-muted: #41474C;
+$color-second: #537999;
+
 .navbar {
     border-radius: 0;
+}
+
+.home {
+    .navbar {
+        background: $color-main;
+        margin: 0;
+        padding: 0;
+
+        .page-link {
+            font-size: 1.4rem;
+            color: $color-light;
+        }
+    }
+
+}
+
+// Home
+.jumbotron {
+    text-align: center;
+    overflow: hidden;
+    background: $color-main;
+    padding-bottom: 0;
+
+    color: #fff;
+
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+
+    .intro {
+        padding: 5rem 0;
+
+        .greeting {
+            font-style: oblique;
+        }
+
+        h1 {
+            font-size: 10rem;
+            font-weight: 400;
+        }
+
+        .lead {
+            color: #f6f6f6;
+        }
+    }
+
+    .product-image {
+        display: inline-block;
+        max-width: 950px;
+        margin-bottom: -70px;
+        // opacity: 0;
+        // -webkit-transition-property: opacity, -webkit-transform;
+    }
+}
+
+.animate .product-image {
+    // -webkit-transition: all 1.3s ease-out;
+    // opacity: 1;
+}
+
+.content {
+    section {
+        padding: 8rem 0;
+
+        img {
+            max-height: 380px;
+        }
+    }
+}
+
+.content-home {
+    font-size: 1.8rem;
+    // text-align: justify;
+}
+
+
+.section-heading {
+    color: $color-muted;
+}
+
+.footer {
+    margin-top: 8rem;
+    padding: 2em 5em;
+    background: #f6f6f6;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 table img {
 	width: 100%;
 }
+
+
+// Small devices (landscape phones, 34em and up)
+@media (min-width: 34em) {  }
+
+// Medium devices (tablets, 48em and up)
+@media (min-width: 48em) {  }
+
+// Large devices (desktops, 62em and up)
+@media (min-width: 62em) {  }
+
+// Extra large devices (large desktops, 75em and up)
+@media (min-width: 75em) { }
+
+
+// https://www.google.com/fonts/specimen/Merriweather+Sans#pairings
+// https://color.adobe.com/create/color-wheel/?base=2&rule=Monochromatic&selected=1&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.2725438341742451,0.39397406618715725,0.5,0.9219776353726078,0.9636308207435339,1,0.5450876683484902,0.7879481323743145,1,0.4225438341742451,0.46389474744980436,0.5,0.4360701346787922,0.6303585058994516,0.8&swatchOrder=0,1,2,3,4
