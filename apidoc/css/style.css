@@ -167,7 +167,6 @@ pre {
   background-color: #292b36;
   color: #ffffff;
   padding: 10px;
-  border-radius: 6px;
   position: relative;
   margin: 10px 0 20px 0;
 }
@@ -194,7 +193,6 @@ pre.language-html:before {
   font-size: 15px;
   display: inline-block;
   padding: 2px 5px;
-  border-radius: 6px;
   text-transform: uppercase;
   background-color: #3387CC;
   color: #ffffff;
@@ -260,7 +258,7 @@ pre.language-json .pun {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
   z-index: 10;
 }
 
@@ -279,16 +277,16 @@ pre.language-json .pun {
 
 .sidenav > li.nav-header > a {
   padding: 5px 15px;
-  border: 1px solid #e5e5e5;
+  /*border: 1px solid #e5e5e5;*/
   width: 190px;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 700;
   font-size: 16px;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 
 .sidenav > li.nav-header.active > a {
-  background-color: #0088cc;
+  background-color: #2A3C4C;
+  color: #fff;
 }
 
 .sidenav > .active > a {
@@ -530,7 +528,6 @@ ul.nav-tabs {
     color: #000000;
     padding: 10px;
     border: #808080 1px solid;
-    border-radius: 6px;
     position: relative;
     margin: 10px 0 20px 0;
   }

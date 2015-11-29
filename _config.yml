@@ -17,7 +17,6 @@ kramdown:
 # Do not watch all folders
 exclude:
   - node_modules
-  - apidoc
   - public
   - public/**/*
   - .git
