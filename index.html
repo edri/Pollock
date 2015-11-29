@@ -12,7 +12,7 @@ title: Pollock
 
     <div class="product-image" data-sr="opacity 0.2, enter bottom, hustle 90%, scale 0, over 1.5s">
     <!-- <div class="product-image" data-sr="opacity 0, scale 0, over 1.5s"> -->
-        <img src="/assets/images/screenshots/pollock-home-cut.png" />
+        <img src="{{ "/assets/images/screenshots/pollock-home-cut.png" | prepend: site.baseurl }}" />
     </div>
 </section>
 
@@ -37,7 +37,7 @@ title: Pollock
         </div>
 
         <div class="col-md-5">
-            <img src="/assets/images/screenshots/pollock_stats.jpg" />
+            <img src="{{ "/assets/images/screenshots/pollock_stats.jpg" | prepend: site.baseurl }}" />
         </div>
     </section>
 
@@ -45,7 +45,7 @@ title: Pollock
 
     <section class="row" data-sr="scale 0">
         <div class="col-md-5">
-            <img src="/assets/images/screenshots/iPhone6s512.png" />
+            <img src="{{ "/assets/images/screenshots/iPhone6s512.png" | prepend: site.baseurl }}" />
         </div>
 
         <div class="col-md-7">
@@ -83,44 +83,15 @@ title: Pollock
     </div>
 </footer>
 
-<script src="/bower_components/scrollreveal/dist/scrollReveal.min.js" charset="utf-8"></script>
+<script src="{{ "/bower_components/scrollreveal/dist/scrollReveal.min.js" | prepend: site.baseurl }}" charset="utf-8"></script>
 <script>
-
-// enter:    'bottom',
-// move:     '8px',
 var config = {
     // easing: 'hustle',
     // delay:  'onload',
     // scale: { direction: 'up', power: '0' },
-    // vFactor: 0.90
-    // delay:    'once',
     delay:    'once',
     vFactor:  0.5
 }
 
 window.sr = new scrollReveal(config);
-
-// productImage.style.opacity = 0
-//
-// var anim = function() { document.body.className += ' animate'; };
-//
-// document.body.onload = anim;
-//
-// var productImage = document.querySelector('.product-image')
-//
-// window.onscroll = function (e) {
-//     // console.log(e);
-//     // console.log(window.scrollY);
-//     productImage.style.opacity = 1 / Math.max(1, (window.scrollY / 350))
-//     productImage.style.marginBottom = Math.max(0, (window.scrollY / 350))
-// };
-
-//
-// document.onload = function() {
-//     var productImage = document.querySelector('.product-image')
-//
-//     // productImage.onload = function () {
-//         // productImage.style.opacity = 1
-    // };
-// };
 </script>
