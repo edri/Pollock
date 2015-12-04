@@ -1,4 +1,4 @@
-var io = require('../app');
+var io = require('../app').io;
 var User = require('../models/users');
 
 io.on('connection', (socket) => {
