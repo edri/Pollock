@@ -11,6 +11,10 @@ var users = require('./routes/users');
 var components = require('./routes/components');
 
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+module.exports = io;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -69,4 +73,4 @@ var server = app.listen(3000, function () {
   console.log('Pollock server listening at http://%s:%s.', host, port);
 });
 
-module.exports = app;
+//module.exports = app;
