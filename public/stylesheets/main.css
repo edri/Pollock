@@ -171,3 +171,7 @@ section {
 .poll {
   margin-top: 5px;
   width: 600px; }
+
+.main-wrapper {
+  max-width: 600px;
+  margin: 0 auto; }
