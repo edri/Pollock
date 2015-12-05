@@ -24,13 +24,8 @@ gulp.task('ts', () => {
 	return tsResult.pipe(gulp.dest('public/javascripts/'));
 })
 
-gulp.task('ts.html', () => {
-	gulp.src(['client/**/*.html'])
-		.pipe(gulp.dest('public/javascripts/'))
-})
-
-gulp.task('watch.ts', ['ts', 'ts.html'], () => {
-	gulp.watch('client/**/*', ['ts', 'ts.html'])
+gulp.task('watch.ts', ['ts'], () => {
+	gulp.watch('client/**/*', ['ts'])
 		// .pipe(browserSync.stream());
 })
 
