@@ -6,6 +6,6 @@ import { ROUTER_DIRECTIVES } from 'angular2/router';
 })
 @View({
 	directives: [ROUTER_DIRECTIVES],
-    templateUrl: 'components/home'
+	templateUrl: 'components/home'
 })
 export class HomeComponent { }

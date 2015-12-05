@@ -3,23 +3,25 @@ var sass = require('gulp-sass');
 var typescript = require('gulp-tsc');
 var browserSync = require('browser-sync').create();
 
+// var PATHS = {
+    // src: 'client/**/*.ts'
+// };
+
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['watch.ts', 'watch.sass']);
 
 gulp.task('setup', ['ts', 'sass'], function () {
-	gulp.src(['node_modules/angular2/bundles/**/*.js'])
+	gulp.src(['node_modules/angular2/bundles/**/*'])
 		.pipe(gulp.dest('public/javascripts/angular2'))
 });
 
 gulp.task('ts', function () {
+
+	var tscConfig = require('./client/tsconfig.json')
+
 	gulp.src(['client/**/*.ts'])
-		.pipe(typescript({
-			target: 'es5',
-			experimentalDecorators: true,
-			sourceMap: true,
-			declaration: true
-		}))
+		.pipe(typescript(tscConfig.compilerOptions))
 		.pipe(gulp.dest('public/javascripts/'))
 });
 

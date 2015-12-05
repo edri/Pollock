@@ -6,12 +6,14 @@ html(lang="en")
 		link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,300,100')
-		script(src="/components/system.js/dist/system.js")
-		script(src="/javascripts/angular2/angular2.dev.js")
-		script(src="/javascripts/angular2/router.dev.js")
-		script(src="/javascripts/config.js")
+		//- script(src="/components/system.js/dist/system.js")
+		//- script(src="/javascripts/angular2/angular2.dev.js")
+		//- script(src="/javascripts/angular2/router.dev.js")
+		//- script(src="/javascripts/config.js")
+		script(src="/javascripts/angular2/external-dependencies.min.js")
 
 	body
 		block content
 
-		script System.import('javascripts/bootstrap.js');
+		//- System.import('javascripts/bootstrap.js')
+		script(src="/javascripts/bundle.js") // App
