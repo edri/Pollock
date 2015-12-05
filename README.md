@@ -1,14 +1,19 @@
-
 # Pollock
 
-### Install
+### Install & Run
 
- - `npm install`
+ 1. `npm install`
+ 2. Run server with `npm start`.
+ 3. Go to http://localhost:3000/.
 
-### Run
+*PS*: Do not forget to also run mongodb (sometimes with `mongod`)
 
- - Run server with `npm start`.
- - Go to http://localhost:3000/.
+## Dev
+
+ - For the Angular part, watch typescript files with `gulp watch.ts`
+ - For the SASS part, watch sass files with `gulp watch.sass`
+
+You can also watch both if you simply run `gulp`.
 
 ### Watch Sass and TypeScript
 
