@@ -1,4 +1,4 @@
-import { Component, View, FORM_DIRECTIVES, NgFor } from 'angular2/angular2';
+import { Component, View, FORM_DIRECTIVES, NgFor, CORE_DIRECTIVES } from 'angular2/angular2';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
 
 export class Poll {
@@ -7,21 +7,12 @@ export class Poll {
 }
 
 @Component({
-	selector: 'editor',
+	selector: 'editor'
 })
 @View({
-	directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES, NgFor],
-	// templateUrl: 'components/pollseditor'
-	template:`
-	<h1><input [(ng-model)]="poll.title" placeholder="title"></h1>
-	<ul>
-    <li *ng-for="#answer of poll.answers">
-        <span class="badge">{{answer}}</span>
-    </li>
-	</ul>
-	`
+	directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES, CORE_DIRECTIVES, NgFor],
+	templateUrl: 'components/editor'
 })
-
 export class PollEditor {
 	public poll: Poll = {
 		title: 'Do we have free will ?',
@@ -31,4 +22,12 @@ export class PollEditor {
 			'Nop !'
 		]
 	};
+
+	addAnswer(text: any) {
+		if (text.value) {
+			this.poll.answers.push(text.value)
+			text.value = null
+		}
+		console.log(this.poll.answers)
+	}
 }

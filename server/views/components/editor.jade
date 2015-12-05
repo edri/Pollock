@@ -1,0 +1,16 @@
+.main-wrapper
+	h1
+		input([(ng-model)]="poll.title" placeholder="Poll title")
+
+	ul.list-group
+		li.list-group-item(*ng-for="#answer of poll.answers #i=index")
+			//- input([(ng-model)]="poll.answers[i]")
+			input.form-control([value]="poll.answers[i]", (blur)="poll.answers[i]=$event.target.value")
+	
+		li.list-group-item
+			input.form-control(type="text", placeholder="Add an answer...", #new-hero='', (keyup.enter)='addAnswer(newHero)', (blur)='addAnswer(newHero)')
+			span.input-group-btn
+				button.btn.btn-primary-outline(type="button", (click)='addAnswer(newHero)') Add
+
+//- input(#new-hero='', (keyup.enter)='addAnswer(newHero)', (blur)='addAnswer(newHero)')
+//- button.btn.btn-primary-outline.btn-sm((click)='addAnswer(newHero)') Add
