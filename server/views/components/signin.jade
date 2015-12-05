@@ -2,7 +2,7 @@ header.intro
 	form.sign-in-form
 		h1.form-title Sign In
 		fieldset.form-group
-			label(for="email") Username
+			label(for="email") Email
 			input.form-control(id="email" name="email" placeholder="Enter email" required="required" type="email")
 			small.text-muted We'll never share your email with anyone else.
 		fieldset.form-group
@@ -14,4 +14,22 @@ header.intro
 			input.form-control(id="password2" name="password2" placeholder="Retype password" required="required" type="password")
 		br
 		button.btn.btn-secondary.btn-cancel([router-link]="['Home']" type="button") Cancel
-		button.btn.btn-primary.btn-submit(type="submit") Submit
+		button.btn.btn-primary.btn-submit(onclick='signIn()' type='submit') Submit
+
+script(src='/socket.io/socket.io.js')
+script.
+	function signIn()
+	{
+		console.log("Sending sign-in socket...");
+		
+		var socket = io.connect('http://localhost:3000');
+		var data = {
+			"email": "test@test.ch",
+			"username": "edri",
+			"password": "pass"
+		};
+		
+		socket.emit('userCreated', data);
+		
+		console.log("Sent!");
+	}
