@@ -2,8 +2,10 @@
 
 let gulp = require('gulp')
 let sass = require('gulp-sass')
-let typescript = require('gulp-tsc')
+let ts = require('gulp-typescript')
+let merge = require('merge2');
 let browserSync = require('browser-sync').create()
+let tsProject = ts.createProject('./client/tsconfig.json');
 
 gulp.task('default', ['watch']);
 
@@ -14,20 +16,24 @@ gulp.task('setup', ['ts', 'sass'], () => {
 		.pipe(gulp.dest('public/javascripts/angular2'))
 })
 
-gulp.task('ts', () => {
-	let tscConfig = require('./client/tsconfig.json')
+// -- Typescript --
 
-	var tsResult = gulp
-		.src(['client/**/*.ts'])
-		.pipe(typescript(tscConfig.compilerOptions));
+gulp.task('ts', function() {
+	let tsResult = tsProject.src()
+		.pipe(ts(tsProject));
 
-	return tsResult.pipe(gulp.dest('public/javascripts/'));
-})
+	return merge([
+		tsResult.dts.pipe(gulp.dest('public/javascripts/definitions')),
+		tsResult.js.pipe(gulp.dest('public/javascripts'))
+	]);
+});
 
 gulp.task('watch.ts', ['ts'], () => {
-	gulp.watch('client/**/*', ['ts'])
+	gulp.watch('client/**/*.ts', ['ts'])
 		// .pipe(browserSync.stream());
 })
+
+// -- SASS --
 
 gulp.task('sass', () => {
 	return gulp.src('./public/sass/main.scss')
