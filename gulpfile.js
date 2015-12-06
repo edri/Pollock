@@ -1,52 +1,53 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var typescript = require('gulp-tsc');
-var browserSync = require('browser-sync').create();
+'use strict'
 
-gulp.task('default', ['watch']);
+let gulp = require('gulp')
+let sass = require('gulp-sass')
+let ts = require('gulp-typescript')
+let merge = require('merge2');
+let browserSync = require('browser-sync').create()
+let tsProject = ts.createProject('./client/tsconfig.json');
 
-gulp.task('watch', ['watch.ts', 'watch.sass']);
+gulp.task('default', ['setup', 'watch']);
 
-gulp.task('setup', ['ts', 'sass'], function () {
-	gulp.src(['node_modules/angular2/bundles/**/*.js'])
+gulp.task('watch', ['watch.ts', 'watch.sass'])
+
+gulp.task('setup', ['ts', 'sass'], () => {
+	gulp.src(['node_modules/angular2/bundles/**/*'])
 		.pipe(gulp.dest('public/javascripts/angular2'))
+})
+
+// -- Typescript --
+
+gulp.task('ts', function() {
+	let tsResult = tsProject.src()
+		.pipe(ts(tsProject));
+
+	return merge([
+		tsResult.dts.pipe(gulp.dest('public/javascripts/definitions')),
+		tsResult.js.pipe(gulp.dest('public/javascripts'))
+	]);
 });
 
-gulp.task('ts', function () {
-	gulp.src(['client/**/*.ts'])
-		.pipe(typescript({
-			target: 'es5',
-			experimentalDecorators: true,
-			sourceMap: true,
-			declaration: true
-		}))
-		.pipe(gulp.dest('public/javascripts/'))
-});
-
-gulp.task('ts.html', function () {
-	gulp.src(['client/**/*.html'])
-		.pipe(gulp.dest('public/javascripts/'))
-});
-
-gulp.task('watch.ts', ['ts', 'ts.html'], function () {
-	return gulp
-		.watch('client/**/*', ['ts', 'ts.html']);
+gulp.task('watch.ts', ['ts'], () => {
+	gulp.watch('client/**/*.ts', ['ts'])
 		// .pipe(browserSync.stream());
-});
+})
 
-gulp.task('sass', function () {
-	gulp.src('./public/sass/main.scss')
+// -- SASS --
+
+gulp.task('sass', () => {
+	return gulp.src('./public/sass/main.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('./public/stylesheets'))
-		.pipe(browserSync.stream({match: '**/*.css'}));
-});
+		.pipe(browserSync.stream({match: '**/*.css'}))
+})
 
 gulp.task('watch.sass', ['sass', 'browser-sync'], function () {
-	gulp.watch('./public/sass/**/*.scss', ['sass']);
-});
+	gulp.watch('./public/sass/**/*.scss', ['sass'])
+})
 
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		proxy: "localhost:3000"
-	});
-});
+	})
+})

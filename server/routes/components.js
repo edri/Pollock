@@ -41,16 +41,20 @@ router.get('/home', function (req, res, next) {
 	});
 });
 
-router.get('/signin', function (req, res, next) {
+router.get('/signin', function (req, res) {
 	res.render('components/signin');
 });
 
-router.get('/signup', function (req, res, next) {
+router.get('/signup', function (req, res) {
 	res.render('components/signup');
 });
 
-router.get('/action', function (req, res, next) {
+router.get('/action', function (req, res) {
 	res.render('components/action');
+});
+
+router.get('/editor', function (req, res) {
+	res.render('components/editor');
 });
 
 router.get('/pollslist', function (req, res, next) {

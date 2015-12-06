@@ -27,6 +27,7 @@ node_modules
 .sass-cache
 _site
 .jekyll*
+assets
 
 # Bower
 public/components
