@@ -7,7 +7,7 @@ let merge = require('merge2');
 let browserSync = require('browser-sync').create()
 let tsProject = ts.createProject('./client/tsconfig.json');
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['setup', 'watch']);
 
 gulp.task('watch', ['watch.ts', 'watch.sass'])
 
