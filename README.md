@@ -37,6 +37,7 @@ If you want to add a new view to the project, there are several steps. You have 
 
 ## Angular2
 
+### Technologies
 We choose to use Angular2 with Typescript. Gulp is used to compile the typescript files to javascript (ES5).
 
  - Source files are in the `client/` folder
@@ -44,7 +45,7 @@ We choose to use Angular2 with Typescript. Gulp is used to compile the typescrip
  - We use *System.js* to load files in different folders. `config.js` is loaded to know how to load javascript files. We can then import files as modules and just load the bootstrap file with `System.import('javascripts/bootstrap.js')`
  - `tsd.json` was generated with `tsd`, it load interfaces for installed modules to add types to javascript code
 
-### Why Angular2
+### Why Angular2?
 Even if Angular2 is still in Alpha release, we wanted to try it because of the modernity it brings with it. In a few years it'll probably be very mainstream and it would be a plus to know it.
 Angular2 is not only one of the most current and modern way to design websites but also had many advantages, including:
 - The using of web components so you don't have to use the $scope anymore
