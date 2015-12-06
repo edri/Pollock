@@ -37,14 +37,6 @@ If you want to add a new view to the project, there are several steps. You have 
 
 ## Angular2
 
-### Technologies
-We choose to use Angular2 with Typescript. Gulp is used to compile the typescript files to javascript (ES5).
-
- - Source files are in the `client/` folder
- - tsconfig.json is the configuration file used by *tsc* (typescript compiler) the compile typescript files to `public/javascript/` folder. `emitDecoratorMetadata` and `experimentalDecorators` are ES7 features and need to be activated for Angular2
- - We use *System.js* to load files in different folders. `config.js` is loaded to know how to load javascript files. We can then import files as modules and just load the bootstrap file with `System.import('javascripts/bootstrap.js')`
- - `tsd.json` was generated with `tsd`, it load interfaces for installed modules to add types to javascript code
-
 ### Why Angular2?
 Even if Angular2 is still in Alpha release, we wanted to try it because of the modernity it brings with it. In a few years it'll probably be very mainstream and it would be a plus to know it.
 Angular2 is not only one of the most current and modern way to design websites but also had many advantages, including:
@@ -54,6 +46,14 @@ Angular2 is not only one of the most current and modern way to design websites b
 - Performance: Angular got a lot of overlay whith years; Angular2 has been entirely reconsidered
 - Angular was designed during a time when Smartphones and tablets where rarer than our time; Angular2 is really current.
 - Within the last years, Angular's developers had a lot of time to think about a more easily and proper way to use it so you can understand everything without these automagic things appening in the background
+
+### Technologies
+We choose to use Angular2 with Typescript. Gulp is used to compile the typescript files to javascript (ES5).
+
+ - Source files are in the `client/` folder
+ - tsconfig.json is the configuration file used by *tsc* (typescript compiler) the compile typescript files to `public/javascript/` folder. `emitDecoratorMetadata` and `experimentalDecorators` are ES7 features and need to be activated for Angular2
+ - We use *System.js* to load files in different folders. `config.js` is loaded to know how to load javascript files. We can then import files as modules and just load the bootstrap file with `System.import('javascripts/bootstrap.js')`
+ - `tsd.json` was generated with `tsd`, it load interfaces for installed modules to add types to javascript code
 
 ---
 
