@@ -43,9 +43,9 @@ Angular2 is not only one of the most current and modern way to design websites b
 - The using of web components so you don't have to use the $scope anymore
 - ES7's decorators, which simplify notation
 - The using of TypeScript language, which is a more modern and complete way to write code
-- Performance: Angular got a lot of overlay whith years; Angular2 has been entirely reconsidered
-- Angular was designed during a time when Smartphones and tablets where rarer than our time; Angular2 is really current.
-- Within the last years, Angular's developers had a lot of time to think about a more easily and proper way to use it so you can understand everything without these automagic things appening in the background
+- Performance: Angular got a lot of overlay within years so it became heavy ; Angular2 has been entirely reconsidered
+- Angular was designed during a time when Smartphones and tablets where rarer than our time; Angular2 is really current
+- Within the last years, Angular's developers had a lot of time to think about a more easily and proper way to use it so you can understand everything, including these automagic things happening in the background
 
 ### Technologies
 We choose to use Angular2 with Typescript. Gulp is used to compile the typescript files to javascript (ES5).
