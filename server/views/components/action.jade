@@ -4,7 +4,7 @@ block content
     .action-page
         h1.form-title.action-title What do you want to do?
         
-        button.btn.btn-primary.btn-action
+        button.btn.btn-primary.btn-action([router-link]="['PollEditor']")
             b.btn-content Create a new poll
         button.btn.btn-secondary.btn-action([router-link]="['PollsList']")
             b.btn-content Access a poll
