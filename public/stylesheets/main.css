@@ -165,6 +165,9 @@ section {
 .pollslist-page {
   text-align: center; }
 
+.page-title, .action-title {
+  color: white; }
+
 .page-title {
   margin-top: 100px; }
 
