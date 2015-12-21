@@ -34,5 +34,6 @@ public/components
 
 # Distribution
 public/javascripts
+public/components
 .gulp-tsc-tmp*
 gulp-tsc-tmp*

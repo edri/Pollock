@@ -1,8 +1,7 @@
 {
-    "version": "1.7.0",
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "ES5",
+        "module": "system",
         "moduleResolution": "node",
         "declaration": false,
         "noImplicitAny": false,

@@ -14,6 +14,8 @@ gulp.task('watch', ['watch.ts', 'watch.sass'])
 gulp.task('setup', ['ts', 'sass'], () => {
 	gulp.src(['node_modules/angular2/bundles/**/*'])
 		.pipe(gulp.dest('public/javascripts/angular2'))
+	gulp.src(['node_modules/rxjs/bundles/**/*'])
+		.pipe(gulp.dest('public/javascripts/rxjs'))
 })
 
 // -- Typescript --

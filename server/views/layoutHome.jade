@@ -11,11 +11,13 @@ html(lang="en")
 	body
 		block content
 
+		script(src="/javascripts/angular2/angular2-polyfills.js")
 		script(src="/components/system.js/dist/system.js")
+		script(src="/javascripts/rxjs/Rx.js")
 		script(src="/javascripts/config.js")
 		script(src="/javascripts/angular2/angular2.dev.js")
 		script(src="/javascripts/angular2/router.dev.js")
-		script System.import('javascripts/bootstrap.js').catch(console.log.bind(console));
+		script System.import('javascripts/bootstrap').catch(console.log.bind(console));
 		script(src="/components/medium-editor/dist/js/medium-editor.min.js")
 		//script(src="/socket.io/socket.io.js")
 		script.

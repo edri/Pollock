@@ -1,4 +1,5 @@
-import { Component, View, bootstrap, provide } from 'angular2/angular2';
+import { bootstrap }    from 'angular2/platform/browser'
+import { Component, View, provide } from 'angular2/core';
 import { RouteConfig, RouterLink, RouterOutlet, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_DIRECTIVES, Router, Location, Route } from 'angular2/router';
 import { HomeComponent } from './components/home/home';
 import { SignIn } from './components/signin/signin';
@@ -8,9 +9,11 @@ import { PollsList } from './components/pollslist/pollslist';
 import { PollEditor } from './components/polleditor/polleditor';
 
 @Component({
-	selector: 'app',
+	selector: 'app'
+})
+@View({
 	template: '<router-outlet></router-outlet>',
-	directives: [HomeComponent, SignIn, SignUp, RouterLink, RouterOutlet]
+	directives: [ROUTER_DIRECTIVES, HomeComponent, SignIn, SignUp, RouterLink, RouterOutlet]
 })
 @RouteConfig([
 	{ path: '/', component: HomeComponent, name: 'Home' },
