@@ -10,7 +10,7 @@ export class Poll {
 	selector: 'editor'
 })
 @View({
-	directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES, CORE_DIRECTIVES, NgFor],
+	directives: [ROUTER_DIRECTIVES],
 	templateUrl: 'components/editor'
 })
 export class PollEditor {
