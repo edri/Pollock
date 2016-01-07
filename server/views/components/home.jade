@@ -15,6 +15,7 @@ section.container#main
 		if error
 			| Error : #{error}
 		else
+			socket
 			.stats
 				p #{totalNumberOfPolls} polls have been created in total.
 				p #{numberOfPollsCreatedThisWeek} polls have been created in a week.
