@@ -13,6 +13,8 @@ var components = require('./routes/components');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+'use strict'
+let socketio = require('socket.io')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -64,11 +66,22 @@ app.use(function(err, req, res, next) {
 });
 
 // Start the server on port 3000.
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+let server = app.listen(3000, () => {
+  let host = server.address().address
+  let port = server.address().port
 
-  console.log('Pollock server listening at http://%s:%s.', host, port);
-});
+  console.log('Pollock server listening at http://%s:%s.', host, port)
+})
+
+// Socket.io
+let io = socketio(server)
+
+io.on('connection', socket => {
+	console.info('New socket ! (app.js)')
+	socket.emit('pong', { hello: 'world' })
+	socket.on('newUser', (data) => {
+		console.log(data)
+	})
+})
 
 module.exports = app;
