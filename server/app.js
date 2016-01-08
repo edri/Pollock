@@ -11,6 +11,7 @@ let routes = require('./routes/index')
 let apiRoutes = require('./routes/api')
 let users = require('./routes/users')
 let components = require('./routes/components')
+var User = require('../server/models/users');
 
 let app = express()
 
@@ -76,12 +77,15 @@ let server = app.listen(3000, () => {
 // Socket.io
 let io = socketio(server)
 
-io.on('connection', socket => {
-	console.info('New socket ! (app.js)')
-	socket.emit('pong', { hello: 'world' })
-	socket.on('newUser', (data) => {
-		console.log(data)
-	})
-})
+io.on('connection', (socket) => {
+    socket.on("userCreated", function(json) {
+		var newUser = new User(json);
+		newUser.save((err) => {
+			if (err) {
+				console.log("error creating user: " + err);
+			};
+		});
+	});
+});
 
 module.exports = app

@@ -1,17 +1,12 @@
 header.intro
-	form.sign-in-form
+	form.sign-up-form
 		h1.form-title Sign In
-		fieldset.form-group
-			label(for="email") Email
-			input.form-control(id="email" name="email" placeholder="Enter email" required="required" type="email")
-			small.text-muted We'll never share your email with anyone else.
 		fieldset.form-group
 			label(for="username") Username
 			input.form-control(id="username" name="username" placeholder="Enter username" required="required" type="text")
 		fieldset.form-group
-			label(for="password1") Password
-			input.form-control(id="password1" name="password1" placeholder="Enter password" required="required" type="password")
-			input.form-control(id="password2" name="password2" placeholder="Retype password" required="required" type="password")
+			label(for="password") Password
+			input.form-control(id="password" name="password" placeholder="Enter password" required="required" type="password")
 		br
 		button.btn.btn-secondary.btn-cancel([routerLink]="['Home']" type="button") Cancel
-		button.btn.btn-primary.btn-submit(onclick='signIn()' type='submit') Submit
+		button.btn.btn-primary.btn-submit([routerLink]="['Action']" type="button") Submit
