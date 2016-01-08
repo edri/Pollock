@@ -99,21 +99,17 @@ section {
   background-color: #fff;
   border: 1px solid black;
   border-radius: 3px;
-  bottom: 0;
   color: black;
-  left: 0;
-  margin: auto;
+  margin: 150px 0 150px 50%;
   padding: 30px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 500px; }
-
-.sign-in-form {
-  height: 540px; }
+  width: 500px;
+  transform: translateX(-50%); }
 
 .sign-up-form {
   height: 400px; }
+
+.error {
+  color: white; }
 
 .form-title {
   font-family: 'Lato', sans-serif;

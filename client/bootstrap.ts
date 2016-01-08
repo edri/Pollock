@@ -7,7 +7,6 @@ import { SignUp } from './components/signup/signup';
 import { Action } from './components/action/action';
 import { PollsList } from './components/pollslist/pollslist';
 import { PollEditor } from './components/polleditor/polleditor';
-import { Socket } from './components/socket/socket';
 
 @Component({
 	selector: 'app'
