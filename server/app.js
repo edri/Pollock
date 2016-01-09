@@ -16,6 +16,7 @@ var User = require('../server/models/users');
 let app = express()
 
 let socketio = require('socket.io')
+var bcrypt = require('bcrypt');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -78,7 +79,9 @@ let server = app.listen(3000, () => {
 let io = socketio(server)
 
 io.on('connection', (socket) => {
-    socket.on("userCreated", function(user) {
+  var socketid = socket.io.engine.id;
+
+  socket.on("userCreated", function(user) {
 		var newUser = new User(user);
 		newUser.save((err) => {
 			if (err) {
@@ -86,6 +89,12 @@ io.on('connection', (socket) => {
 			};
 		});
 	});
+
+  socket.on("login", function(user) {
+    var result = User.find({userName: user.userName});
+    var correctPassword = bcrypt.compareSync(user.password, result.password);
+    io.to(socketid).emit("auth", {success: correctPassword});
+  });
 });
 
 module.exports = app
