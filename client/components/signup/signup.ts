@@ -19,7 +19,7 @@ export class SignUp {
 	signUp = (email:string, username:string, password1:string, password2:string) => {
 		var emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-		// Checks if fields aren't empty.
+		// Checks that fields aren't empty.
 		if (email && username && password1 && password2) {
 			// The entered email address must be a valid one.
 			if (emailRegex.test(email))
@@ -39,11 +39,12 @@ export class SignUp {
 					socket.emit('userCreated', userData);
 
 					socket.on("creationState", function(state) {
-						console.log("Receive response:");
 						if (state.success) {
-							this.success = "Yay you successfully signin up!";
+							console.log("User seccessfully signin' up!");
+							this.success = "Yay you successfully signin' up!";
 						}
 						else {
+							console.log("An error occured when creating the account.");
 							this.error = "The email or the username you choosed is already taken.";
 						}
 				    });

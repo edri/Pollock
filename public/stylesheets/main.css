@@ -95,7 +95,7 @@ section {
   .intro input, button {
     font-size: 120%; } }
 
-.sign-in-form, .sign-up-form {
+.sign-up-form, .sign-in-form {
   background-color: #fff;
   border: 1px solid black;
   border-radius: 3px;
@@ -104,9 +104,6 @@ section {
   padding: 30px;
   width: 500px;
   transform: translateX(-50%); }
-
-.sign-up-form {
-  height: 400px; }
 
 .error {
   color: white; }

@@ -1,15 +1,15 @@
 header.intro
 	form.sign-in-form
 		h1.form-title Sign Up
+		
+		.card.card-inverse.card-danger(*ngIf="error")
+			.card-block.error
+				{{error}}
+		.card.card-inverse.card-success(*ngIf="success")
+			.card-block.error
+				{{success}}	
+		
 		fieldset.form-group
-			.card.card-inverse.card-danger(*ngIf="error")
-				.card-block.error
-					{{error}}
-			.card.card-inverse.card-success(*ngIf="success")
-				.card-block.error
-					{{success}}
-				
-				
 			label(for="email") Email
 			// We need HTML because of the "#email" tag, which is a way for Angular2
 			// to identify inputs and Jade does not support it yet.
