@@ -17,6 +17,8 @@ export class SignUp {
 
 	// Triggered when the user pressed the "Submit" button.
 	signUp = (email:string, username:string, password1:string, password2:string) => {
+		this.success = false;
+
 		var emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 		// Checks that fields aren't empty.
@@ -38,10 +40,10 @@ export class SignUp {
 
 					socket.emit('userCreated', userData);
 
-					socket.on("creationState", function(state) {
+					socket.on("creationState", (state) => {
 						if (state.success) {
-							console.log("User seccessfully signin' up!");
-							this.success = "Yay you successfully signin' up!";
+							console.log("User seccessfully signed up!");
+							this.success = "Yay you successfully signed up!";
 						}
 						else {
 							console.log("An error occured when creating the account.");
