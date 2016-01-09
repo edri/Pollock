@@ -12,20 +12,41 @@ import io from '/socket.io/socket.io.js';
 	templateUrl: 'components/signup'
 })
 export class SignUp {
-	signUp() {
-		var socket = io.connect("http://localhost:3000/");
+	error = null;
 
-		var userData = {
-			email: "migwelsh.28@gmail.com",
-			userName: "edri",
-			password: "valais"
-		};
+	// Triggered when the user pressed the "Submit" button.
+	signUp(email:string, username:string, password1:string, password2:string) {
+		var emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-		socket.emit('userCreated', userData);
+		// Checks if fields aren't empty.
+		if (email && username && password1 && password2) {
+			// The entered email address must be a valid one.
+			if (emailRegex.test(email))
+			{
+				// Checks that passwords are similar.
+				if (password1 == password2) {
+					var socket = io.connect("http://localhost:3000/");
 
-		/*socket.on('news', function (data) {
-			console.log(data);
-			socket.emit('my other event', { my: 'data' });
-		});*/
+					this.error = null;
+
+					var userData = {
+						email: email,
+						userName: username,
+						password: password1
+					};
+
+					socket.emit('userCreated', userData);
+				}
+				else {
+					this.error = "The passwords you entered don't match.";
+				}
+			}
+			else {
+				this.error = "Please enter a valid email address."
+			}
+		}
+		else {
+			this.error = "Please fill all fields.";
+		}
 	}
 }

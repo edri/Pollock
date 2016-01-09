@@ -2,16 +2,26 @@ header.intro
 	form.sign-in-form
 		h1.form-title Sign Up
 		fieldset.form-group
+			.card.card-inverse.card-danger(*ngIf="error")
+				.card-block.error
+					{{error}}
+		
 			label(for="email") Email
-			input.form-control(id="email" name="email" placeholder="Enter email" required="required" type="email")
+			// We need HTML because of the "#email" tag, which is a way for Angular2
+			// to identify inputs and Jade does not support it yet.
+			//input#email.form-control(name='email', placeholder='Enter email', required='required', type='email')
+			<input #email class="form-control" id="email" name="email" placeholder="Enter email" required="required" type="email" />
 			small.text-muted We'll never share your email with anyone else.
 		fieldset.form-group
 			label(for="username") Username
-			input.form-control(id="username" name="username" placeholder="Enter username" required="required" type="text")
+			//input#username.form-control(name="username" placeholder="Enter username" required="required" type="text")
+			<input #username class="form-control" id="username" name="username" placeholder="Enter username" required="required" type="text" />
 		fieldset.form-group
 			label(for="password1") Password
-			input.form-control(id="password1" name="password1" placeholder="Enter password" required="required" type="password")
-			input.form-control(id="password2" name="password2" placeholder="Retype password" required="required" type="password")
+			//input.form-control(id="password1" name="password1" placeholder="Enter password" required="required" type="password")
+			//input.form-control(id="password2" name="password2" placeholder="Retype password" required="required" type="password")
+			<input #password1 class="form-control" id="password1" name="password1" placeholder="Enter password" required="required" type="password" />
+			<input #password2 class="form-control" id="password2" name="password2" placeholder="Retype password" required="required" type="password" />
 		br
 		button.btn.btn-secondary.btn-cancel([routerLink]="['Home']" type="button") Cancel
-		button.btn.btn-primary.btn-submit((click)='signUp()' type='submit') Submit
+		button.btn.btn-primary.btn-submit((click)='signUp(email.value, username.value, password1.value, password2.value)' type='submit') Submit
