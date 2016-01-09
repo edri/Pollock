@@ -19,21 +19,28 @@ var usersSchema = new Schema({
 	}
 });
 
-module.exports = mongoose.model("user", usersSchema);
-
-usersSchema.pre('save', (next) => {
+usersSchema.pre('save', function (next) {
+	console.log(this);
 	var user = this;
 
 	if (!user.isModified('password')) {
-		return next;
+		return next();
 	};
 
-	bcrypt.hash(user.password, null, null, (err, hash) => {
+	bcrypt.genSalt(10, function(err, salt) {
 		if (err) {
 			return next(err);
-		};
+		}
+	
+		bcrypt.hash(user.password, salt, function(err, hash) {
+			if (err) {
+				return next(err);
+			};
 
-		user.password = hash;
-		next();
+			user.password = hash;
+			next();
+		});
 	});
 });
+
+module.exports = mongoose.model("user", usersSchema);

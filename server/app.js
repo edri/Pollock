@@ -78,8 +78,8 @@ let server = app.listen(3000, () => {
 let io = socketio(server)
 
 io.on('connection', (socket) => {
-    socket.on("userCreated", function(json) {
-		var newUser = new User(json);
+    socket.on("userCreated", function(user) {
+		var newUser = new User(user);
 		newUser.save((err) => {
 			if (err) {
 				console.log("error creating user: " + err);
