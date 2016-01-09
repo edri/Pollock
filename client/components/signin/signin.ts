@@ -28,13 +28,11 @@ export class SignIn {
 
 			socket.emit('login', userData);
 
-			socket.on("auth", function(state) {
+			socket.on("auth", (state) => {
 				if (state.success) {
-					console.log("Successful login.");
 					window.location.href = "#/action";
 				}
 				else {
-					console.log("Login failed.");
 					this.error = "Login failed, please retry.";
 				}
 			});

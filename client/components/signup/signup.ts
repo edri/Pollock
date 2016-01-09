@@ -42,11 +42,9 @@ export class SignUp {
 
 					socket.on("creationState", (state) => {
 						if (state.success) {
-							console.log("User seccessfully signed up!");
 							this.success = "Yay you successfully signed up!";
 						}
 						else {
-							console.log("An error occured when creating the account.");
 							this.error = "The email or the username you choosed is already taken.";
 						}
 				    });
