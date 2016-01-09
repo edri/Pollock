@@ -13,9 +13,10 @@ import io from '/socket.io/socket.io.js';
 })
 export class SignUp {
 	error = null;
+	success = null;
 
 	// Triggered when the user pressed the "Submit" button.
-	signUp(email:string, username:string, password1:string, password2:string) {
+	signUp = (email:string, username:string, password1:string, password2:string) => {
 		var emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 		// Checks if fields aren't empty.
@@ -36,6 +37,16 @@ export class SignUp {
 					};
 
 					socket.emit('userCreated', userData);
+
+					socket.on("creationState", function(state) {
+						console.log("Receive response:");
+						if (state.success) {
+							this.success = "Yay you successfully signin up!";
+						}
+						else {
+							this.error = "The email or the username you choosed is already taken.";
+						}
+				    });
 				}
 				else {
 					this.error = "The passwords you entered don't match.";

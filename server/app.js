@@ -79,21 +79,31 @@ let server = app.listen(3000, () => {
 let io = socketio(server)
 
 io.on('connection', (socket) => {
-  var socketid = socket.io.engine.id;
+  //var socketid = socket.io.engine.id;
+  var creationState;
 
   socket.on("userCreated", function(user) {
 		var newUser = new User(user);
 		newUser.save((err) => {
 			if (err) {
 				console.log("error creating user: " + err);
-			};
+                creationState = false;
+			}
+            else {
+                console.log("Successfully created new user.");
+                creationState = true;
+            }
+
+            //io.to(socketid).emit("creationState", {success: creationState});
+            socket.emit("creationState", {success: creationState});
 		});
 	});
 
   socket.on("login", function(user) {
     var result = User.find({userName: user.userName});
     var correctPassword = bcrypt.compareSync(user.password, result.password);
-    io.to(socketid).emit("auth", {success: correctPassword});
+    // io.to(socketid).emit("auth", {success: correctPassword});
+    socket.emit("auth", {success: correctPassword});
   });
 });
 
