@@ -99,11 +99,24 @@ io.on('connection', (socket) => {
 		});
 	});
 
-  socket.on("login", function(user) {
-    var result = User.find({userName: user.userName});
-    var correctPassword = bcrypt.compareSync(user.password, result.password);
+  socket.on("login", function(user) {  
+    User.find({userName: user.userName + ""}, function(err, res) {
+      var result = {};
+      if (!err) { 
+        result = res[0];
+      } else {
+        console.log(err);
+      }
+      bcrypt.compare(user.password, result.password, function(err, res) {
+        if (err) { 
+          console.log(err)
+        }
+        socket.emit("auth", {success: res});
+      });
+    });
+    
     // io.to(socketid).emit("auth", {success: correctPassword});
-    socket.emit("auth", {success: correctPassword});
+    
   });
 });
 
