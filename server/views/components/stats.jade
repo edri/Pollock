@@ -23,7 +23,21 @@ block content
                     td {{poll.questions.length}}
 
             #participations(*ngIf="participations && participations.length > 0")
-                | {{participations.length}} {{participations.length > 1 ? "people" : "person"}} answered this poll.
+                | {{participations.length}} {{participations.length > 1 ? "people" : "person"}} answered this poll:
+                
+                table.participations-table
+                    tr(*ngFor='#p of participations')
+                        td
+                            b {{p.participant}}
+                        td {{p.submissionDate}}
+                        td
+                            u
+                                | Answers:
+                            br
+                            span(*ngFor="#a of p.answers")
+                                | {{a.choice}}
+                                br
+                        
             #noParticipations(*ngIf="!participations || participations.length <= 0")
                 | There is still no participation for this poll.
                 

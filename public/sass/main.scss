@@ -249,18 +249,24 @@ section {
 	width: 75%;
 }
 
-.stats-table {
+.stats-table, .participations-table {
 	border-radius: 4px;
 	border: 1px solid rgba(0,0,0,.2);
 	margin-bottom: 40px;
-	padding: 20px;
 	width: 100%;
+}
+
+.stats-table td {
+	padding: 10px;
+}
+
+.participations-table td {
+	border: 1px solid rgba(0,0,0,.2);
+	padding: 3px 10px;
 }
 
 .stat {
 	font-weight: bold;
-	padding: 10px;
-	text-align: left;
 	width: 300px;
 }
 
