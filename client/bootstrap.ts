@@ -7,6 +7,7 @@ import { SignUp } from './components/signup/signup';
 import { Action } from './components/action/action';
 import { PollsList } from './components/pollslist/pollslist';
 import { PollEditor } from './components/polleditor/polleditor';
+import { Stats } from './components/stats/stats';
 
 @Component({
 	selector: 'app'
@@ -22,6 +23,7 @@ import { PollEditor } from './components/polleditor/polleditor';
 	{ path: '/action', component: Action, name: 'Action' },
 	{ path: '/pollslist', component: PollsList, name: 'PollsList' },
 	{ path: '/editor', component: PollEditor, name: 'PollEditor' },
+	{ path: '/stats/:id', component: Stats, name: 'Stats' },
 ])
 export class App { }
 

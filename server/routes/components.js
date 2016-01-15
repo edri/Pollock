@@ -64,10 +64,13 @@ router.get('/pollslist', function (req, res, next) {
 			res.render('components/pollslist', { error: "Can't get polls list." });
 		}
 		else {
-			console.log("POLLS: " + polls[0].title);
 			res.render('components/pollslist', { polls: polls });
 		}
 	});
+});
+
+router.get('/stats', function (req, res) {
+	res.render('components/stats');
 });
 
 module.exports = router;

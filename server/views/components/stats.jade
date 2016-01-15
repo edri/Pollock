@@ -1,0 +1,30 @@
+extends ../layout
+
+block content            
+    .stats-content
+        .card.card-inverse.card-danger(*ngIf="error")
+            .card-block.error.stats-error
+                {{error}}
+                br
+                button.btn.btn-primary.btn-stats-back([routerLink]="['PollsList']") Back
+                
+        #noError(*ngIf="!error")
+            h1.form-title(*ngIf="poll") Stats for "{{poll.title}}"
+
+            table.stats-table(*ngIf="poll")
+                tr
+                    td.stat State
+                    td {{poll.state}}
+                tr
+                    td.stat Creation date
+                    td {{poll.creationDate}}
+                tr
+                    td.stat Number of questions
+                    td {{poll.questions.length}}
+
+            #participations(*ngIf="participations && participations.length > 0")
+                | {{participations.length}} {{participations.length > 1 ? "people" : "person"}} answered this poll.
+            #noParticipations(*ngIf="!participations || participations.length <= 0")
+                | There is still no participation for this poll.
+                
+            button.btn.btn-primary.btn-stats-back([routerLink]="['PollsList']") Back

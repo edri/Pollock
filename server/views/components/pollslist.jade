@@ -10,4 +10,6 @@ block content
             for p in polls
                 .btn.btn-primary.poll
                     | #{p.title}
+                    a.polls-stats([routerLink]="['Stats', {id:'" + p._id + "'}]")
+                        i.fa.fa-bar-chart
                 br

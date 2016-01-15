@@ -324,7 +324,7 @@ scenario.step("Show the participation's put's answer", function(response) {
 });
 
 // Make a DELETE request to delete an existing participation.
-scenario.step("DELETE the participation '51cd793aca2ab77a3200000d'", function() {
+/*scenario.step("DELETE the participation '51cd793aca2ab77a3200000d'", function() {
     return this.delete({
         url: '/participations/51cd793aca2ab77a3200000d'
     });
@@ -333,6 +333,6 @@ scenario.step("DELETE the participation '51cd793aca2ab77a3200000d'", function() 
 // Confirm the deletion with the server's response.
 scenario.step("Confirm the participation's deletion with the server's response", function(response) {
     console.log(response.body);
-});
+});*/
 
 module.exports = scenario;

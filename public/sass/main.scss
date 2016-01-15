@@ -214,10 +214,60 @@ section {
 
 .poll {
 	margin-top: 5px;
+	padding: 8px !important;
+	position: relative;
 	width: 600px;
 }
 
 .main-wrapper {
 	max-width: 600px;
 	margin: 0 auto;
+}
+
+.polls-stats {
+	border: 1px solid white;
+    border-radius: 4px;
+    color: white;
+    padding: 0 3px;
+    position: absolute;
+    right: 8px;
+    top: 7px;
+}
+
+.polls-stats:hover {
+	border-color: #5bc0de;
+	color: #5bc0de;
+}
+
+.stats-content {
+	background-color: white;
+	border: 1px solid black;
+	color: black;
+	margin: auto;
+	min-height: calc(100vh - 54px);
+	padding: 20px;
+	width: 75%;
+}
+
+.stats-table {
+	border-radius: 4px;
+	border: 1px solid rgba(0,0,0,.2);
+	margin-bottom: 40px;
+	padding: 20px;
+	width: 100%;
+}
+
+.stat {
+	font-weight: bold;
+	padding: 10px;
+	text-align: left;
+	width: 300px;
+}
+
+.stats-error {
+	text-align: center;
+}
+
+.btn-stats-back {
+	margin-top: 20px;
 }

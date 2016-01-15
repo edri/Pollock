@@ -11,7 +11,10 @@ let routes = require('./routes/index')
 let apiRoutes = require('./routes/api')
 let users = require('./routes/users')
 let components = require('./routes/components')
+
 var User = require('../server/models/users');
+var Polls = require('../server/models/polls');
+var Participations = require('../server/models/participations');
 
 let app = express()
 
@@ -99,25 +102,58 @@ io.on('connection', (socket) => {
 		});
 	});
 
-  socket.on("login", function(user) {  
+  socket.on("login", function(user) {
     User.find({userName: user.userName + ""}, function(err, res) {
-      var result = {};
-      if (!err) { 
+      var result;
+      if (!err) {
         result = res[0];
       } else {
         console.log(err);
       }
-      bcrypt.compare(user.password, result.password, function(err, res) {
-        if (err) { 
-          console.log(err)
-        }
-        socket.emit("auth", {success: res});
-      });
+
+      if (result) {
+          bcrypt.compare(user.password, result.password, function(err, res) {
+            if (err) {
+              console.log(err)
+            }
+            socket.emit("auth", {success: res});
+          });
+      }
+      else {
+          socket.emit("auth", {success: false});
+      }
     });
-    
-    // io.to(socketid).emit("auth", {success: correctPassword});
-    
   });
+
+    socket.on("statsAsking", function(pollId) {
+        Polls.find({'_id': pollId}).exec(function(err, polls) {
+    		if (err) {
+    			console.log("ERROR: " + err);
+                socket.emit("statsData", {
+                    success: false,
+                    error: "Can't get polls list, please retry in a while."
+                });
+    		}
+    		else {
+    			Participations.find({'poll': pollId}).exec(function(err, participations) {
+    				if (err) {
+    					console.log("ERROR: " + err);
+                        socket.emit("statsData", {
+                            success: false,
+                            error: "Can't get participations list, please retry in a while."
+                        });
+    				}
+    				else {
+                        socket.emit("statsData", {
+                            success: true,
+                            poll: polls[0],
+                            participations: participations
+                        });
+    				}
+    			});
+    		}
+    	});
+    });
 });
 
 module.exports = app
