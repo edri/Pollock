@@ -2,7 +2,8 @@
 
 ### Install & Run
 
- 1. `npm install`
+ 1. Check your Node.js version is 5+.
+ 2. `npm install`
  2. Run server with `npm start`.
  3. Go to http://localhost:3000/.
 
