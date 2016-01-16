@@ -1,4 +1,4 @@
-import { Component, View } from 'angular2/core';
+import { Component, View, Input } from 'angular2/core';
 import { RouterLink} from 'angular2/router';
 
 @Component({
@@ -33,9 +33,14 @@ import { RouterLink} from 'angular2/router';
 		//- 		button.btn.btn-info-outline.btnLogout(type='submit') Logout
 })
 export class Navbar {
-	public username = 'testname'
+	@Input() username;
 
     ngOnInit() {
+    	console.log(this.username)
         console.log('[Component] navbar running');
+    }
+
+	ngOnChanges() {
+        console.log('[Component] home onChanges');
     }
 }

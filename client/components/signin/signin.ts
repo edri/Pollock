@@ -14,6 +14,13 @@ declare var io;
 export class SignIn {
 	private error;
 
+	ngOnInit() {
+    }
+
+    // constructor(a) {
+    	// console.log(a)
+    // }
+
 	/**
 	 * Sign In
 	 * @param {string} username
@@ -36,6 +43,7 @@ export class SignIn {
 			socket.on('auth', state => {
 				if (state.success) {
 					localStorage.setItem('username', state.username);
+					// App.username = 'new username'
 
 					window.location.href = '#/action';
 				}

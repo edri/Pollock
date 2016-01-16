@@ -1,5 +1,5 @@
 import { bootstrap } from 'angular2/platform/browser'
-import { Component, View, provide } from 'angular2/core';
+import { Component, View, provide, Input } from 'angular2/core';
 // import { RouteConfig, RouteParams, RouterLink, RouterOutlet, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, Router, Location, Route } from 'angular2/router';
 import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, RouteConfig, Route, ROUTER_DIRECTIVES, APP_BASE_HREF } from 'angular2/router';
 import { HomeComponent } from './components/home/home';
@@ -16,7 +16,7 @@ import { Stats } from './components/stats/stats';
 })
 @View({
 	template: `
-	<navbar></navbar>
+	<navbar [username]="username"></navbar>
 	<div class="main">
     	<router-outlet></router-outlet>
 	</div>`,
@@ -32,7 +32,18 @@ import { Stats } from './components/stats/stats';
 	{ path: '/editor', component: PollEditor, name: 'PollEditor' },
 	{ path: '/stats/:id', component: Stats, name: 'Stats' },
 ])
-export class App { }
+export class App {
+	public username;
+
+	ngOnInit() {
+		this.username = 'test_from_app';
+		console.log('[Component] app running');
+	}
+
+	ngOnChanges() {
+        console.log('[Component] app onChanges');
+    }
+}
 
 bootstrap(App, [
 	ROUTER_PROVIDERS,
