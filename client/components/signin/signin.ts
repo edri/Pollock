@@ -10,9 +10,15 @@ declare var io;
 	directives: [ROUTER_DIRECTIVES],
 	templateUrl: 'components/signin'
 })
+// Login
 export class SignIn {
-	error = null;
+	private error;
 
+	/**
+	 * Sign In
+	 * @param {string} username
+	 * @param {string} password
+	 */
 	signIn(username: string, password: string) {
 		// Checks that fields aren't empty.
 		if (username && password) {
@@ -27,8 +33,10 @@ export class SignIn {
 
 			socket.emit('login', userData);
 
-			socket.on('auth', (state) => {
+			socket.on('auth', state => {
 				if (state.success) {
+					localStorage.setItem('username', state.username);
+
 					window.location.href = '#/action';
 				}
 				else {
