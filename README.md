@@ -18,7 +18,7 @@
 
 ## Dev
 
- - `gulp.setup`, copy angular2 javascript bundle to the public folder
+ - `gulp.setup` copy angular2 javascript bundle to the public folder
  - `gulp ts` for the Angular part, compile typescript files to javascript
  - `gulp watch.ts` for the Angular part, watch typescript files and compile to javascript
  - `gulp sass` for the SASS part, compile sass files to css
@@ -46,7 +46,7 @@ If you want to add a new view to the project, there are several steps. You have 
 ## Angular2
 
 ### Why Angular2?
-Even if Angular2 is still in Alpha release, we wanted to try it because of the modernity it brings with it. In a few years it'll probably be very mainstream and it would be a plus to know it.
+Even if Angular2 is still in ~Alpha~ Beta release, we wanted to try it because of the modernity it brings with it. In a few years it'll probably be very mainstream and it would be a plus to know it.
 Angular2 is not only one of the most current and modern way to design websites but also had many advantages, including:
 - The using of web components so you don't have to use the $scope anymore
 - ES7's decorators, which simplify notation
