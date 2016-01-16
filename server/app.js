@@ -2,7 +2,7 @@
 
 let express = require('express')
 let path = require('path')
-// let favicon = require('serve-favicon')
+let favicon = require('serve-favicon')
 let logger = require('morgan')
 let cookieParser = require('cookie-parser')
 let bodyParser = require('body-parser')
@@ -12,21 +12,21 @@ let apiRoutes = require('./routes/api')
 let users = require('./routes/users')
 let components = require('./routes/components')
 
-var User = require('../server/models/users');
-var Polls = require('../server/models/polls');
-var Participations = require('../server/models/participations');
+var User = require('../server/models/users')
+var Polls = require('../server/models/polls')
+var Participations = require('../server/models/participations')
 
 let app = express()
 
 let socketio = require('socket.io')
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 
 // uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -41,9 +41,9 @@ app.use('/components', components)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  let err = new Error('Not Found')
-  err.status = 404
-  next(err)
+	let err = new Error('Not Found')
+	err.status = 404
+	next(err)
 })
 
 // error handlers
