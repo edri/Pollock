@@ -81,79 +81,79 @@ let server = app.listen(3000, () => {
 // Socket.io
 let io = socketio(server)
 
-io.on('connection', (socket) => {
+io.on('connection', socket => {
   //var socketid = socket.io.engine.id;
-  var creationState;
+  let creationState
 
   socket.on("userCreated", function(user) {
-		var newUser = new User(user);
+		var newUser = new User(user)
 		newUser.save((err) => {
 			if (err) {
-				console.log("error creating user: " + err);
-                creationState = false;
+				console.log("error creating user: " + err)
+                creationState = false
 			}
             else {
-                console.log("Successfully created new user.");
-                creationState = true;
+                console.log("Successfully created new user.")
+                creationState = true
             }
 
-            //io.to(socketid).emit("creationState", {success: creationState});
-            socket.emit("creationState", {success: creationState});
-		});
-	});
+            //io.to(socketid).emit("creationState", {success: creationState})
+            socket.emit("creationState", {success: creationState})
+		})
+	})
 
-  socket.on("login", function(user) {
-    User.find({userName: user.userName + ""}, function(err, res) {
-      var result;
+  socket.on("login", user => {
+    User.find({userName: user.userName + ""}, (err, res) => {
+      let result
       if (!err) {
-        result = res[0];
+        result = res[0]
       } else {
-        console.log(err);
+        console.error(err)
       }
 
       if (result) {
-          bcrypt.compare(user.password, result.password, function(err, res) {
+          bcrypt.compare(user.password, result.password, (err, res) => {
             if (err) {
-              console.log(err)
+              console.error(err)
             }
-            socket.emit("auth", {success: res});
-          });
+            socket.emit('auth', {success: res, username: user.userName})
+          })
       }
       else {
-          socket.emit("auth", {success: false});
+          socket.emit('auth', {success: false})
       }
-    });
-  });
+    })
+  })
 
-    socket.on("statsAsking", function(pollId) {
-        Polls.find({'_id': pollId}).exec(function(err, polls) {
+    socket.on("statsAsking", pollId => {
+        Polls.find({'_id': pollId}).exec((err, polls) => {
     		if (err) {
-    			console.log("ERROR: " + err);
+    			console.error("ERROR: " + err)
                 socket.emit("statsData", {
                     success: false,
                     error: "Can't get polls list, please retry in a while."
-                });
+                })
     		}
     		else {
-    			Participations.find({'poll': pollId}).exec(function(err, participations) {
+    			Participations.find({'poll': pollId}).exec((err, participations) => {
     				if (err) {
-    					console.log("ERROR: " + err);
+    					console.log("ERROR: " + err)
                         socket.emit("statsData", {
                             success: false,
                             error: "Can't get participations list, please retry in a while."
-                        });
+                        })
     				}
     				else {
                         socket.emit("statsData", {
                             success: true,
                             poll: polls[0],
                             participations: participations
-                        });
+                        })
     				}
-    			});
+    			})
     		}
-    	});
-    });
-});
+    	})
+    })
+})
 
 module.exports = app
