@@ -1,8 +1,7 @@
 import { Component, View } from 'angular2/core';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
-// Even if your IDE marks this as wrong it is not ; this path is dynamically
-// created by socket.io.
-import io from '/socket.io/socket.io.js';
+
+declare var io;
 
 @Component({
 	selector: 'Signup',
@@ -24,15 +23,14 @@ export class SignUp {
 		// Checks that fields aren't empty.
 		if (email && username && password1 && password2) {
 			// The entered email address must be a valid one.
-			if (emailRegex.test(email))
-			{
+			if (emailRegex.test(email)) {
 				// Checks that passwords are similar.
-				if (password1 == password2) {
-					var socket = io.connect("http://localhost:3000/");
+				if (password1 === password2) {
+					var socket = io("http://localhost:3000/");
 
 					this.error = null;
 
-					var userData = {
+					let userData = {
 						email: email,
 						userName: username,
 						password: password1
