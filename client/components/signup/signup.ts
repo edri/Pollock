@@ -26,7 +26,7 @@ export class SignUp {
 			if (emailRegex.test(email)) {
 				// Checks that passwords are similar.
 				if (password1 === password2) {
-					var socket = io("http://localhost:3000/");
+					var socket = io('http://localhost:3000/');
 
 					this.error = null;
 
@@ -38,25 +38,25 @@ export class SignUp {
 
 					socket.emit('userCreated', userData);
 
-					socket.on("creationState", (state) => {
+					socket.on('creationState', (state) => {
 						if (state.success) {
-							this.success = "Yay you successfully signed up!";
+							this.success = 'Yay you successfully signed up!';
 						}
 						else {
-							this.error = "The email or the username you choosed is already taken.";
+							this.error = 'The email or the username you choosed is already taken.';
 						}
 				    });
 				}
 				else {
-					this.error = "The passwords you entered don't match.";
+					this.error = 'The passwords you entered don\'t match.';
 				}
 			}
 			else {
-				this.error = "Please enter a valid email address."
+				this.error = 'Please enter a valid email address.'
 			}
 		}
 		else {
-			this.error = "Please fill all fields.";
+			this.error = 'Please fill all fields.';
 		}
 	}
 }

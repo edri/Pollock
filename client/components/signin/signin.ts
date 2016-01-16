@@ -16,7 +16,7 @@ export class SignIn {
 	signIn = (username:string, password:string) => {
 		// Checks that fields aren't empty.
 		if (username && password) {
-			let socket = io("http://localhost:3000/");
+			let socket = io('http://localhost:3000/');
 
 			this.error = null;
 
@@ -27,17 +27,17 @@ export class SignIn {
 
 			socket.emit('login', userData);
 
-			socket.on("auth", (state) => {
+			socket.on('auth', (state) => {
 				if (state.success) {
-					window.location.href = "#/action";
+					window.location.href = '#/action';
 				}
 				else {
-					this.error = "Login failed, please retry.";
+					this.error = 'Login failed, please retry.';
 				}
 			});
 		}
 		else {
-			this.error = "Please fill all fields.";
+			this.error = 'Please fill all fields.';
 		}
 	}
 }
