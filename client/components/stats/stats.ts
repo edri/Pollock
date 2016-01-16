@@ -1,10 +1,9 @@
 import { Component, View } from 'angular2/core';
 import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
-// Even if your IDE marks this as wrong it is not ; this path is dynamically
-// created by socket.io.
-import io from '/socket.io/socket.io.js';
 
-declare var Chart:any; // Magic
+declare var io;
+
+declare var Chart: any; // Magic
 
 @Component({
 	selector: 'Stats',
@@ -20,7 +19,7 @@ export class Stats {
 	poll = null;
 	participations = [];
 
-	getData = () => {
+	getData() {
 		var socket = io.connect("http://localhost:3000/");
 
 		socket.emit('statsAsking', this.id);

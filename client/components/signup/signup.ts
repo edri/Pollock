@@ -15,7 +15,7 @@ export class SignUp {
 	success = null;
 
 	// Triggered when the user pressed the "Submit" button.
-	signUp = (email:string, username:string, password1:string, password2:string) => {
+	signUp(email: string, username: string, password1: string, password2: string) {
 		this.success = false;
 
 		var emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

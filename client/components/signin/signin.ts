@@ -13,7 +13,7 @@ declare var io;
 export class SignIn {
 	error = null;
 
-	signIn = (username:string, password:string) => {
+	signIn(username: string, password: string) {
 		// Checks that fields aren't empty.
 		if (username && password) {
 			let socket = io('http://localhost:3000/');
