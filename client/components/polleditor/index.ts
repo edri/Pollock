@@ -5,6 +5,7 @@ import { QuestionEditor } from './../questioneditor/index';
 import { Question } from './../questioneditor/question';
 
 declare var io;
+declare var BASE_URL;
 
 @Component({
 	selector: 'editor'
@@ -64,7 +65,7 @@ export class PollEditor {
 
 		console.log(poll)
 
-		let socket = io('http://localhost:3000');
+		let socket = io(BASE_URL);
 		socket.emit('createPoll', poll);
 	}
 
@@ -90,5 +91,5 @@ export class PollEditor {
 // 		}, { key: 'No', text: 'No no...' }]
 // 	}]
 // }
-// var socket = io('http://localhost:3000');
+// var socket = io(BASE_URL);
 // socket.emit('createPoll', poll);

@@ -5,6 +5,7 @@ import { ROUTER_DIRECTIVES } from 'angular2/router';
 import { Question } from './question';
 
 declare var io;
+declare var BASE_URL;
 
 @Component({
 	selector: 'question-editor'
@@ -67,7 +68,7 @@ export class QuestionEditor {
 		// 		}, { key: 'No', text: 'No no...' }]
 		// 	}]
 		// }
-		// let socket = io('http://localhost:3000');
+		// let socket = io(BASE_URL);
 		// socket.emit('createPoll', poll);
 
 	}
@@ -86,5 +87,5 @@ export class QuestionEditor {
 // 		}, { key: 'No', text: 'No no...' }]
 // 	}]
 // }
-// var socket = io('http://localhost:3000');
+// var socket = io(BASE_URL);
 // socket.emit('createPoll', poll);

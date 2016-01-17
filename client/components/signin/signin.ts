@@ -37,7 +37,7 @@ export class SignIn {
 	signIn(username: string, password: string) {
 		// Checks that fields aren't empty.
 		if (username && password) {
-			let socket = io('http://localhost:3000/');
+			let socket = io(BASE_URL);
 
 			this.error = null;
 
