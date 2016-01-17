@@ -1,44 +1,67 @@
 import { Component, View } from 'angular2/core';
-import { NgForm } from 'angular2/common';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
 
-export class Poll {
-	answers: string[];
-	title: string;
-}
+import { QuestionEditor } from './../questioneditor/index';
+
+declare var io;
 
 @Component({
 	selector: 'editor'
 })
 @View({
-	directives: [ROUTER_DIRECTIVES],
-	templateUrl: 'components/editor'
-	// template: `
-// <input type="text" class="form-control" required
-          // [(ngModel)]="poll.title"
-             // >
-	// `
+	directives: [ROUTER_DIRECTIVES, QuestionEditor],
+	template: `
+
+	<input class="form-control" [(ngModel)]="title" placeholder="Poll title">
+
+	<div *ngFor="#questions #i=index">
+		{{i}} <question-editor poll="0" index="i"></question-editor>
+	</div>
+
+	<div>
+		-- questions.length <question-editor poll="0" index="i"></question-editor>
+	</div>
+	`
 })
+
 export class PollEditor {
-	public poll: Poll = {
-		title: 'Do we have free will ?',
-		answers: [
-			'Yes',
-			'Maybe',
-			'Nop !'
-		]
-	};
+	public id;
+	public title: string;
+	public questions;
 
-	addAnswer(text: any) {
-		if (text.value) {
-			this.poll.answers.push(text.value)
-			text.value = null
-		}
-		console.log(this.poll.answers)
-	}
+	ngOnInit() {
+// let poll = {
+// 	title: "I'm a cool test!",
+// 	state: 'Created',
+// 	questions: [{
+// 		title: 'do i work?',
+// 		type: 'qcm',
+// 		choices: [{
+// 			key: 'Yes',
+// 			text: 'Yes yes...'
+// 		}, { key: 'No', text: 'No no...' }]
+// 	}]
+// }
+// let socket = io('http://localhost:3000');
+// socket.emit('createPoll', poll);
 
-	removeAnswer(id: number) {
-		this.poll.answers.splice(id, 1);
+		// getPolls
+		// socket.emit('getPoll', 0);
 	}
 
 }
+
+// let poll = {
+// 	title: "I'm a cool test!",
+// 	state: 'Created',
+// 	questions: [{
+// 		title: 'do i work?',
+// 		type: 'qcm',
+// 		choices: [{
+// 			key: 'Yes',
+// 			text: 'Yes yes...'
+// 		}, { key: 'No', text: 'No no...' }]
+// 	}]
+// }
+// var socket = io('http://localhost:3000');
+// socket.emit('createPoll', poll);
