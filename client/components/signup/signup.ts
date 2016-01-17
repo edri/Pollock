@@ -2,6 +2,7 @@ import { Component, View } from 'angular2/core';
 import { ROUTER_DIRECTIVES, Router } from 'angular2/router';
 
 declare var io;
+declare var BASE_URL;
 
 @Component({
 	selector: 'Signup',
@@ -30,7 +31,7 @@ export class SignUp {
 			if (emailRegex.test(email)) {
 				// Checks that passwords are similar.
 				if (password1 === password2) {
-					var socket = io('http://localhost:3000/');
+					var socket = io(BASE_URL);
 
 					this.error = null;
 
@@ -49,10 +50,7 @@ export class SignUp {
 							// Warning! If you change something here, report it in the signin component.
 							localStorage.setItem('username', username);
 
-
-							var url = window.location;
-							var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
-							document.location.href = baseUrl;
+							document.location.href = BASE_URL;
 
 							// this.router.navigate(['Action']);
 						}

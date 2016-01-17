@@ -4,6 +4,7 @@ import { FORM_DIRECTIVES, NgForm } from 'angular2/common';
 import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 
 declare var io;
+declare var BASE_URL;
 
 declare var Chart: any; // Magic
 
@@ -22,7 +23,9 @@ export class Participate {
 	participations = [];
 	myParticipation = {
 		participant: localStorage.getItem('username'),
-		answers: []
+		answers: [],
+		poll: "",
+		submissionDate: new Date()
 	};
 
 
@@ -34,7 +37,7 @@ export class Participate {
 	}
 
 	getData() {
-		var socket = io.connect("http://localhost:3000/");
+		var socket = io.connect(BASE_URL);
 
 		socket.emit('statsAsking', this.id);
 
@@ -68,6 +71,8 @@ export class Participate {
 
 		this.myParticipation.answers = answers;
 
+		var socket = io.connect(BASE_URL);
+		
 		socket.emit('participate', this.myParticipation);
 	}
 }

@@ -2,6 +2,7 @@ import { Component, View, EventEmitter, Output } from 'angular2/core';
 import { ROUTER_DIRECTIVES, Router } from 'angular2/router';
 
 declare var io;
+declare var BASE_URL;
 
 @Component({
 	selector: 'Signin',
@@ -55,9 +56,7 @@ export class SignIn {
 					// this.login.emit(state.username);
 					// App.username = 'new username'
 
-					var url = window.location;
-					var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
-					document.location.href = baseUrl;
+					document.location.href = BASE_URL;
 					//this.router.navigate(['Action']);
 				}
 				else {
