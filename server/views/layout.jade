@@ -1,16 +1,25 @@
-body.pagesBody
-		//- nav.navbar.navbar-dark.bg-primary
-		//- 	a.navbar-brand(href='#') Pollock
+doctype html
+html(lang="en")
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/main.css')
+		link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/components/medium-editor/dist/css/medium-editor.min.css')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,300,100')
 
-		//- 	ul.nav.navbar-nav
-		//- 		li.nav-item.active.firstItem
-		//- 			a.nav-link(href='#')
-		//- 				| Polls
-		//- 				span.sr-only (current)
+	body
+		block content
 
-		//- 	form.form-inline.navbar-form.pull-right
-		//- 		| Logged in as _edri_ localStorage.username
-		//- 		button.btn.btn-info-outline.btnLogout(type='submit') Logout
-
-		.content
-			block content
+		script(src="/javascripts/angular2/angular2-polyfills.js")
+		script(src="/components/system.js/dist/system.js")
+		script(src="/javascripts/rxjs/Rx.js")
+		script(src="/javascripts/config.js")
+		script(src="/javascripts/angular2/angular2.dev.js")
+		script(src="/javascripts/angular2/router.dev.js")
+		script System.import('javascripts/bootstrap').catch(console.log.bind(console));
+		script(src="/components/medium-editor/dist/js/medium-editor.min.js")
+		script(src="/socket.io/socket.io.js")
+		script.
+			var editor = new MediumEditor('.editable', {});
+			//- editor.setup();

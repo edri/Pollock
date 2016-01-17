@@ -1,10 +1,8 @@
-extends ../layout
+header.intro
+	.action-page
+		h1.form-title.action-title What do you want to do?
 
-block content
-    .action-page
-        h1.form-title.action-title What do you want to do?
-        
-        button.btn.btn-primary.btn-action([routerLink]="['PollEditor']")
-            b.btn-content Create a new poll
-        button.btn.btn-secondary.btn-action([routerLink]="['PollsList']")
-            b.btn-content Access a poll
+		button.btn.btn-primary.btn-action([routerLink]="['PollEditor']")
+			b.btn-content Create a new poll
+		button.btn.btn-secondary.btn-action([routerLink]="['PollsList']")
+			b.btn-content Access a poll
