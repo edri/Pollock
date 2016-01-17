@@ -8,8 +8,6 @@ block content
             | Error : #{error}
         else
             for p in polls
-                .btn.btn-primary.poll
+                a.btn.btn-primary.poll([routerLink]="['Stats', {id:'" + p._id + "'}]")
                     | #{p.title}
-                    a.polls-stats([routerLink]="['Stats', {id:'" + p._id + "'}]")
-                        i.fa.fa-bar-chart
                 br
