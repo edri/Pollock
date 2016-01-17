@@ -111,9 +111,6 @@ section {
 .editor input:focus {
   background: transparent; }
 
-.bg-transp {
-  background: transparent; }
-
 @media (min-width: 768px) {
   .intro {
     height: 100%;
@@ -247,3 +244,9 @@ section {
 
 .btn-stats-back {
   margin-top: 20px; }
+
+.bg-transp {
+  background: transparent; }
+
+.navbar {
+  border-radius: 0 !important; }

@@ -108,7 +108,6 @@ section {
     // margin-top: 40px;
 // }
 
-
 .main-wrapper {
     padding: 4em;
     box-shadow: 0 0 8em rgba(0,0,0,0.2) inset;
@@ -142,11 +141,6 @@ section {
     background: rgba(241, 196, 15, .15);
 }
 .editor input:focus {
-    background: transparent;
-}
-
-// UTILS
-.bg-transp {
     background: transparent;
 }
 
@@ -328,4 +322,15 @@ section {
 
 .btn-stats-back {
 	margin-top: 20px;
+}
+
+
+// Utils
+.bg-transp {
+    background: transparent;
+}
+
+// Bootstrap
+.navbar {
+    border-radius: 0 !important;
 }
