@@ -122,6 +122,24 @@ io.on('connection', socket => {
 		})
 	})
 
+	socket.on("participate", newParticipation => {
+		var participation = new Participations()
+		participation.participant = newParticipation.participant;
+		participation.answers = newParticipation.answers;
+		participation.poll = newParticipation.poll;
+		participation.submissionDate = new Date();
+
+		participation.save((err) => {
+			if (err) {
+				res.send(err)
+				return
+			}
+			socket.emit('createPartitipationOK', {
+				success: true
+			})
+		})
+	})
+
 	socket.on("statsAsking", pollId => {
 		Polls.find({'_id': pollId}).exec((err, polls) => {
 			if (err) {

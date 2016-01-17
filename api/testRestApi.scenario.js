@@ -57,7 +57,7 @@ scenario.step("POST four new poll", function() {
             questions: [
                 {
                     title: "Q1",
-                    type: "Easy",
+                    type: "single",
                     choices: [
                         {
                             key: "R1",
@@ -71,7 +71,7 @@ scenario.step("POST four new poll", function() {
                 },
                 {
                     title: "Q2",
-                    type: "Easy",
+                    type: "multiple",
                     choices: [
                         {
                             key: "R1",
@@ -88,7 +88,7 @@ scenario.step("POST four new poll", function() {
             questions: [
                 {
                     title: "Q1",
-                    type: "Easy",
+                    type: "multiple",
                     choices: [
                         {
                             key: "R1",
@@ -102,7 +102,7 @@ scenario.step("POST four new poll", function() {
                 },
                 {
                     title: "Q2",
-                    type: "Easy",
+                    type: "multiple",
                     choices: [
                         {
                             key: "R1",

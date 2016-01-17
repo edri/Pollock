@@ -3,6 +3,8 @@ import { RouterLink, Router } from 'angular2/router';
 
 import { App } from './../../bootstrap';
 
+declare var BASE_URL;
+
 @Component({
 	selector: 'navbar',
 	directives: [RouterLink],
@@ -52,9 +54,7 @@ export class Navbar {
 	logout() {
 		localStorage.removeItem('username');
 
-		var url = window.location;
-		var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
-		document.location.href = baseUrl;
+		document.location.href = BASE_URL;
 
 		// this.router.navigate(['Home']);
 	}

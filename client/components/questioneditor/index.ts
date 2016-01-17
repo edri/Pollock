@@ -5,6 +5,7 @@ import { ROUTER_DIRECTIVES } from 'angular2/router';
 import { Question } from './question';
 
 declare var io;
+declare var BASE_URL;
 
 @Component({
 	selector: 'question-editor'

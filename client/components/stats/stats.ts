@@ -2,6 +2,7 @@ import { Component, View } from 'angular2/core';
 import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 
 declare var io;
+declare var BASE_URL;
 
 declare var Chart: any; // Magic
 
@@ -20,7 +21,7 @@ export class Stats {
 	participations = [];
 
 	getData() {
-		var socket = io.connect("http://localhost:3000/");
+		var socket = io.connect(BASE_URL);
 
 		socket.emit('statsAsking', this.id);
 
