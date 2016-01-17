@@ -11,20 +11,22 @@ block content
         #noError(*ngIf="!error && poll")
             h1.form-title {{ poll.title }}
 
+            <form (ngSubmit)="send()" #participateForm="ngForm">
             .question(*ngFor="#question of poll.questions")
                 h2 {{ question.title }}
 
                 div(*ngIf="question.type == 'multiple'") 
                     .multiple(*ngFor="#choice of question.choices")
                         label
-                            input.choice(type="checkbox", name="{{ choice.key }}", value="{{ choice.text }}")
+                            <input class="choice" type="checkbox" name="{{ choice.key }}" value="{{ choice._id }}">
                             {{ choice.text }}
                         br
 
                 div(*ngIf="question.type != 'multiple'") 
                     .single(*ngFor="#choice of question.choices")
                         label
-                            input.choice(type="radio", name="{{ question.title }}", value="{{ choice.text }}")
+                            <input class="choice" type="radio" name="{{ question.title }}" value="{{ choice._id }}">
                             {{ choice.text }}
                         br
-            button.btn.btn-primary.pull-right Submit
+            button.btn.btn-primary.pull-right(type="submit") Submit
+            </form>

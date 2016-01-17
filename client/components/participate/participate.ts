@@ -1,4 +1,6 @@
 import { Component, View } from 'angular2/core';
+import { FORM_DIRECTIVES, NgForm } from 'angular2/common';
+// import { FormBuilder, Validators } from 'angular2/forms';
 import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 
 declare var io;
@@ -18,6 +20,18 @@ export class Participate {
 	error = null;
 	poll = null;
 	participations = [];
+	myParticipation = {
+		participant: localStorage.getItem('username'),
+		answers: []
+	};
+
+
+	// Get router's ID parameter.
+	constructor(params: RouteParams) {
+		this.id = params.get('id');
+		this.getData();
+		this.myParticipation.poll = this.id;
+	}
 
 	getData() {
 		var socket = io.connect("http://localhost:3000/");
@@ -27,6 +41,7 @@ export class Participate {
 		socket.on("statsData", (result) => {
 			if (result.success) {
 				this.poll = result.poll;
+				this.participations = result.participations;
 			}
 			else {
 				this.error = result.error;
@@ -34,9 +49,25 @@ export class Participate {
 		});
 	}
 
-	// Get router's ID parameter.
-	constructor(params: RouteParams) {
-		this.id = params.get('id');
-		this.getData();
+
+	send() {
+		this.myParticipation.submissionDate = new Date();
+
+		var questions = document.querySelectorAll('.question');
+		var answers = [];
+
+		[].forEach.call(questions, function(q) {
+			var choices = document.querySelectorAll('.choice');
+
+			[].forEach.call(choices, function(c) {
+				if (c.checked) {
+					answers.push({ choice: c.value });
+				}
+			});
+		});
+
+		this.myParticipation.answers = answers;
+
+		socket.emit('participate', this.myParticipation);
 	}
 }
