@@ -152,8 +152,12 @@ io.on('connection', socket => {
 		})
 	})
 
-	socket.on("createPoll", poll => {
+	socket.on("createPoll", newPoll => {
+		var poll = new Polls();
+		poll.title = newPoll.title;
 		poll.creationDate = new Date();
+		poll.state = newPoll.state;
+		poll.questions = newPoll.questions;
 
 		poll.save((err) => {
 			if (err) {
