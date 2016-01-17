@@ -49,7 +49,12 @@ export class SignUp {
 							// Warning! If you change something here, report it in the signin component.
 							localStorage.setItem('username', username);
 
-							this.router.navigate(['Action']);
+
+							var url = window.location;
+							var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
+							document.location = baseUrl;
+
+							// this.router.navigate(['Action']);
 						}
 						else {
 							this.error = 'The email or the username you choosed is already taken.';

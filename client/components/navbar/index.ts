@@ -51,6 +51,11 @@ export class Navbar {
 
 	logout() {
 		localStorage.removeItem('username');
-		this.router.navigate(['Home']);
+
+		var url = window.location;
+		var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
+		document.location = baseUrl;
+		
+		// this.router.navigate(['Home']);
 	}
 }

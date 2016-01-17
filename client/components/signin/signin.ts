@@ -55,7 +55,10 @@ export class SignIn {
 					// this.login.emit(state.username);
 					// App.username = 'new username'
 
-					this.router.navigate(['Action']);
+					var url = window.location;
+					var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
+					document.location = baseUrl;
+					//this.router.navigate(['Action']);
 				}
 				else {
 					this.error = 'Login failed, please retry.';
