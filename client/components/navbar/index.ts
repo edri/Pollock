@@ -7,7 +7,6 @@ import { App } from './../../bootstrap';
 	selector: 'navbar',
 	directives: [RouterLink],
 	// providers: [App],
-	// template: require('./index.html')
 	// templateUrl: 'components/navbar'
 	template: `
 <nav class="navbar navbar-dark bg-primary">
@@ -32,9 +31,6 @@ import { App } from './../../bootstrap';
 			</li>
 		</ul>
 </nav>`
-		//- 	form.form-inline.navbar-form.pull-right
-		//- 		| Logged in as _edri_ localStorage.username
-		//- 		button.btn.btn-info-outline.btnLogout(type='submit') Logout
 })
 export class Navbar {
 	@Input() username;
