@@ -1,5 +1,5 @@
 import { Component, View } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 
 import { QuestionEditor } from './../questioneditor/index';
 import { Question } from './../questioneditor/question';
@@ -12,21 +12,21 @@ declare var io;
 @View({
 	directives: [ROUTER_DIRECTIVES, QuestionEditor],
 	template: `
+	<div class="main-wrapper">
+		<h1>
+			<input class="form-control form-title form-big" [(ngModel)]="title" placeholder="Poll title">
+		</h1>
 
-	<input class="form-control" [(ngModel)]="title" placeholder="Poll title">
+		<!-- <div class="text-muted" *ngFor="#l of sharedQuest">{{l | json}}</div> -->
 
-	<div *ngFor="#questions #i=index">
-		{{i}} <question-editor poll="0" index="i"></question-editor>
-	</div>
+		<div *ngFor="#l of sharedQuest #i=index">
+			<question-editor [questions]="sharedQuest" index="{{i}}"></question-editor>
+		</div>
 
-
-	<button class="btn btn-info" type="button" (click)='save()'>SAVEALL</button>
-
-<div *ngFor="#l of sharedQuest">{{l | json}}</div>
-
-	<div>
-		// -- {{title}} questions.length
-		<question-editor [questions]="sharedQuest" index="0" (event)="doSomething()" pollIndex="{{id}}" pollTitle="{{title}}"></question-editor>
+		<div class="center">
+			<button class="btn btn-xl btn-info" type="button" (click)='addQuestion()'>Add a question</button>
+			<button class="btn btn-xl btn-primary" type="button" (click)='save()'>Save the poll (and the Queen)</button>
+		</div>
 	</div>
 	`
 })
@@ -34,7 +34,6 @@ declare var io;
 export class PollEditor {
 	public id;
 	public title: string;
-	public questions;
 	public sharedQuest;
 
 	constructor() {
@@ -48,6 +47,20 @@ export class PollEditor {
 				{ key: 'No', text: 'No no...' }
 			])
 		];
+	}
+
+	ngOnInit(params: RouteParams) {
+		console.log("INIT");
+		console.log(params)
+		if (params) {
+			this.id = params;
+		}
+		console.log(this.id);
+		let socket = io('http://localhost:3000');
+		socket.emit('getPoll', 0);
+		socket.on('getPollOK', function(data) {
+			console.info(data);
+		});
 	}
 
 	save() {
@@ -68,12 +81,12 @@ export class PollEditor {
 		socket.emit('createPoll', poll);
 	}
 
-	doSomething(q) {
-		console.log("efuifigufuhi")
-		console.log(q)
-	}
-
-	ngOnInit() {
+	addQuestion() {
+		this.sharedQuest.push(
+			new Question(123, 'Question', 'QCM', [
+				{ key: 'Yes', text: 'Yes' }
+			])
+		);
 	}
 
 }

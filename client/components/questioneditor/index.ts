@@ -53,38 +53,4 @@ export class QuestionEditor {
 		this.questions[this.index] = this.question;
 	}
 
-	saveQuestion() {
-
-		// let poll = {
-		// 	title: "I'm a cool test!",
-		// 	state: 'Created',
-		// 	questions: [{
-		// 		title: 'do i work?',
-		// 		type: 'qcm',
-		// 		choices: [{
-		// 			key: 'Yes',
-		// 			text: 'Yes yes...'
-		// 		}, { key: 'No', text: 'No no...' }]
-		// 	}]
-		// }
-		// let socket = io('http://localhost:3000');
-		// socket.emit('createPoll', poll);
-
-	}
-
 }
-
-// var poll = {
-// 	title: "I'm a cool test!",
-// 	state: 'Created',
-// 	questions: [{
-// 		title: 'do i work?',
-// 		type: 'qcm',
-// 		choices: [{
-// 			key: 'Yes',
-// 			text: 'Yes yes...'
-// 		}, { key: 'No', text: 'No no...' }]
-// 	}]
-// }
-// var socket = io('http://localhost:3000');
-// socket.emit('createPoll', poll);

@@ -1,24 +1,19 @@
-.main-wrapper
-	.editor
-		h1
-			input.bg-transp([(ngModel)]="question.title" placeholder="Poll title")
-			{{pollTitle}} {{index}}
+.editor
+	h1
+		input.form-big.bg-transp.form-title.form-control([(ngModel)]="question.title" placeholder="Poll title")
 
-			div.card
-				.card-block
-					.input-group(*ngFor="#answer of question.choices #i=index")
-						input.form-control(type='text', [value]="question.choices[i].text", (blur)="question.choices[i].text=$event.target.value")
-						span.input-group-btn
-							button.btn.btn-danger-outline(type="button", (click)='removeAnswer(i)') Delete
+		div.card
+			.card-block
+				.input-group(*ngFor="#answer of question.choices #i=index")
+					input.form-control(type='text', [value]="question.choices[i].text", (blur)="question.choices[i].text=$event.target.value")
+					span.input-group-btn
+						button.btn.btn-danger-outline(type="button", (click)='removeAnswer(i)') Delete
 
-				.card-block
-					.input-group
-						input.form-control(type="text", placeholder="Add an answer...", #newPoll='', (keyup.enter)='addAnswer(newPoll)', (blur)='addAnswer(newPoll)')
-						span.input-group-btn
-							button.btn.btn-info(type="button", (click)='addAnswer(newPoll)') Add
-
-				.card-block
-					button.btn.btn-info(type="button", (click)='addAnswer(saveQuestion)') SAVE
+			.card-block
+				.input-group
+					input.form-control(type="text", placeholder="Add an answer...", #newPoll='', (keyup.enter)='addAnswer(newPoll)', (blur)='addAnswer(newPoll)')
+					span.input-group-btn
+						button.btn.btn-info(type="button", (click)='addAnswer(newPoll)') Add
 
 
 		//- ul.list-group

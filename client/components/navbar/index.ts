@@ -13,10 +13,10 @@ import { App } from './../../bootstrap';
 	<a class="navbar-brand" href="#">Pollock</a>
 		<ul class="nav navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" [routerLink]="['./Home']">Home</a>
+				<a class="nav-link" [routerLink]="['Home']">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" [routerLink]="['./PollEditor']">Editor</a>
+				<a class="nav-link" [routerLink]="['PollEditor', {id: 0}]">Editor</a>
 			</li>
 
 			<li class="nav-item pull-right pull-xs-right" *ngIf="username">

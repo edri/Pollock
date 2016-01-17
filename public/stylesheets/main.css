@@ -83,17 +83,11 @@ section {
 
 .main-wrapper {
   padding: 4em;
-  box-shadow: 0 0 8em rgba(0, 0, 0, 0.2) inset;
-  color: #ECF0F1;
+  box-shadow: 0 0 8em rgba(0, 0, 0, 0.025) inset;
   text-align: center;
   display: table;
   width: 100%;
-  height: auto;
-  background: url("../images/background.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
+  height: auto; }
 
 .editor {
   margin: 0 auto;
@@ -258,6 +252,9 @@ section {
 
 .bg-transp {
   background: transparent; }
+
+h1 .form-big {
+  font-size: 75% !important; }
 
 .navbar {
   border-radius: 0 !important; }

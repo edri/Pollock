@@ -172,9 +172,10 @@ io.on('connection', socket => {
 
 	// TODO check
 	socket.on('getPoll', id => {
+		console.log("id= " + id)
 		Polls.findById(id, function (err, poll) {
 			if (err) {
-				console.log("ERROR TODO")
+				console.error(err)
 				// res.status(404).send(err)
 				return
 			}

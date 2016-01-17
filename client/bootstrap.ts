@@ -31,7 +31,7 @@ import { Stats } from './components/stats/stats';
 	{ path: '/signup', component: SignUp, name: 'SignUp' },
 	{ path: '/action', component: Action, name: 'Action' },
 	{ path: '/pollslist', component: PollsList, name: 'PollsList' },
-	{ path: '/editor', component: PollEditor, name: 'PollEditor' },
+	{ path: '/editor/:id', component: PollEditor, name: 'PollEditor' },
 	{ path: '/participate', component: Participate, name: 'Participate' },
 	{ path: '/stats/:id', component: Stats, name: 'Stats' },
 ])
