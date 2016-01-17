@@ -19,14 +19,14 @@ import { App } from './../../bootstrap';
 				<a class="nav-link" [routerLink]="['./PollEditor']">Editor</a>
 			</li>
 
-			<li class="nav-item pull-right" *ngIf="username">
-				<form class="form-inline pull-xs-right">
+			<li class="nav-item pull-right pull-xs-right" *ngIf="username">
+				<form class="form-inline">
 					Logged as {{username}}
 					<button class="btn btn-success-outline" type="submit" (click)="logout()">Logout</button>
 				</form>
 			</li>
 
-			<li class="nav-item pull-right" *ngIf="!username">
+			<li class="nav-item pull-right pull-xs-right" *ngIf="!username">
 				<button class="btn btn-success-outline" [routerLink]="['/SignIn']">Signin</button>
 			</li>
 		</ul>
@@ -55,7 +55,7 @@ export class Navbar {
 		var url = window.location;
 		var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
 		document.location.href = baseUrl;
-		
+
 		// this.router.navigate(['Home']);
 	}
 }
