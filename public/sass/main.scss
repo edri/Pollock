@@ -104,6 +104,58 @@ section {
 	font-size: 16px;
 }
 
+// .editor {
+    // margin-top: 40px;
+// }
+
+
+.main-wrapper {
+    padding: 4em;
+    box-shadow: 0 0 8em rgba(0,0,0,0.2) inset;
+    color: $light;
+    text-align: center;
+    display: table;
+    width: 100%;
+    height: auto;
+    background: url($background) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    // height: 100%;
+
+    // border-bottom: 2px solid rgba(0,0,0,.25);
+}
+
+.editor {
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.editor input {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline: none;
+}
+.editor input:hover {
+    background: rgba(241, 196, 15, .15);
+}
+.editor input:focus {
+    background: transparent;
+}
+
+// UTILS
+.bg-transp {
+    background: transparent;
+}
+
+// .main-wrapper {
+//     display: table-cell;
+//     vertical-align: middle;
+// }
+
+
 @media(min-width:768px) {
 	.intro {
 		height: 100%;
@@ -219,10 +271,10 @@ section {
 	width: 600px;
 }
 
-.main-wrapper {
-	max-width: 600px;
-	margin: 0 auto;
-}
+// .main-wrapper {
+// 	max-width: 600px;
+// 	margin: 0 auto;
+// }
 
 .polls-stats {
 	border: 1px solid white;
