@@ -1,7 +1,6 @@
 import { bootstrap } from 'angular2/platform/browser'
 import { Component, View, provide, Input } from 'angular2/core';
-// import { RouteConfig, RouteParams, RouterLink, RouterOutlet, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, Router, Location, Route } from 'angular2/router';
-import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, RouteConfig, Route, ROUTER_DIRECTIVES, APP_BASE_HREF } from 'angular2/router';
+import { Router, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, RouteConfig, Route, ROUTER_DIRECTIVES, APP_BASE_HREF } from 'angular2/router';
 import { HomeComponent } from './components/home/home';
 import { Navbar } from './components/navbar/index';
 import { SignIn } from './components/signin/signin';
@@ -13,6 +12,8 @@ import { Stats } from './components/stats/stats';
 
 @Component({
 	selector: 'app'
+	// providers: [SignIn]
+	// directives: [SignIn]
 })
 @View({
 	template: `
@@ -35,12 +36,36 @@ import { Stats } from './components/stats/stats';
 export class App {
 	public username;
 
+	constructor(private router: Router) {
+		this.router = router;
+	}
+
 	ngOnInit() {
-		this.username = 'test_from_app';
+		// document.addEventListener('storage', function(event) {
+		// 	var key = event.key;
+		// 	var newValue = event.newValue;
+		// 	var oldValue = event.oldValue;
+		// 	var url = event.url;
+		// 	var storageArea = event.storageArea;
+
+		// 	console.log('STORAGE');
+		// 	console.log(oldValue);
+		// 	console.log(newValue);
+
+		// 	// handle the event
+		// });
+
+		if (localStorage && localStorage.getItem('username')) {
+			// logged
+			this.username = localStorage.getItem('username');
+			this.router.navigate(['Action']);
+		}
+		// this.username = 'test_from_app';
 		console.log('[Component] app running');
 	}
 
-	ngOnChanges() {
+	ngOnChanges(a) {
+		console.info(a)
         console.log('[Component] app onChanges');
     }
 }

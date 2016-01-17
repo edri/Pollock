@@ -1,4 +1,4 @@
-import { Component, View } from 'angular2/core';
+import { Component, View, EventEmitter, Output } from 'angular2/core';
 import { ROUTER_DIRECTIVES, Router } from 'angular2/router';
 
 declare var io;
@@ -12,11 +12,14 @@ declare var io;
 })
 // Login
 export class SignIn {
+
+	private error;
+	// @Output() login = new EventEmitter();
+
 	constructor(private router: Router) {
 		this.router = router;
 	}
 
-	private error;
 
 	ngOnInit() {
     }
@@ -46,8 +49,10 @@ export class SignIn {
 
 			socket.on('auth', state => {
 				if (state.success) {
+					// this.username = state.username;
 					// Warning! If you change something here, report it in the signup component.
 					localStorage.setItem('username', state.username);
+					// this.login.emit(state.username);
 					// App.username = 'new username'
 
 					this.router.navigate(['Action']);
