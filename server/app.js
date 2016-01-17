@@ -51,109 +51,106 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
-    res.status(err.status || 500)
-    res.render('error', {
-      message: err.message,
-      error: err
-    })
-  })
+	app.use((err, req, res, next) => {
+		res.status(err.status || 500)
+		res.render('error', {
+			message: err.message,
+			error: err
+		})
+	})
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
-  res.status(err.status || 500)
-  res.render('error', {
-    message: err.message,
-    error: {}
-  })
+	res.status(err.status || 500)
+	res.render('error', {
+		message: err.message,
+		error: {}
+	})
 })
 
 // Start the server on port 3000.
 let server = app.listen(3000, () => {
-  let host = server.address().address
-  let port = server.address().port
+	let host = server.address().address
+	let port = server.address().port
 
-  console.log('Pollock server listening at http://%s:%s.', host, port)
+	console.log('Pollock server listening at http://%s:%s.', host, port)
 })
 
 // Socket.io
 let io = socketio(server)
 
 io.on('connection', socket => {
-  //var socketid = socket.io.engine.id;
-  let creationState
+	//var socketid = socket.io.engine.id;
+	let creationState
 
-  socket.on("userCreated", function(user) {
+	socket.on("userCreated", function(user) {
 		var newUser = new User(user)
 		newUser.save((err) => {
 			if (err) {
 				console.log("error creating user: " + err)
-                creationState = false
+				creationState = false
+			} else {
+				console.log("Successfully created new user.")
+				creationState = true
 			}
-            else {
-                console.log("Successfully created new user.")
-                creationState = true
-            }
-
-            //io.to(socketid).emit("creationState", {success: creationState})
-            socket.emit("creationState", {success: creationState})
+			//io.to(socketid).emit("creationState", {success: creationState})
+			socket.emit("creationState", {success: creationState})
 		})
 	})
 
-  socket.on("login", user => {
-    User.find({userName: user.userName + ""}, (err, res) => {
-      let result
-      if (!err) {
-        result = res[0]
-      } else {
-        console.error(err)
-      }
+	socket.on("login", user => {
+		User.find({userName: user.userName + ""}, (err, res) => {
+			let result
+			if (!err) {
+				result = res[0]
+			} else {
+				console.error(err)
+			}
 
-      if (result) {
-          bcrypt.compare(user.password, result.password, (err, res) => {
-            if (err) {
-              console.error(err)
-            }
-            socket.emit('auth', {success: res, username: user.userName})
-          })
-      }
-      else {
-          socket.emit('auth', {success: false})
-      }
-    })
-  })
+			if (result) {
+				bcrypt.compare(user.password, result.password, (err, res) => {
+					if (err) {
+						console.error(err)
+					}
+					socket.emit('auth', {success: res, username: user.userName})
+				})
+			} else {
+				socket.emit('auth', {success: false})
+			}
+		})
+	})
 
-    socket.on("statsAsking", pollId => {
-        Polls.find({'_id': pollId}).exec((err, polls) => {
-    		if (err) {
-    			console.error("ERROR: " + err)
-                socket.emit("statsData", {
-                    success: false,
-                    error: "Can't get polls list, please retry in a while."
-                })
-    		}
-    		else {
-    			Participations.find({'poll': pollId}).exec((err, participations) => {
-    				if (err) {
-    					console.log("ERROR: " + err)
-                        socket.emit("statsData", {
-                            success: false,
-                            error: "Can't get participations list, please retry in a while."
-                        })
-    				}
-    				else {
-                        socket.emit("statsData", {
-                            success: true,
-                            poll: polls[0],
-                            participations: participations
-                        })
-    				}
-    			})
-    		}
-    	})
-    })
+	socket.on("statsAsking", pollId => {
+		Polls.find({'_id': pollId}).exec((err, polls) => {
+			if (err) {
+				console.error("ERROR: " + err)
+				socket.emit("statsData", {
+					success: false,
+					error: "Can't get polls list, please retry in a while."
+				})
+			}
+			else {
+				Participations.find({'poll': pollId}).exec((err, participations) => {
+					if (err) {
+						console.log("ERROR: " + err)
+						socket.emit("statsData", {
+							success: false,
+							error: "Can't get participations list, please retry in a while."
+						})
+					}
+					else {
+						socket.emit("statsData", {
+							success: true,
+							poll: polls[0],
+							participations: participations
+						})
+					}
+				})
+			}
+		})
+	})
 })
 
 module.exports = app
