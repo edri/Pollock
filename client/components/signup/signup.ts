@@ -1,5 +1,5 @@
 import { Component, View } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { ROUTER_DIRECTIVES, Router } from 'angular2/router';
 
 declare var io;
 
@@ -11,6 +11,10 @@ declare var io;
 	templateUrl: 'components/signup'
 })
 export class SignUp {
+	constructor(private router: Router) {
+		this.router = router;
+	}
+
 	error = null;
 	success = null;
 
@@ -40,7 +44,12 @@ export class SignUp {
 
 					socket.on('creationState', (state) => {
 						if (state.success) {
-							this.success = 'Yay you successfully signed up!';
+							// this.success = 'Yay you successfully signed up!';
+
+							// Warning! If you change something here, report it in the signin component.
+							localStorage.setItem('username', username);
+
+							this.router.navigate(['Action']);
 						}
 						else {
 							this.error = 'The email or the username you choosed is already taken.';

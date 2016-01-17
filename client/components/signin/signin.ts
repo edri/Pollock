@@ -1,5 +1,5 @@
 import { Component, View } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { ROUTER_DIRECTIVES, Router } from 'angular2/router';
 
 declare var io;
 
@@ -12,6 +12,10 @@ declare var io;
 })
 // Login
 export class SignIn {
+	constructor(private router: Router) {
+		this.router = router;
+	}
+
 	private error;
 
 	ngOnInit() {
@@ -42,10 +46,11 @@ export class SignIn {
 
 			socket.on('auth', state => {
 				if (state.success) {
+					// Warning! If you change something here, report it in the signup component.
 					localStorage.setItem('username', state.username);
 					// App.username = 'new username'
 
-					window.location.href = '#/action';
+					this.router.navigate(['Action']);
 				}
 				else {
 					this.error = 'Login failed, please retry.';
