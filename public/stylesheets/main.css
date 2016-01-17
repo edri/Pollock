@@ -231,6 +231,17 @@ section {
 .stats-table td {
   padding: 10px; }
 
+.participate-content {
+  background-color: white;
+  color: black;
+  margin: auto;
+  min-height: calc(100vh - 54px);
+  padding: 20px;
+  width: 75%; }
+
+.participate-content input.choice {
+  margin-right: 5px; }
+
 .participations-table td {
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 3px 10px; }

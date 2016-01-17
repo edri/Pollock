@@ -57,6 +57,10 @@ router.get('/editor', function (req, res) {
 	res.render('components/editor');
 });
 
+router.get('/participate', function (req, res) {
+	res.render('components/participate');
+});
+
 router.get('/pollslist', function (req, res, next) {
 	var pollsStream = Polls.find({}).lean().exec(function(err, polls) {
 		if (err) {

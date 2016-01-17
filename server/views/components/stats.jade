@@ -41,4 +41,6 @@ block content
             #noParticipations(*ngIf="!participations || participations.length <= 0")
                 | There is still no participation for this poll.
                 
-            button.btn.btn-primary.btn-stats-back([routerLink]="['PollsList']") Back
+            button.btn.btn-stats-back([routerLink]="['PollsList']") Back 
+
+            button.btn.btn-primary.btn-stats-back.pull-right(*ngIf="poll", [routerLink]="['Participate', {id: poll._id}]") Participate

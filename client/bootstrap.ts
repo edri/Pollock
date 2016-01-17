@@ -6,6 +6,7 @@ import { Navbar } from './components/navbar/index';
 import { SignIn } from './components/signin/signin';
 import { SignUp } from './components/signup/signup';
 import { Action } from './components/action/action';
+import { Participate } from './components/participate/participate';
 import { PollsList } from './components/pollslist/pollslist';
 import { PollEditor } from './components/polleditor/index';
 import { Stats } from './components/stats/stats';
@@ -31,6 +32,7 @@ import { Stats } from './components/stats/stats';
 	{ path: '/action', component: Action, name: 'Action' },
 	{ path: '/pollslist', component: PollsList, name: 'PollsList' },
 	{ path: '/editor', component: PollEditor, name: 'PollEditor' },
+	{ path: '/participate', component: Participate, name: 'Participate' },
 	{ path: '/stats/:id', component: Stats, name: 'Stats' },
 ])
 export class App {
