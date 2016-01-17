@@ -57,7 +57,7 @@ export class SignIn {
 
 					var url = window.location;
 					var baseUrl = url.protocol + "//" + url.host + "/" + url.pathname.split('/')[1];
-					document.location = baseUrl;
+					document.location.href = baseUrl;
 					//this.router.navigate(['Action']);
 				}
 				else {
