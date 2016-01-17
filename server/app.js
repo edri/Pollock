@@ -152,22 +152,37 @@ io.on('connection', socket => {
 		})
 	})
 
-	socket.on("createPoll", newPoll => {
-		var poll = new Polls();
-		poll.title = newPoll.title;
-		poll.creationDate = new Date();
-		poll.state = newPoll.state;
-		poll.questions = newPoll.questions;
+	socket.on('createPoll', newPoll => {
+		var poll = new Polls()
+		poll.title = newPoll.title
+		poll.creationDate = new Date()
+		poll.state = newPoll.state
+		poll.questions = newPoll.questions
 
 		poll.save((err) => {
 			if (err) {
-				res.send(err);
-				return;
+				res.send(err)
+				return
 			}
-			socket.emit("createPollOK", {
+			socket.emit('createPollOK', {
 				success: true
 			})
-		});
+		})
+	})
+
+	// TODO check
+	socket.on('getPoll', id => {
+		Polls.findById(id, function (err, poll) {
+			if (err) {
+				console.log("ERROR TODO")
+				// res.status(404).send(err)
+				return
+			}
+
+			console.log(poll)
+
+			socket.emit('getPollOK', poll)
+		})
 	})
 })
 
