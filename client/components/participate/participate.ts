@@ -1,7 +1,7 @@
 import { Component, View } from 'angular2/core';
 import { FORM_DIRECTIVES, NgForm } from 'angular2/common';
 // import { FormBuilder, Validators } from 'angular2/forms';
-import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
+import { ROUTER_DIRECTIVES, RouteParams, Router } from 'angular2/router';
 
 declare var io;
 declare var BASE_URL;
@@ -30,10 +30,11 @@ export class Participate {
 
 
 	// Get router's ID parameter.
-	constructor(params: RouteParams) {
+	constructor(params: RouteParams, private router: Router) {
 		this.id = params.get('id');
 		this.getData();
-		this.myParticipation.poll = this.id;
+		this.myParticipation.poll = this.id;	
+		this.router = router;
 	}
 
 	getData() {
@@ -72,7 +73,9 @@ export class Participate {
 		this.myParticipation.answers = answers;
 
 		var socket = io.connect(BASE_URL);
-		
+
 		socket.emit('participate', this.myParticipation);
+
+		this.router.navigate(['Stats', { id: this.id }]);
 	}
 }
