@@ -2,6 +2,7 @@
 	.editor
 		h1
 			input.bg-transp([(ngModel)]="question.title" placeholder="Poll title")
+			{{pollTitle}} {{index}}
 
 			div.card
 				.card-block
@@ -15,6 +16,9 @@
 						input.form-control(type="text", placeholder="Add an answer...", #newPoll='', (keyup.enter)='addAnswer(newPoll)', (blur)='addAnswer(newPoll)')
 						span.input-group-btn
 							button.btn.btn-info(type="button", (click)='addAnswer(newPoll)') Add
+
+				.card-block
+					button.btn.btn-info(type="button", (click)='addAnswer(saveQuestion)') SAVE
 
 
 		//- ul.list-group

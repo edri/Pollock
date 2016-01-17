@@ -4,6 +4,8 @@ import { ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { Question } from './question';
 
+declare var io;
+
 @Component({
 	selector: 'question-editor'
 })
@@ -20,26 +22,54 @@ import { Question } from './question';
 export class QuestionEditor {
 
 	@Input() index;
+	@Input() questions;
+	@Input() pollTitle;
 	public question: Question;
 
 	constructor() {
-		this.question = new Question(123, 'Do we have free will ?', 'QCM', [
-			{ key: 'Yes', text: 'Yes yes...' },
-			{ key: 'Maybe', text: 'Maybe' },
-			{ key: 'No', text: 'No no...' }
-		]);
 	}
 
-	addAnswer(text: any) {
+	ngOnInit() {
+		this.question = this.questions[this.index];
+		console.log(this.pollTitle)
+	}
+
+	public addAnswer(text: any) {
 		if (text.value) {
 			this.question.choices.push({ key: text.value.replace(/ +/, '_'), text: text.value })
 			text.value = null
 		}
 		console.log(this.question.choices)
+
+		this.questions[this.index] = this.question;
+
+
+		// this.pollTitle = 'qwe';
+		// this.event.emit(this.question);
 	}
 
 	removeAnswer(id: number) {
 		this.question.choices.splice(id, 1);
+		this.questions[this.index] = this.question;
+	}
+
+	saveQuestion() {
+
+		// let poll = {
+		// 	title: "I'm a cool test!",
+		// 	state: 'Created',
+		// 	questions: [{
+		// 		title: 'do i work?',
+		// 		type: 'qcm',
+		// 		choices: [{
+		// 			key: 'Yes',
+		// 			text: 'Yes yes...'
+		// 		}, { key: 'No', text: 'No no...' }]
+		// 	}]
+		// }
+		// let socket = io('http://localhost:3000');
+		// socket.emit('createPoll', poll);
+
 	}
 
 }

@@ -3,6 +3,6 @@ export class Question {
 		public id: number, // index
 		public title: string,
 		public type: string,
-		public choices: any,
+		public choices: any
 	) { }
 }
