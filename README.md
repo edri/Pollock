@@ -10,11 +10,9 @@
 *PS*: Do not forget to also run mongodb (sometimes with `mongod`)
 
 ## What is currently working?
- - Home page is totally working
- - Sign-In and Sign-Up pages are partially working: you can acces them but not suscribe or connect (but when you press the 'Submit' button you'll be redirected in the next page) ; for now you can access everything on the website without being connected. Database is okay, we just need to add/check data and create a session
- - Polls' action page is totally working
- - Add poll page is partially working: we added the editor but there is no database communication
- - You can access existing polls, but the view is not totally done
+ - Home, Sign-In, Sign-Up, Polls actions, Polls list and Poll's stats pages are totally working.
+ - Add poll page is partially working: we can add questions but can't create the poll.
+ - Polls answerings are partially working.
 
 ## Dev
 
