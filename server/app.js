@@ -151,6 +151,20 @@ io.on('connection', socket => {
 			}
 		})
 	})
+
+	socket.on("createPoll", poll => {
+		poll.creationDate = new Date();
+
+		poll.save((err) => {
+			if (err) {
+				res.send(err);
+				return;
+			}
+			socket.emit("createPollOK", {
+				success: true
+			})
+		});
+	})
 })
 
 module.exports = app
