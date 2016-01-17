@@ -3,15 +3,24 @@
 		h1
 			input.bg-transp([(ngModel)]="poll.title" placeholder="Poll title")
 
-		ul.list-group
-			li.list-group-item(*ngFor="#answer of poll.answers #i=index")
-				input.form-control([value]="poll.answers[i]", (blur)="poll.answers[i]=$event.target.value")
+			div.card
+				.card-block
+					.input-group(*ngFor="#answer of poll.answers #i=index")
+						input.form-control(type='text', [value]="poll.answers[i]", (blur)="poll.answers[i]=$event.target.value")
+						span.input-group-btn
+							button.btn.btn-danger-outline(type="button", (click)='removeAnswer(i)') Delete
 
-			li.list-group-item
-				input.form-control(type="text", placeholder="Add an answer...", #newHero='', (keyup.enter)='addAnswer(newHero)', (blur)='addAnswer(newHero)')
-				span.input-group-btn
-					button.btn.btn-primary-outline(type="button", (click)='addAnswer(newHero)') Add
+				.card-block
+					.input-group
+						input.form-control(type="text", placeholder="Add an answer...", #newPoll='', (keyup.enter)='addAnswer(newPoll)', (blur)='addAnswer(newPoll)')
+						span.input-group-btn
+							button.btn.btn-info(type="button", (click)='addAnswer(newPoll)') Add
 
-//- input(#new-hero='', (keyup.enter)='addAnswer(newHero)', (blur)='addAnswer(newHero)')
-//- button.btn.btn-primary-outline.btn-sm((click)='addAnswer(newHero)') Add
+
+		//- ul.list-group
+		//- 	li.list-group-item(*ngFor="#answer of poll.answers #i=index")
+		//- 		input.form-control([value]="poll.answers[i]", (blur)="poll.answers[i]=$event.target.value")
+
+//- input(#new-hero='', (keyup.enter)='addAnswer(newPoll)', (blur)='addAnswer(newPoll)')
+//- button.btn.btn-primary-outline.btn-sm((click)='addAnswer(newPoll)') Add
 			//- input([(ngModel)]="poll.answers[i]")

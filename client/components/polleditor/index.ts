@@ -36,4 +36,9 @@ export class PollEditor {
 		}
 		console.log(this.poll.answers)
 	}
+
+	removeAnswer(id: number) {
+		this.poll.answers.splice(id, 1);
+	}
+
 }
