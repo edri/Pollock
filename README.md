@@ -10,7 +10,7 @@
 *PS*: Do not forget to also run mongodb (sometimes with `mongod`)
 
 ## What is currently working?
- - All pages are working: you can sign-up, sign-in, create and access polls, reading polls stats and answer polls.
+ - All pages are working: you can sign-up, sign-in, create/edit/access/answer polls and reading polls stats.
  - Website design part could be improved, but we still think it is user-friendly enough to be used without big issues.
 
 ## Dev
