@@ -180,10 +180,14 @@ section {
   font-size: 20px; }
 
 .pollslist-page {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 5em; }
 
 .page-title, .action-title {
-  color: white; }
+  color: #333; }
+
+.page-title-w {
+  color: #fff; }
 
 .page-title {
   margin-top: 100px; }
@@ -208,17 +212,12 @@ section {
   color: #5bc0de; }
 
 .stats-content {
-  background-color: white;
-  border: 1px solid black;
-  color: black;
   margin: auto;
   min-height: calc(100vh - 54px);
   padding: 20px;
   width: 75%; }
 
 .stats-table, .participations-table {
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 40px;
   width: 100%; }
 
@@ -226,8 +225,6 @@ section {
   padding: 10px; }
 
 .participate-content {
-  background-color: white;
-  color: black;
   margin: auto;
   min-height: calc(100vh - 54px);
   padding: 20px;
@@ -248,13 +245,18 @@ section {
   text-align: center; }
 
 .btn-stats-back {
-  margin-top: 20px; }
+  margin-top: 20px;
+  margin-left: 4px;
+  margin-right: 4px; }
 
 .bg-transp {
   background: transparent; }
 
 h1 .form-big {
   font-size: 75% !important; }
+
+.col-w {
+  color: #fff; }
 
 .navbar {
   border-radius: 0 !important; }

@@ -11,7 +11,7 @@ block content
         #noError(*ngIf="!error")
             h1.form-title(*ngIf="poll") Stats for "{{poll.title}}"
 
-            table.stats-table(*ngIf="poll")
+            table.table.stats-table(*ngIf="poll")
                 tr
                     td.stat State
                     td {{poll.state}}
@@ -26,9 +26,9 @@ block content
                 | {{participations.length}} {{participations.length > 1 ? "people" : "person"}} answered this poll:
 
                 .questions(*ngFor="#q of poll.questions")
-                    h2(style="padding-top: 10px") {{ q.title }}
+                    h2.form-title(style="padding-top: 10px") {{ q.title }}
 
-                    table.participations-table
+                    table.table.table-bordered.participations-table
                         tr
                             td(*ngFor="#qc of q.choices")
                                 b {{ qc.text }}
@@ -44,6 +44,7 @@ block content
 
             button.btn.btn-stats-back([routerLink]="['PollsList']") Back
 
-            button.btn.btn-primary.btn-stats-back.pull-xs-right(*ngIf="poll", [routerLink]="['Participate', {id: poll._id}]") Participate
+            .input-group.pull-xs-right
+                button.btn.btn-primary.btn-stats-back(*ngIf="poll", [routerLink]="['Participate', {id: poll._id}]") Participate
 
-            button.btn.btn-info.btn-stats-back.pull-xs-right(*ngIf="poll", [routerLink]="['PollEditor', {id: poll._id}]") PollEditor
+                button.btn.btn-info.btn-stats-back(*ngIf="poll", [routerLink]="['PollEditor', {id: poll._id}]") PollEditor
