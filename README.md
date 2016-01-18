@@ -10,9 +10,8 @@
 *PS*: Do not forget to also run mongodb (sometimes with `mongod`)
 
 ## What is currently working?
- - Home, Sign-In, Sign-Up, Polls actions, Polls list and Poll's stats pages are totally working.
- - Add poll page is partially working: we can add questions but can't create the poll.
- - Polls answerings are partially working.
+ - All pages are working: you can sign-up, sign-in, create and access polls, reading polls stats and answer polls.
+ - Website design part could be improved, but we still think it is user-friendly enough to be used without big issues.
 
 ## Dev
 
