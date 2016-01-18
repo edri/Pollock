@@ -1,13 +1,13 @@
 extends ../layout
 
-block content            
+block content
     .stats-content
         .card.card-inverse.card-danger(*ngIf="error")
             .card-block.error.stats-error
                 {{error}}
                 br
                 button.btn.btn-primary.btn-stats-back([routerLink]="['PollsList']") Back
-                
+
         #noError(*ngIf="!error")
             h1.form-title(*ngIf="poll") Stats for "{{poll.title}}"
 
@@ -24,7 +24,7 @@ block content
 
             #participations(*ngIf="participations && participations.length > 0")
                 | {{participations.length}} {{participations.length > 1 ? "people" : "person"}} answered this poll:
-                
+
                 table.participations-table
                     tr(*ngFor='#p of participations')
                         td
@@ -37,10 +37,12 @@ block content
                             span(*ngFor="#a of p.answers")
                                 | {{a.choice}}
                                 br
-                        
+
             #noParticipations(*ngIf="!participations || participations.length <= 0")
                 | There is still no participation for this poll.
-                
-            button.btn.btn-stats-back([routerLink]="['PollsList']") Back 
 
-            button.btn.btn-primary.btn-stats-back.pull-right(*ngIf="poll", [routerLink]="['Participate', {id: poll._id}]") Participate
+            button.btn.btn-stats-back([routerLink]="['PollsList']") Back
+
+            button.btn.btn-primary.btn-stats-back.pull-xs-right(*ngIf="poll", [routerLink]="['Participate', {id: poll._id}]") Participate
+
+            button.btn.btn-info.btn-stats-back.pull-xs-right(*ngIf="poll", [routerLink]="['PollEditor', {id: poll._id}]") PollEditor

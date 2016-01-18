@@ -37,7 +37,7 @@ export class PollEditor {
 	public title: string;
 	public sharedQuest;
 
-	constructor() {
+	constructor(params: RouteParams) {
 		this.id = 0;
 		this.title = 'Your poll title';
 
@@ -48,19 +48,45 @@ export class PollEditor {
 				{ key: 'No', text: 'No no...' }
 			])
 		];
-	}
 
-	ngOnInit(params: RouteParams) {
-		console.log("INIT");
 		console.log(params)
-		if (params) {
-			this.id = params;
+		if (params && params.get('id')) {
+			console.log("params: ");
+			console.log(params);
+			this.id = params.get('id');
+			this.getData();
 		}
 		console.log(this.id);
-		let socket = io('http://localhost:3000');
-		socket.emit('getPoll', 0);
-		socket.on('getPollOK', function(data) {
-			console.info(data);
+	}
+
+	ngOnInit() {
+		console.log("INIT");
+
+		if (this.id != 0) {
+			let socket = io('http://localhost:3000');
+			socket.emit('getPoll', this.id);
+			socket.on('getPollOK', data => {
+				this.title = data.title;
+				this.sharedQuest = data.questions;
+				console.info(data);
+			});
+		}
+	}
+
+	getData() {
+		var socket = io.connect(BASE_URL);
+
+		socket.emit('statsAsking', this.id);
+
+		socket.on('statsData', (result) => {
+			console.log(result)
+			if (result.success) {
+				// this.poll = result.poll;
+				// this.participations = result.participations;
+			}
+			else {
+				// this.error = result.error;
+			}
 		});
 	}
 
@@ -79,7 +105,13 @@ export class PollEditor {
 		console.log(poll)
 
 		let socket = io(BASE_URL);
-		socket.emit('createPoll', poll);
+
+		if (this.id != 0) {
+			poll.id = this.id;
+			socket.emit('updatePoll', poll);
+		} else {
+			socket.emit('createPoll', poll);
+		}
 	}
 
 	addQuestion() {

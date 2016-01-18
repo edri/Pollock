@@ -188,6 +188,33 @@ io.on('connection', socket => {
 		})
 	})
 
+	socket.on('updatePoll', pollUpd => {
+
+		Polls.findById(pollUpd.id, function (err, poll) {
+			if (err) {
+				console.error(err)
+				// res.status(404).send(err)
+				return
+			}
+
+			console.log(poll)
+
+			poll.title = pollUpd.title
+			poll.questions = pollUpd.questions
+
+			poll.save((err) => {
+				if (err) {
+					console.error(err)
+					return
+				}
+				socket.emit('updatePollOK', {
+					success: true
+				})
+			})
+		})
+
+	})
+
 	// TODO check
 	socket.on('getPoll', id => {
 		console.log("id= " + id)
