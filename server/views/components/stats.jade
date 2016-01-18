@@ -25,18 +25,20 @@ block content
             #participations(*ngIf="participations && participations.length > 0")
                 | {{participations.length}} {{participations.length > 1 ? "people" : "person"}} answered this poll:
                 
-                table.participations-table
-                    tr(*ngFor='#p of participations')
-                        td
-                            b {{p.participant}}
-                        td {{p.submissionDate}}
-                        td
-                            u
-                                | Answers:
-                            br
-                            span(*ngFor="#a of p.answers")
-                                | {{a.choice}}
-                                br
+                .questions(*ngFor="#q of poll.questions")
+                    h2(style="padding-top: 10px") {{ q.title }}
+
+                    table.participations-table
+                        tr
+                            td(*ngFor="#qc of q.choices")
+                                b {{ qc.text }}
+                        tr(*ngFor='#p of participations')
+                            td(*ngFor="#qc of q.choices")
+                                div(*ngFor="#a of p.answers")
+                                    div(*ngIf="a.choice == qc._id", style="text-align: center;") X
+                            td {{p.participant}}
+                            td {{p.submissionDate}}
+                        
                         
             #noParticipations(*ngIf="!participations || participations.length <= 0")
                 | There is still no participation for this poll.
