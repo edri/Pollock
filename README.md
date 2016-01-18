@@ -12,6 +12,7 @@
 ## What is currently working?
  - All pages are working: you can sign-up, sign-in, create/edit/access/answer polls and reading polls stats.
  - Website design part could be improved, but we still think it is user-friendly enough to be used without big issues.
+ - We can't delete a poll yet.
 
 ## Dev
 
