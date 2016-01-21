@@ -63,7 +63,7 @@ export class PollEditor {
 		console.log("INIT");
 
 		if (this.id != 0) {
-			let socket = io('http://localhost:3000');
+			let socket = io(BASE_URL);
 			socket.emit('getPoll', this.id);
 			socket.on('getPollOK', data => {
 				this.title = data.title;
